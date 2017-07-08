@@ -20,8 +20,9 @@ class QueryController extends Controller
      */
     public function addQuery(Request $request) {
         $phone = $request->get("phone");
-        Mail::send('emails.query', ["phone" => $phone], function ($m) {
-            $m->from('hello@app.com', 'Your Application');
+        $name = $request->get("name");
+        Mail::send('emails.query', ["phone" => $phone, "name" => $name], function ($m) {
+            $m->from('mmailm@mail.ru', 'Мосрвп.рф');
             $m->to("mmailm@mail.ru", "mick")->subject('Your Reminder!');
         });
     }

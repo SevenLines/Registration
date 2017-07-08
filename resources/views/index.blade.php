@@ -23,7 +23,7 @@
 <div class="container">
     <div class="email-phones">
         <div class="pull-left">
-            <span><i class="glyphicon glyphicon-map-marker"></i> г. Москва</span>
+            <span><i class="glyphicon glyphicon-map-marker"></i> г. Москва и Московская область</span>
         </div>
         <div class="pull-right">
             <span class="phone-link" style="margin-right: 1em;"><i class="glyphicon glyphicon-phone"></i>
@@ -44,8 +44,10 @@
             <div class="info">
                 <div class="" style="text-align: center">
                     <div class="title">Юридическая помощь</div>
-                    <div class="description">по миграционным вопросам <span
-                                class="highlight">подготовка всех документов</span> для иностранных граждан
+                    <div class="description">
+                        <span class="highlight">по миграционным вопросам</span>
+                        подготовка всех документов
+                        <span class="highlight">для иностранных граждан</span>
                     </div>
                 </div>
             </div>
@@ -67,6 +69,10 @@
                 <img src="{{ URL::asset("images/flags/kz.png") }}" alt="">
                 <img src="{{ URL::asset("images/flags/tj.png") }}" alt="">
                 <img src="{{ URL::asset("images/flags/uz.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/bl.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/kzh.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/mld.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/ua.png") }}" alt="">
             </div>
         </div>
     </div>
@@ -118,7 +124,7 @@
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
                 <img src={{ Url::asset("images/types/Мед.страховка.jpg") }} alt="">
-                <div class="description">Мед. Страховка</div>
+                <div class="description">Медицинская страховка</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
@@ -154,13 +160,13 @@
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
                 <img src={{ Url::asset("images/types/МедКомиссия.jpg") }} alt="">
-                <div class="description">Мед.Комиссия</div>
+                <div class="description">МЕДКОМИССИЯ</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
                 <img src={{ Url::asset("images/types/Загран.Паспорт.jpg") }} alt="">
-                <div class="description">Загран.Паспорт</div>
+                <div class="description">загранпаспорт</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
