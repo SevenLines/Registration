@@ -14,22 +14,20 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Оставить заявку</h4>
+				<h4 class="modal-title">Юридическая помощь</h4>
 			</div>
 			<div class="modal-body">
                 <div class="" style="padding-bottom: 16px">Сейчас сотрудники не в офисе. <br>Хотите, мы сами вам перезвоним?</div>
-                <form action="" method="POST" class="form-inline" role="form">
-                    <div class="form-group" >
-                        <input type="text" name="phone" style="min-width: 300px" class="form-control input-lg" placeholder="телефон">
-                    </div>
-                    <div class="form-group" >
-                    <input type="text" name="name" style="min-width: 300px" class="form-control input-lg" placeholder="имя">
+                <form action="{{ route("addquery") }}" method="POST" class="form-inline" role="form">
+                    <div class="form-group">
+                        <input type="text" name="name" class="index-phone form-control input-lg" placeholder="имя">
+                        <input type="text" name="phone" class="index-phone form-control input-lg" placeholder="телефон">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: 0.5em">
                         <div class="">
-                            <button type="submit" class="btn btn-lg btn-warning" data-dismiss="modal">
-                                Жду звонка
+                            <button type="submit" class="btn btn-warning">
+                                Оставить заявку
                             </button>
                         </div>
                     </div>
