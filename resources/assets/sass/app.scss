@@ -6,6 +6,8 @@
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 .phone {
+  z-index: 100;
+
   #DIV_1 {
     background-position: 50% 50%;
     box-sizing: border-box;
@@ -15,7 +17,6 @@
     text-decoration: none solid rgb(51, 51, 51);
     text-size-adjust: 100%;
     width: 100px;
-    z-index: 0;
     column-rule-color: rgb(51, 51, 51);
     perspective-origin: 40px 40px;
     transform: matrix(1, 0, 0, 1, 0, 0);
@@ -59,16 +60,15 @@
 
 .modal {
   text-align: center;
-  padding: 0 !important;
-  font-size: 2em;
 }
 
-.modal:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -4px;
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
 }
 
 .modal-dialog {

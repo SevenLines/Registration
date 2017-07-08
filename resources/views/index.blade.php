@@ -37,8 +37,8 @@
         <div class="clearfix"></div>
     </div>
     <hr style="margin-bottom: 0.5em">
-    <img src="images/herb.png" alt="" class="herb pull-right">
-    <img src="images/herb.png" alt="" class="herb pull-left">
+    <img src="{{ Url::asset("images/types/herb.png") }}" alt="" class="herb pull-right">
+    <img src="{{ Url::asset("images/types/herb.png") }}" alt="" class="herb pull-left">
     <div class="header-info" style="">
         <div class="info">
             <div class="" style="text-align: center">
@@ -93,85 +93,85 @@
     <div class="documents-list">
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/Тестирование.jpg" alt="">
+                <img src={{ Url::asset("images/types/Тестирование.jpg") }} alt="">
                 <div class="description">Тестирование</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/Патент.jpg" alt="">
+                <img src={{ Url::asset("images/types/Патент.jpg") }} alt="">
                 <div class="description">ПАТЕНТ</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/Мед.страховка.jpg" alt="">
+                <img src={{ Url::asset("images/types/Мед.страховка.jpg") }} alt="">
                 <div class="description">Мед. Страховка</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/Разрешение на работу.jpg" alt="">
+                <img src={{ Url::asset("images/types/Разрешение на работу.jpg") }} alt="">
                 <div class="description">Разрешение на работу</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/въезд;выезд.jpg" alt="">
+                <img src={{ Url::asset("images/types/въезд;выезд.jpg") }} alt="">
                 <div class="description">Въезд/выезд</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/РВП1.jpg" alt="">
+                <img src={{ Url::asset("images/types/РВП1.jpg") }} alt="">
                 <div class="description">Рвп</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/ВНЖ.jpg" alt="">
+                <img src={{ Url::asset("images/types/ВНЖ.jpg") }} alt="">
                 <div class="description">Внж</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/Гражданство.jpg" alt="">
+                <img src={{ Url::asset("images/types/Гражданство.jpg") }} alt="">
                 <div class="description">Гражданство</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/МедКомиссия.jpg" alt="">
+                <img src={{ Url::asset("images/types/МедКомиссия.jpg") }} alt="">
                 <div class="description">Мед.Комиссия</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/Загран.Паспорт.jpg" alt="">
+                <img src={{ Url::asset("images/types/Загран.Паспорт.jpg") }} alt="">
                 <div class="description">Загран.Паспорт</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/Виза.jpg" alt="">
+                <img src={{ Url::asset("images/types/Виза.jpg") }} alt="">
                 <div class="description">Виза</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/приглашение.jpg" alt="">
+                <img src={{ Url::asset("images/types/приглашение.jpg") }} alt="">
                 <div class="description">Приглашение</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/ИНН.jpg" alt="">
+                <img src={{ Url::asset("images/types/ИНН.jpg") }} alt="">
                 <div class="description">Получение Инн</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src="images/УведомлениеФМС.jpg" alt="">
+                <img src={{ Url::asset("images/types/УведомлениеФМС.jpg") }} alt="">
                 <div class="description">Уведомление Фмс</div>
             </div>
         </div>
