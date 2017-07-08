@@ -85,30 +85,11 @@
   padding: 1em 2em 2em;
   margin-bottom: 100px;
   border-radius: 0 0 1em 1em;
+  overflow: hidden;
 }
 
 body {
   background: url("images/circles-and-roundabouts.png");
-}
-
-.main_info {
-  padding: 0.25em 0.5em;
-  margin: 1em;
-  margin-bottom: 0;
-  border: 2px solid black;
-  border-radius: 16px;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: inline-block;
-  text-align: center;
-  .free {
-    font-size: 3em;
-
-  }
-  small {
-    font-size: 1.4em;
-  }
-
 }
 
 .info {
@@ -137,7 +118,7 @@ body {
   padding: 0;
   .inner {
     border: 3px solid white;
-    height: 160px;
+    height: 180px;
     overflow: hidden;
   }
   .description {
@@ -150,7 +131,7 @@ body {
     left: 0;
     right: 0;
     padding: 1em 0;
-    background-color: rgba(255, 255, 255, .95);
+    background-color: rgb(255, 255, 255);
     color: black;
   }
   img {
@@ -158,7 +139,6 @@ body {
     max-width: 100%;
   }
 }
-
 
 .email-phones {
   font-size: 1.5em;
@@ -190,6 +170,54 @@ span.highlight {
   text-decoration: underline;
 }
 
+.header {
+  background-color: #0094db;
+  box-shadow: 0 0 4px silver;
+  margin: 2em -2em;
+  margin-top: 1em;
+  padding: 1em 2em 2em;
+  color: white;
+  span.highlight {
+    color: #ffe400;
+  }
+  .main_info {
+    padding: 0.25em 0.5em;
+    margin: 1em;
+    margin-bottom: 0;
+    border: 2px solid white;
+    border-radius: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    .free {
+      font-size: 3em;
+
+    }
+    small {
+      font-size: 1.4em;
+    }
+
+  }
+}
+
+.phone-link {
+  display: inline-block;
+  color: white;
+  a {
+    color: white;
+  }
+  padding-right: 0.25em;
+  background-color: $highlight;
+}
+
+.flags {
+  margin: 1em;
+  margin-bottom: 0;
+  img {
+    border: 1px solid white;
+  }
+}
 
 img.herb {
   display: none;
@@ -220,20 +248,26 @@ img.herb {
 
 @media (min-width: 990px) {
   .header-info {
-    margin-right: 100px;margin-left:100px
+    margin-right: 100px;
+    margin-left: 100px
   }
   img.herb {
-    margin-top:16px;width:90px;float: right;
+    margin-top: 16px;
+    width: 90px;
+    float: right;
     display: block;
   }
 }
 
 @media (min-width: 1200px) {
   .header-info {
-    margin-right: 150px;margin-left:150px
+    margin-right: 150px;
+    margin-left: 150px
   }
   img.herb {
-    margin-top:16px;width:140px;float: right;
+    margin-top: 16px;
+    width: 140px;
+    float: right;
   }
 }
 

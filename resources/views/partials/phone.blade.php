@@ -20,7 +20,10 @@
                 <div class="" style="padding-bottom: 16px">Сейчас сотрудники не в офисе. <br>Хотите, мы сами вам перезвоним?</div>
                 <form action="" method="POST" class="form-inline" role="form">
                     <div class="form-group" >
-                        <input type="text" style="min-width: 300px" class="form-control input-lg" placeholder="телефон">
+                        <input type="text" name="phone" style="min-width: 300px" class="form-control input-lg" placeholder="телефон">
+                    </div>
+                    <div class="form-group" >
+                    <input type="text" name="name" style="min-width: 300px" class="form-control input-lg" placeholder="имя">
                     </div>
 
                     <div class="form-group">

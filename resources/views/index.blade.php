@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-    <title>Laravel</title>
+    <title>Мосрвп.рф - Юридическая помощь</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -26,7 +26,7 @@
             <span><i class="glyphicon glyphicon-map-marker"></i> г. Москва</span>
         </div>
         <div class="pull-right">
-            <span style="margin-right: 1em"><i class="glyphicon glyphicon-phone"></i>
+            <span class="phone-link" style="margin-right: 1em;"><i class="glyphicon glyphicon-phone"></i>
                 <a href="tel:+79264243334"> +7 926 424 3334</a>
             </span>
             <span>
@@ -36,33 +36,44 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <hr style="margin-bottom: 0.5em">
-    <img src="{{ Url::asset("images/types/herb.png") }}" alt="" class="herb pull-right">
-    <img src="{{ Url::asset("images/types/herb.png") }}" alt="" class="herb pull-left">
-    <div class="header-info" style="">
-        <div class="info">
-            <div class="" style="text-align: center">
-                <div class="title">Юридическая помощь</div>
-                <div class="description">по миграционным вопросам <span class="highlight">подготовка всех документов</span> для иностранных граждан
+
+    <div class="header">
+        <img src="{{ Url::asset("images/types/herb.png") }}" alt="" class="herb pull-right">
+        <img src="{{ Url::asset("images/types/herb.png") }}" alt="" class="herb pull-left">
+        <div class="header-info" style=" text-align: center">
+            <div class="info">
+                <div class="" style="text-align: center">
+                    <div class="title">Юридическая помощь</div>
+                    <div class="description">по миграционным вопросам <span
+                                class="highlight">подготовка всех документов</span> для иностранных граждан
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="" style="text-align: center">
-            <div class="main_info">
-                <div class="free">Бесплатная консультация</div>
-                <small>самые <span class="highlight">низкие цены</span> в Москве и Московской
-                    области!
-                </small>
-                <br>
-                <small>Без посредников!</small>
+
+            <div class="" style="text-align: center">
+                <div class="main_info">
+                    <div class="free">Бесплатная консультация</div>
+                    <small>самые <span class="highlight">низкие цены</span> в Москве и Московской
+                        области!
+                    </small>
+                    <br>
+                    <small>Без посредников!</small>
+                </div>
+            </div>
+            <div class="flags" style="display:inline-block;">
+                <img src="{{ URL::asset("images/flags/ru.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/az.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/am.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/kz.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/tj.png") }}" alt="">
+                <img src="{{ URL::asset("images/flags/uz.png") }}" alt="">
             </div>
         </div>
     </div>
-    <hr>
 
     <div style="text-align: center">
         <div class="sale-info">
-            <div>Заполни заявку сейчас и получи <span class="highlight">СКИДКУ</span> на наши
+            <div>Отправь заявку сейчас и получи <span class="highlight">СКИДКУ</span> на наши
                 услуги!
             </div>
             <div style="margin-bottom: 0.5em">Торопись до конца акции осталось</div>
@@ -74,9 +85,10 @@
             <script src="http://megatimer.ru/s/f33f299374934a6f1aad76ed9dd07e95.js"></script>
         </div>
         <div style="padding-top: 2em">
-            <form action="" method="POST" class="form-inline" role="form">
-                <div class="form-group" >
-                    <input type="text" class="index-phone form-control input-lg" placeholder="телефон">
+            <form action="{{ route("addquery") }}" method="POST" class="form-inline" role="form">
+                <div class="form-group">
+                    <input type="text" name="name" class="index-phone form-control input-lg" placeholder="имя">
+                    <input type="text" name="phone" class="index-phone form-control input-lg" placeholder="телефон">
                 </div>
 
                 <div class="form-group">
@@ -111,13 +123,13 @@
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/Разрешение на работу.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/allowance_to_work.jpg") }} alt="">
                 <div class="description">Разрешение на работу</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/въезд;выезд.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/in_out.jpg") }} alt="">
                 <div class="description">Въезд/выезд</div>
             </div>
         </div>
@@ -153,7 +165,7 @@
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/Виза.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/visa.jpg") }} alt="">
                 <div class="description">Виза</div>
             </div>
         </div>
