@@ -114,19 +114,19 @@
     <div class="documents-list">
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/Тестирование.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/testing.jpg") }} alt="">
                 <div class="description">Тестирование</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/Патент.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/patent.jpg") }} alt="">
                 <div class="description">ПАТЕНТ</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/Мед.страховка.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/health-insurance.jpg") }} alt="">
                 <div class="description">Медицинская страховка</div>
             </div>
         </div>
@@ -144,31 +144,31 @@
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/РВП1.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/rvp1.jpg") }} alt="">
                 <div class="description">Рвп</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/ВНЖ.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/vnj.jpg") }} alt="">
                 <div class="description">Внж</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/Гражданство.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/grazhdanstvo.jpg") }} alt="">
                 <div class="description">Гражданство</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/МедКомиссия.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/med_commission.jpg") }} alt="">
                 <div class="description">МЕДКОМИССИЯ</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/Загран.Паспорт.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/zagran_passport.jpg") }} alt="">
                 <div class="description">загранпаспорт</div>
             </div>
         </div>
@@ -180,19 +180,19 @@
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/приглашение.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/priglashenie.jpg") }} alt="">
                 <div class="description">Приглашение</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/ИНН.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/inn.jpg") }} alt="">
                 <div class="description">Получение Инн</div>
             </div>
         </div>
         <div class="document-item col-md-3 col-sm-4 col-xs-6">
             <div class="inner">
-                <img src={{ Url::asset("images/types/УведомлениеФМС.jpg") }} alt="">
+                <img src={{ Url::asset("images/types/fms.jpg") }} alt="">
                 <div class="description">Уведомление Фмс</div>
             </div>
         </div>
