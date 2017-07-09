@@ -96,8 +96,8 @@
         <div style="padding-top: 2em">
             <form action="{{ route("addquery") }}" method="POST" class="form-inline" role="form">
                 <div class="form-group">
-                    <input type="text" name="name" class="index-phone form-control input-lg" placeholder="имя">
-                    <input type="text" name="phone" class="index-phone form-control input-lg" placeholder="телефон">
+                    <input type="text" required="required" name="name" class="index-phone form-control input-lg" placeholder="имя">
+                    <input type="text" required="required" name="phone" class="index-phone form-control input-lg" placeholder="телефон">
                 </div>
 
                 <div class="form-group">
@@ -105,6 +105,13 @@
                         <button type="submit" class="btn btn-lg btn-warning">
                             Оставить заявку
                         </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label><input type="checkbox" required="required" value=""></label>
+                        <span style="font-size: 0.75em">Подтверждаю, что я ознакомлен с
+                            <a class="privacy-link" data-toggle="modal" href="#modal-privacy">Политикой конфиденциальности</a> и даю свое согласие на сбор и обработку персональных данных.*</span>
                     </div>
                 </div>
             </form>
@@ -201,6 +208,7 @@
 </div>
 @include("partials.phone")
 @include("partials.form")
+@include("partials.privacy")
 
 </body>
 </html>
