@@ -25,6 +25,7 @@
 <script>
     // bind submit handler to form
     $('form').on('submit', function (e) {
+        var form = this;
         e.preventDefault(); // prevent native submit
         var $modal = $("#modal-query");
         $(this).ajaxSubmit({
@@ -32,6 +33,7 @@
                 $modal.modal("show");
                 $modal.find(".content .message").hide();
                 $modal.find(".content .message.success").show();
+                form.reset();
             },
             error: function () {
                 $modal.modal("show");
