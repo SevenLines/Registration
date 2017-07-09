@@ -228,4 +228,6 @@ return [
 
     ],
 
+    "yandex_analytics" => env('YANDEX_ANALYTICS_KEY', ''),
+
 ];

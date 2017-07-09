@@ -209,6 +209,7 @@
 @include("partials.phone")
 @include("partials.form")
 @include("partials.privacy")
+@include("partials.yandex")
 
 </body>
 </html>
