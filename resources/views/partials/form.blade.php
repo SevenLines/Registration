@@ -33,7 +33,7 @@
                 $modal.find(".content .message").hide();
                 $modal.find(".content .message.success").show();
             },
-            fail: function () {
+            error: function () {
                 $modal.modal("show");
                 $modal.find(".content .message").hide();
                 $modal.find(".content .message.fail").show();
