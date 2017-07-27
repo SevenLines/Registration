@@ -19,3 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/query', "QueryController@addQuery")->name("addquery");
+
+Route::resource('queries', 'QueriesController', ['only' =>
+    ['index', 'store', 'update', 'destroy']
+]);
+
+Route::resource('clients', 'ClientController', ['only' =>
+    ['index', 'store', 'update', 'destroy']
+]);
