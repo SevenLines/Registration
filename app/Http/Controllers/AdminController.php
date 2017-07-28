@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Query;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,7 +15,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view("admin/index");
+        return view("admin/index", [
+            "services" => Query::SERVICES
+        ]);
     }
 
     public function __call($method, $parameters)

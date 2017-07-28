@@ -1,21 +1,26 @@
 <template>
     <tr :class="{success: changed}">
         <td>
-            <input class="form-control" type="text" v-model="fio">
+            {{fio}}
         </td>
         <td>
-            <input class="form-control" type="text" v-model="birthday">
+            {{birthday}}
         </td>
         <td>
-            <input class="form-control" type="text" v-model="passport">
+            {{passport}}
         </td>
         <td>
-            <input class="form-control" type="text" v-model="phone">
+            {{phone}}
+        </td>
+        <td>
         </td>
         <td>
             <div class="pull-right">
-                <button class="btn btn-success" :class="{disabled: !changed}" @click="save">
-                    <i class="glyphicon glyphicon-save"></i>
+                <button class="btn btn-default" @click="$emit('queries', this)">
+                    <i class="glyphicon glyphicon-book"></i>
+                </button>
+                <button class="btn btn-default" @click="$emit('edit', this)">
+                    <i class="glyphicon glyphicon-edit"></i>
                 </button>
             </div>
         </td>
@@ -34,9 +39,6 @@
             },
         },
         methods: {
-            save() {
-                this.$emit("save", this);
-            },
             reset() {
                 this.original = {
                     fio: this.fio,
@@ -48,3 +50,4 @@
         }
     }
 </script>
+

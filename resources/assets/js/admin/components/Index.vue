@@ -3,15 +3,15 @@
         <div class="">
             <ul class="pagination large">
                 <li v-for="page in pages" :class="{active: page.page == currentPage + 1 }">
-                    <a href="#" @click="setPage(page)" >{{page.page}}</a>
+                    <a href="#" @click="setPage(page)">{{page.page}}</a>
                 </li>
             </ul>
-            <a class="btn btn-primary pull-right" @click="newQuery" data-toggle="modal" href="#editModal">Добавить</a>
+            <a class="btn btn-primary pull-right" @click="newQuery">Добавить</a>
             <div class="clearfix"></div>
             <hr>
         </div>
 
-        <div class="modal fade" id="editModal">
+        <div class="modal fade" ref="editModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -52,8 +52,38 @@
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
+
+        <div class="modal fade" ref="queriesModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Заявки</h4>
+                    </div>
+                    <div class="modal-body">
+                        <queries-editor ref="currentClientEd"
+                                        v-on:addQuery="addQuery"
+                                        :client="currentClient"
+                        ></queries-editor>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+        <div class="modal fade" ref="addQueryModal">
+            <div class="modal-dialog">
+                <query-form :currentQuery="currentQuery"
+                            :currentQueryModal="$refs.currentClientEd"
+                            ref="currentQueryModal"
+                ></query-form>
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <div class="">
-            <table class="table table-striped table-condensed table-hover">
+            <table class="table table-bordered table-striped table-condensed table-hover">
                 <thead>
                 <tr>
                     <th>
@@ -80,6 +110,7 @@
                         </div>
                     </th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody ref="dataBody">
@@ -89,6 +120,8 @@
                     :passport="client.passport"
                     :phone="client.phone"
                     :original="client.original"
+                    v-on:edit="editClient($event, client)"
+                    v-on:queries="showQueries($event, client)"
                     is="client">
                 </tr>
                 </tbody>
@@ -102,8 +135,9 @@
 </template>
 
 <script>
-    import QueryRow from './QueryRow.vue'
+    import QueriesEditor from './QueriesEditor.vue'
     import Client from './Client.vue'
+    import QueryForm from './QueryForm.vue'
     import _ from 'lodash'
 
     export default {
@@ -113,6 +147,7 @@
         data() {
             return {
                 currentClient: null,
+                currentQuery: null,
                 services: [],
                 clients: [],
                 loading: false,
@@ -128,8 +163,9 @@
             }
         },
         components: {
-            'query-row': QueryRow,
             'client': Client,
+            'queries-editor': QueriesEditor,
+            'query-form': QueryForm,
         },
         events: {},
         methods: {
@@ -140,8 +176,24 @@
                     passport: '',
                     phone: '',
                 }
+                $(this.$refs.editModal).modal("show");
             },
-            setPage (page) {
+            showQueries($event, client) {
+                this.currentClient = client;
+                let me = this;
+                $(this.$refs.queriesModal).modal("show");
+                this.$refs.currentClientEd.reloadQueries(client);
+            },
+            addQuery(query, $caller) {
+                this.currentQuery = query;
+                this.$refs.addQueryModal.currentQueryModal = $caller;
+                $(this.$refs.addQueryModal).modal("show");
+            },
+            editClient($event, client) {
+                this.currentClient = client;
+                $(this.$refs.editModal).modal("show");
+            },
+            setPage(page) {
                 this.currentPage = page.page - 1;
                 this.reloadClients();
             },
@@ -149,7 +201,12 @@
                 let promise;
                 let me = this;
                 if (this.currentClient.id) {
-                    promise = axios.put(`api/client/${this.currentClient.id}`, this.currentClient);
+                    promise = axios.put(`api/clients/${this.currentClient.id}`, {
+                        fio: this.currentClient.fio,
+                        birthday: this.currentClient.birthday,
+                        passport: this.currentClient.passport,
+                        phone: this.currentClient.phone,
+                    });
                 } else {
                     promise = axios.post("api/clients", this.currentClient);
                 }
@@ -208,6 +265,11 @@
                 this.page = 0;
                 this.reloadClients();
             }, 250)
+        },
+        computed: {
+            reminder() {
+                return this.currentQuery ? this.currentQuery.price - this.currentQuery.paid : 0;
+            }
         }
 
     }
@@ -228,7 +290,7 @@
             transform: translate(-50%, -50%);
         }
     }
-    
+
     table {
         td {
             -webkit-transition: all .3s;

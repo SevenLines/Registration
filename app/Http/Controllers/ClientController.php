@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Query;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -39,7 +40,7 @@ class ClientController extends Controller
             $query = $query->offset($page * $itemsPerPage);
         }
 
-        $query = $query->limit($itemsPerPage)->orderBy("created_at", 'desc');
+        $query = $query->limit($itemsPerPage)->orderBy("fio");
 
         return [
             "records" => $query->get(),
@@ -83,7 +84,6 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
     }
 
     /**
@@ -96,6 +96,41 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         //
+        Client::find($client->id)->update($request->all());
+
+        return new Response();
+    }
+
+
+    public function queries($id, Request $request)
+    {
+        return Query::query()
+            ->where("client_id", "=", $id)
+            ->orderBy("updated_at", 'desc')
+            ->get();
+    }
+
+    public function query_add($id, Request $request)
+    {
+        Query::create([
+            "client_id" => $id,
+            'price' => $request->get("price"),
+            'paid' => $request->get("paid"),
+            'status' => $request->get("status"),
+            'service' => $request->get("service"),
+        ]);
+        return new Response();
+    }
+
+    public function query_update($id, Request $request)
+    {
+        Query::find($request->get("id"))->update([
+            'price' => $request->get("price"),
+            'paid' => $request->get("paid"),
+            'status' => $request->get("status"),
+            'service' => $request->get("service"),
+        ]);
+        return new Response();
     }
 
     /**

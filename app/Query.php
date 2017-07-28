@@ -15,19 +15,19 @@ class Query extends Model
     const SERVICE_OTHER = -1;
 
     const SERVICES = [
-        'undefined' => Query::SERVICE_UNDEFINED,
-        'registration' => 1,
-        'patent' => 2,
-        'testing' => 3,
-        'medcommision' => 4,
-        'rvp' => 5,
-        'vng' => 6,
-        'grazhdanstvo' => 7,
-        'insurance' => 8,
-        'zagranpassport' => 9,
-        'visa' => 10,
-        'vks' => 11,
-        'other' => Query::SERVICE_OTHER,
+        Query::SERVICE_UNDEFINED => '-',
+        1 => 'регистрация',
+        2 => 'патент',
+        3 => 'тестирование',
+        4 => 'медкомиссия',
+        5 => 'РВП',
+        6 => 'ВНЖ',
+        7 => 'гражданство',
+        8 => 'страховка',
+        9 => 'загранпаспорт',
+        10 => 'виза',
+        11 => 'ВКС',
+        Query::SERVICE_OTHER => 'другое',
     ];
 
 
