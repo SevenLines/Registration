@@ -109,7 +109,13 @@
                                    placeholder="...">
                         </div>
                     </th>
-                    <th></th>
+                    <th>
+                        <select class="form-control" v-on:change="onFilterChange" v-model="filters.service">
+                            <option v-for="option in services" :value="option.value">
+                                {{ option.key }}
+                            </option>
+                        </select>
+                    </th>
                     <th></th>
                 </tr>
                 </thead>
@@ -120,6 +126,7 @@
                     :passport="client.passport"
                     :phone="client.phone"
                     :original="client.original"
+                    :queries="client.queries"
                     v-on:edit="editClient($event, client)"
                     v-on:queries="showQueries($event, client)"
                     is="client">
@@ -145,21 +152,34 @@
             this.reloadClients();
         },
         data() {
+            let services = [];
+            services.push({
+                key: "все",
+                value: null,
+            });
+            _.forOwn(SERVICES, function (key, value) {
+                services.push({
+                    'key': key,
+                    'value': value,
+                });
+            });
+
             return {
                 currentClient: null,
                 currentQuery: null,
-                services: [],
                 clients: [],
                 loading: false,
                 currentPage: 0,
                 totalPages: 0,
                 pages: [],
                 filters: {
+                    serivce: null,
                     fio: null,
                     birthday: null,
                     passport: null,
                     phone: null,
-                }
+                },
+                services
             }
         },
         components: {
@@ -233,6 +253,7 @@
                         passport: this.filters.passport,
                         phone: this.filters.phone,
                         page: this.currentPage,
+                        service: this.filters.service,
                     }
                 }).then(function (response) {
                     me.clients = response.data.records.map(function (item) {

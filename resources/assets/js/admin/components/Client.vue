@@ -13,6 +13,7 @@
             {{phone}}
         </td>
         <td>
+            <div class="my-label" :class="query.klass" v-for="query in queriesList">{{query.text}}<br></div>
         </td>
         <td>
             <div class="pull-right">
@@ -29,7 +30,7 @@
 
 <script>
     export default {
-        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original'],
+        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original', 'queries'],
         computed: {
             changed() {
                 return this.fio !== this.original.fio
@@ -37,6 +38,19 @@
                     || this.passport !== this.original.passport
                     || this.phone !== this.original.phone;
             },
+            queriesList() {
+                return _.map(this.queries, function (item) {
+                    return {
+                        'text': SERVICES[item.service],
+                        'klass': {
+                            'label-danger': item.status === 0,
+                            'label-warning': item.status === 1,
+                            'label-success': item.status === 2,
+                            'label-default': item.status === 3,
+                        }
+                    }
+                })
+            }
         },
         methods: {
             reset() {
@@ -50,4 +64,20 @@
         }
     }
 </script>
+
+<style>
+    .my-label {
+        display: block;
+        padding: .2em .6em .3em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        margin-bottom: 0.25em;
+    }
+</style>
 

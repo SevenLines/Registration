@@ -21,6 +21,7 @@ class ClientController extends Controller
         $phone = $request->get("phone");
         $birthday = $request->get("birthday");
         $page = $request->get("page");
+        $service = $request->get("service");
         $itemsPerPage = 10;
 
         $query = Client::query();
@@ -34,18 +35,31 @@ class ClientController extends Controller
         if ($phone) {
             $query = Client::where("phone", 'LIKE', "%$phone%");
         }
+        if ($service) {
+            $query = Client::whereHas("queries", function ($query) use($service) {
+                $query->where("service", "=", $service);
+            });
+        }
+
+        $query = $query->with([
+            "queries" => function ($query) {
+                $query->orderBy("updated_at", "desc")->where("status", "!=", Query::STATUS_TAKEN);
+            }
+        ]);
+
         $totalCount = $query->count();
 
         if ($page) {
             $query = $query->offset($page * $itemsPerPage);
         }
 
+
         $query = $query->limit($itemsPerPage)->orderBy("fio");
 
         return [
             "records" => $query->get(),
             "totalCount" => $totalCount,
-            "page"=> $page,
+            "page" => $page,
             "totalPages" => ceil($totalCount / $itemsPerPage),
         ];
     }

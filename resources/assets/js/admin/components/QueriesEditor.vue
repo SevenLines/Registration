@@ -60,7 +60,7 @@
                 this.promise = axios.get(`api/clients/${client.id}/queries`)
                 this.promise.then(function (response) {
                     if (client_id !== client.id)
-                        return
+                        return;
                     me.loading = false;
                     me.queries = response.data;
                 })
@@ -98,7 +98,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped="">
     .loadingQueryEditor {
         background-color: rgba(255, 255, 255, 0.75);
         width: 100%;
@@ -117,4 +117,6 @@
             transform: translate(-50%, -50%);
         }
     }
+
+
 </style>
