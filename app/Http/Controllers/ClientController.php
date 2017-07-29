@@ -22,7 +22,7 @@ class ClientController extends Controller
         $birthday = $request->get("birthday");
         $page = $request->get("page");
         $service = $request->get("service");
-        $itemsPerPage = 10;
+        $itemsPerPage = 15;
 
         $query = Client::query();
 
@@ -35,9 +35,13 @@ class ClientController extends Controller
         if ($phone) {
             $query = Client::where("phone", 'LIKE', "%$phone%");
         }
-        if ($service) {
-            $query = Client::whereHas("queries", function ($query) use($service) {
-                $query->where("service", "=", $service);
+        if (!is_null($service) && $service != Query::SERVICE_ALL) {
+            $query = Client::whereHas("queries", function ($query) use ($service) {
+                if ($service == Query::SERVICE_WITH) {
+                    $query->where("status", "!=", Query::STATUS_TAKEN);
+                } else {
+                    $query->where("service", "=", $service);
+                }
             });
         }
 
@@ -118,10 +122,17 @@ class ClientController extends Controller
 
     public function queries($id, Request $request)
     {
-        return Query::query()
+        $showTaken = $request->get("showTaken");
+
+        $query = Query::query()
             ->where("client_id", "=", $id)
-            ->orderBy("updated_at", 'desc')
-            ->get();
+            ->orderBy("updated_at", 'desc');
+
+        if ($showTaken != 'true') {
+            $query->where("status", "!=", Query::STATUS_TAKEN);
+        }
+
+        return $query->get();
     }
 
     public function query_add($id, Request $request)

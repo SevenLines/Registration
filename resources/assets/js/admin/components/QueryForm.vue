@@ -2,15 +2,21 @@
     <div class="modal-content" v-if="currentQuery">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Добавить заявку</h4>
+            <h4 class="modal-title">Заявка</h4>
+            <span class="label label-success" v-if="currentQuery.created_at">Создана: {{currentQuery.created_at}}</span>
+            <span class="label label-info"
+                  v-if="currentQuery.updated_at">Обновлялась: {{currentQuery.updated_at}}</span>
         </div>
         <div class="modal-body" :class="bgClass">
             <div>
-                <select class="form-control" v-model="currentQuery.service">
-                    <option v-for="option in services" :value="option.value">
-                        {{ option.key }}
-                    </option>
-                </select>
+                <div class="form-group">
+                    <label for="">Услуга</label>
+                    <select class="form-control" v-model="currentQuery.service">
+                        <option v-for="option in services" :value="option.value">
+                            {{ option.key }}
+                        </option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="">Цена</label>
                     <input type="number" class="form-control" v-model="currentQuery.price">
@@ -20,8 +26,7 @@
                     <input type="number" class="form-control" v-model="currentQuery.paid">
                 </div>
                 <div class="form-group">
-                    <label for="">Остаток: </label>
-                    <span>{{reminder}}</span>
+                    Остаток: {{reminder}}
                 </div>
                 <div class="form-group">
                     <div class="btn-group">

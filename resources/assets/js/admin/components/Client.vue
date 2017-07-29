@@ -1,5 +1,5 @@
 <template>
-    <tr :class="{success: changed}">
+    <tr :class="bgStyle">
         <td>
             {{fio}}
         </td>
@@ -12,6 +12,7 @@
         <td>
             {{phone}}
         </td>
+
         <td>
             <div class="my-label" :class="query.klass" v-for="query in queriesList">{{query.text}}<br></div>
         </td>
@@ -30,14 +31,8 @@
 
 <script>
     export default {
-        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original', 'queries'],
+        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original', 'queries', 'comment'],
         computed: {
-            changed() {
-                return this.fio !== this.original.fio
-                    || this.birthday !== this.original.birthday
-                    || this.passport !== this.original.passport
-                    || this.phone !== this.original.phone;
-            },
             queriesList() {
                 return _.map(this.queries, function (item) {
                     return {
@@ -50,7 +45,21 @@
                         }
                     }
                 })
-            }
+            },
+            bgStyle() {
+                let minStatus = 3;
+                _.each(this.queries, function (item) {
+                    if (item.status < minStatus) {
+                        minStatus = item.status
+                    }
+                });
+                return {
+                    'danger': minStatus === 0,
+                    'warning': minStatus === 1,
+                    'success': minStatus === 2,
+                    'default': minStatus === 3,
+                }
+            },
         },
         methods: {
             reset() {

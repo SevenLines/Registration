@@ -10,8 +10,15 @@
             </small>
         </h3>
         <div>
-            <button class="btn btn-primary pull-right" @click="addQuery">Добавить</button>
-            <div class="clearfix"></div>
+            <form class="form-inline">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" v-model="showTaken" @change="reloadQueries(client)">
+                    показывать отданые заявки
+                </label>
+            </div>
+            <button class="btn btn-sm btn-primary pull-right" @click="addQuery">Добавить заявку</button>
+            </form>
         </div>
         <hr>
         <table class="table table-bordered table-striped table-condensed table-hover">
@@ -44,6 +51,7 @@
         data() {
             return {
                 queries: [],
+                showTaken: false,
                 loading: false,
             }
         },
@@ -57,7 +65,11 @@
 
                 client = client ? client : this.client;
                 let client_id = client.id;
-                this.promise = axios.get(`api/clients/${client.id}/queries`)
+                this.promise = axios.get(`api/clients/${client.id}/queries`, {
+                    params: {
+                        showTaken: this.showTaken
+                    }
+                });
                 this.promise.then(function (response) {
                     if (client_id !== client.id)
                         return;
@@ -80,19 +92,23 @@
                     price: query.price,
                     status: query.status,
                     service: query.service,
+                    updated_at: query.updated_at,
+                    created_at: query.created_at
                 }, this);
             },
             saveQuery(query) {
                 let me = this;
+                let promise;
+                let client_id = this.client.id;
                 if (query.id) {
-                    axios.put(`api/clients/${this.client.id}/queries`, query).then(function (response) {
-                        me.reloadQueries();
-                    })
+                    promise = axios.put(`api/clients/${this.client.id}/queries`, query)
                 } else {
-                    axios.post(`api/clients/${this.client.id}/queries`, query).then(function (response) {
-                        me.reloadQueries();
-                    })
+                    promise = axios.post(`api/clients/${this.client.id}/queries`, query)
                 }
+                promise.then(function (response) {
+                    me.reloadQueries();
+                    me.$emit("querySaved", client_id, query);
+                })
             }
         }
     }

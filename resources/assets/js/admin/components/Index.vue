@@ -6,7 +6,7 @@
                     <a href="#" @click="setPage(page)">{{page.page}}</a>
                 </li>
             </ul>
-            <a class="btn btn-primary pull-right" @click="newQuery">Добавить</a>
+            <a class="btn btn-primary pull-right" @click="newClient">Добавить клиента</a>
             <div class="clearfix"></div>
             <hr>
         </div>
@@ -16,7 +16,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Добавить клиента</h4>
+                        <h4 class="modal-title">Клиент</h4>
                     </div>
                     <div class="modal-body">
                         <form action="" v-if="currentClient">
@@ -26,20 +26,22 @@
                                 <input required class="form-control" type="text" name="fio" v-model="currentClient.fio">
                             </div>
                             <div class="form-group">
-                                <label for="">День роджения</label>
-                                <input required class="form-control" type="date" v-model="currentClient.birthday"
-                                       name="birthday">
+                                <label for="">День рождения</label>
+                                <input required class="form-control" type="date" v-model="currentClient.birthday">
                             </div>
                             <div class="form-group">
                                 <label for="">Паспорт</label>
-                                <input required class="form-control" type="text" v-model="currentClient.passport"
-                                       name="passport">
+                                <input required class="form-control" type="text" v-model="currentClient.passport">
                             </div>
 
                             <div class="form-group">
                                 <label for="">Телефон</label>
-                                <input required class="form-control" type="text" v-model="currentClient.phone"
-                                       name="phone">
+                                <input required class="form-control" type="text" v-model="currentClient.phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Комментарий</label>
+                                <textarea class="form-control" rows="3" v-model="currentClient.comment"></textarea>
                             </div>
                         </form>
                     </div>
@@ -63,6 +65,7 @@
                     <div class="modal-body">
                         <queries-editor ref="currentClientEd"
                                         v-on:addQuery="addQuery"
+                                        @querySaved="onQuerySaved"
                                         :client="currentClient"
                         ></queries-editor>
                     </div>
@@ -88,25 +91,23 @@
                 <tr>
                     <th>
                         <div class="input-group">
-                            <span class="input-group-addon">ФИО</span>
                             <input v-on:input="onFilterChange" v-model="filters.fio" type="text" class="form-control"
-                                   placeholder="...">
+                                   placeholder="ФИО">
                         </div>
                     </th>
                     <th>
+                        День рождения
                     </th>
                     <th>
                         <div class="input-group">
-                            <span class="input-group-addon">Паспорт</span>
                             <input v-on:input="onFilterChange" v-model="filters.passport" type="text"
-                                   class="form-control" placeholder="...">
+                                   class="form-control" placeholder="Паспорт">
                         </div>
                     </th>
                     <th>
                         <div class="input-group">
-                            <span class="input-group-addon">Телефон</span>
                             <input v-on:input="onFilterChange" v-model="filters.phone" type="text" class="form-control"
-                                   placeholder="...">
+                                   placeholder="телефон">
                         </div>
                     </th>
                     <th>
@@ -125,6 +126,7 @@
                     :birthday="client.birthday"
                     :passport="client.passport"
                     :phone="client.phone"
+                    :comment="client.comment"
                     :original="client.original"
                     :queries="client.queries"
                     v-on:edit="editClient($event, client)"
@@ -154,8 +156,12 @@
         data() {
             let services = [];
             services.push({
-                key: "все",
-                value: null,
+                key: "ВСЕ",
+                value: -2,
+            });
+            services.push({
+                key: "С УСЛУГОЙ",
+                value: -3,
             });
             _.forOwn(SERVICES, function (key, value) {
                 services.push({
@@ -173,7 +179,7 @@
                 totalPages: 0,
                 pages: [],
                 filters: {
-                    serivce: null,
+                    service: -2,
                     fio: null,
                     birthday: null,
                     passport: null,
@@ -189,12 +195,13 @@
         },
         events: {},
         methods: {
-            newQuery() {
+            newClient() {
                 this.currentClient = {
                     fio: '',
                     birthday: '',
                     passport: '',
                     phone: '',
+                    comment: '',
                 }
                 $(this.$refs.editModal).modal("show");
             },
@@ -226,6 +233,7 @@
                         birthday: this.currentClient.birthday,
                         passport: this.currentClient.passport,
                         phone: this.currentClient.phone,
+                        comment: this.currentClient.comment,
                     });
                 } else {
                     promise = axios.post("api/clients", this.currentClient);
@@ -233,6 +241,9 @@
                 promise.then(function (response) {
                     me.reloadClients();
                 });
+            },
+            onQuerySaved () {
+                this.reloadClients();
             },
             reloadClients() {
                 let me = this;
@@ -324,5 +335,13 @@
 
     .pagination {
         margin: 0;
+    }
+    
+    .modal-body {
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -ms-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
     }
 </style>
