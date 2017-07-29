@@ -19,7 +19,7 @@
                         <h4 class="modal-title">Клиент</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="" v-if="currentClient">
+                        <form action="">
                             <input type="hidden" v-model="currentClient.id">
                             <div class="form-group">
                                 <label for="">ФИО</label>
@@ -27,7 +27,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="">День рождения</label>
-                                <input required class="form-control" type="date" v-model="currentClient.birthday">
+                                <input ref="inputBirthday" required class="form-control"
+                                       data-inputmask="'alias': 'date'" v-model="currentClient.birthday">
                             </div>
                             <div class="form-group">
                                 <label for="">Паспорт</label>
@@ -147,11 +148,14 @@
     import QueriesEditor from './QueriesEditor.vue'
     import Client from './Client.vue'
     import QueryForm from './QueryForm.vue'
+    import Inputmask from "inputmask/dist/inputmask/inputmask.date.extensions"
+    import dateFormat from 'dateformat';
     import _ from 'lodash'
 
     export default {
         mounted() {
             this.reloadClients();
+            Inputmask().mask(this.$refs.inputBirthday);
         },
         data() {
             let services = [];
@@ -171,7 +175,7 @@
             });
 
             return {
-                currentClient: null,
+                currentClient: {},
                 currentQuery: null,
                 clients: [],
                 loading: false,
@@ -230,19 +234,25 @@
                 if (this.currentClient.id) {
                     promise = axios.put(`api/clients/${this.currentClient.id}`, {
                         fio: this.currentClient.fio,
-                        birthday: this.currentClient.birthday,
+                        birthday: dateFormat(new Date(this.currentClient.birthday), "yyyy-dd-mm"),
                         passport: this.currentClient.passport,
                         phone: this.currentClient.phone,
                         comment: this.currentClient.comment,
                     });
                 } else {
-                    promise = axios.post("api/clients", this.currentClient);
+                    promise = axios.post("api/clients", {
+                        fio: this.currentClient.fio,
+                        birthday: dateFormat(new Date(this.currentClient.birthday), "yyyy-dd-mm"),
+                        passport: this.currentClient.passport,
+                        phone: this.currentClient.phone,
+                        comment: this.currentClient.comment,
+                    });
                 }
                 promise.then(function (response) {
                     me.reloadClients();
                 });
             },
-            onQuerySaved () {
+            onQuerySaved() {
                 this.reloadClients();
             },
             reloadClients() {
@@ -336,7 +346,7 @@
     .pagination {
         margin: 0;
     }
-    
+
     .modal-body {
         -webkit-transition: all .3s;
         -moz-transition: all .3s;

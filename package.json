@@ -19,6 +19,8 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "bootstrap-table": "^1.11.2"
+    "bootstrap-table": "^1.11.2",
+    "dateformat": "^2.0.0",
+    "inputmask": "^3.3.7"
   }
 }

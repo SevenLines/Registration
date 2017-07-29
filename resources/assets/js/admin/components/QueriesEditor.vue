@@ -10,7 +10,7 @@
             </small>
         </h3>
         <div>
-            <form class="form-inline">
+            <div class="form-inline">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" v-model="showTaken" @change="reloadQueries(client)">
@@ -18,7 +18,7 @@
                 </label>
             </div>
             <button class="btn btn-sm btn-primary pull-right" @click="addQuery">Добавить заявку</button>
-            </form>
+            </div>
         </div>
         <hr>
         <table class="table table-bordered table-striped table-condensed table-hover">
