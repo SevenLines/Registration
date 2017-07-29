@@ -22,6 +22,8 @@ class ClientController extends Controller
         $birthday = $request->get("birthday");
         $page = $request->get("page");
         $service = $request->get("service");
+        $sort = $request->get("sort");
+        $sortOrder = $request->get("sort_order");
         $itemsPerPage = 15;
 
         $query = Client::query();
@@ -53,10 +55,11 @@ class ClientController extends Controller
 
         $totalCount = $query->count();
 
+        $query = $query->orderBy($sort, $sortOrder);
+
         if ($page) {
             $query = $query->offset($page * $itemsPerPage);
         }
-
 
         $query = $query->limit($itemsPerPage)->orderBy("fio");
 

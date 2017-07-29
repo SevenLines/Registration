@@ -17,6 +17,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('index', require('./components/Index.vue'));
+Vue.component('paginator', require('./components/Paginator.vue'));
 
 const app = new Vue({
     el: '#app',

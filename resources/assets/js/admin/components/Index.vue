@@ -1,11 +1,7 @@
 <template>
     <div class="">
         <div class="">
-            <ul class="pagination large">
-                <li v-for="page in pages" :class="{active: page.page == currentPage + 1 }">
-                    <a href="#" @click="setPage(page)">{{page.page}}</a>
-                </li>
-            </ul>
+            <paginator :pagescount="totalPages" :currentPage="currentPage" @setPage="setPage"/>
             <a class="btn btn-primary pull-right" @click="newClient">Добавить клиента</a>
             <div class="clearfix"></div>
             <hr>
@@ -92,27 +88,57 @@
                 <tr>
                     <th>
                         <div class="input-group">
-                            <input v-on:input="onFilterChange" v-model="filters.fio" type="text" class="form-control"
+                            <input v-on:input="onFilterChange" v-model="filters.fio.value" type="text"
+                                   class="form-control"
                                    placeholder="ФИО">
+                            <span class="input-group-btn">
+                                <button class="btn" @click="buttonSortClicked('fio')" :class="buttonSortClass('fio')"
+                                        type="button">
+                                    <i class="glyphicon" :class="sortClass('fio')"></i>
+                                </button>
+                            </span>
                         </div>
                     </th>
                     <th>
-                        День рождения
+                        <div class="input-group">
+                            <span class="input-group-addon" id="sizing-addon1">День рождения</span>
+                            <span class="input-group-btn">
+                                <button class="btn" @click="buttonSortClicked('birthday')"
+                                        :class="buttonSortClass('birthday')" type="button">
+                                    <i class="glyphicon"
+                                       :class="sortClass('birthday')"></i>
+                                </button>
+                            </span>
+                        </div>
                     </th>
                     <th>
-                        <div class="input-group">
-                            <input v-on:input="onFilterChange" v-model="filters.passport" type="text"
+                        <div class="input-group" style="max-width: 150px">
+                            <input v-on:input="onFilterChange" v-model="filters.passport.value" type="text"
                                    class="form-control" placeholder="Паспорт">
+                            <span class="input-group-btn">
+                                <button class="btn" @click="buttonSortClicked('passport')"
+                                        :class="buttonSortClass('passport')" type="button">
+                                    <i class="glyphicon"
+                                       :class="sortClass('passport')"></i>
+                                </button>
+                            </span>
                         </div>
                     </th>
                     <th>
-                        <div class="input-group">
-                            <input v-on:input="onFilterChange" v-model="filters.phone" type="text" class="form-control"
+                        <div class="input-group" style="max-width: 175px">
+                            <input v-on:input="onFilterChange" v-model="filters.phone.value" type="text"
+                                   class="form-control"
                                    placeholder="телефон">
+                            <span class="input-group-btn">
+                                <button class="btn" @click="buttonSortClicked('phone')"
+                                        :class="buttonSortClass('phone')" type="button">
+                                    <i class="glyphicon" :class="sortClass('phone')"></i>
+                                </button>
+                            </span>
                         </div>
                     </th>
                     <th>
-                        <select class="form-control" v-on:change="onFilterChange" v-model="filters.service">
+                        <select class="form-control" v-on:change="onFilterChange" v-model="filters.service.value">
                             <option v-for="option in services" :value="option.value">
                                 {{ option.key }}
                             </option>
@@ -179,15 +205,30 @@
                 currentQuery: null,
                 clients: [],
                 loading: false,
-                currentPage: 0,
+                currentPage: 1,
                 totalPages: 0,
-                pages: [],
+                selectedSort: 'fio',
                 filters: {
-                    service: -2,
-                    fio: null,
-                    birthday: null,
-                    passport: null,
-                    phone: null,
+                    service: {
+                        value: -2,
+                        order: 'asc'
+                    },
+                    fio: {
+                        value: null,
+                        order: 'asc'
+                    },
+                    birthday: {
+                        value: null,
+                        order: 'asc'
+                    },
+                    passport: {
+                        value: null,
+                        order: 'asc'
+                    },
+                    phone: {
+                        value: null,
+                        order: 'asc'
+                    },
                 },
                 services
             }
@@ -225,7 +266,7 @@
                 $(this.$refs.editModal).modal("show");
             },
             setPage(page) {
-                this.currentPage = page.page - 1;
+                this.currentPage = page;
                 this.reloadClients();
             },
             saveClient() {
@@ -269,12 +310,14 @@
 
                 axios.get("api/clients", {
                     params: {
-                        fio: this.filters.fio,
-                        birthday: this.filters.birthday,
-                        passport: this.filters.passport,
-                        phone: this.filters.phone,
-                        page: this.currentPage,
-                        service: this.filters.service,
+                        fio: this.filters.fio.value,
+                        birthday: this.filters.birthday.value,
+                        passport: this.filters.passport.value,
+                        phone: this.filters.phone.value,
+                        page: this.currentPage - 1,
+                        service: this.filters.service.value,
+                        sort: this.selectedSort,
+                        sort_order: this.filters[this.selectedSort].order
                     }
                 }).then(function (response) {
                     me.clients = response.data.records.map(function (item) {
@@ -289,11 +332,6 @@
                     me.loading = false;
                     me.page = response.data.page;
                     me.totalPages = response.data.totalPages;
-                    me.pages = _.range(1, me.totalPages + 1).map(function (item) {
-                        return {
-                            'page': item
-                        }
-                    });
                 })
             },
             loadServices() {
@@ -304,14 +342,35 @@
                 })
             },
             onFilterChange: _.debounce(function () {
-                this.page = 0;
+                this.currentPage = 1;
                 this.reloadClients();
-            }, 250)
+            }, 250),
+            sortClass(param) {
+                return {
+                    'glyphicon-sort-by-attributes': this.filters[param].order === 'asc',
+                    'glyphicon-sort-by-attributes-alt': this.filters[param].order === 'desc',
+                }
+            },
+            buttonSortClass(param) {
+                return {
+                    'btn-info': this.selectedSort === param,
+                    'btn-default': this.selectedSort === param,
+                }
+            },
+            buttonSortClicked(param) {
+                if (this.selectedSort === param) {
+                    this.filters[param].order = this.filters[param].order == 'asc' ? 'desc' : 'asc'
+                } else {
+                    this.selectedSort = param
+                }
+                this.reloadClients();
+            }
         },
         computed: {
             reminder() {
                 return this.currentQuery ? this.currentQuery.price - this.currentQuery.paid : 0;
-            }
+            },
+
         }
 
     }
