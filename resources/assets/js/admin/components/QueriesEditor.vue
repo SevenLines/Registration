@@ -11,13 +11,15 @@
         </h3>
         <div>
             <div class="form-inline">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" v-model="showTaken" @change="reloadQueries(client)">
-                    показывать отданные заявки
-                </label>
-            </div>
-            <button class="btn btn-sm btn-primary pull-right" @click="addQuery"><i class="glyphicon glyphicon-plus"></i> Добавить заявку</button>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" v-model="showTaken" @change="reloadQueries(client)">
+                        показывать отданные заявки
+                    </label>
+                </div>
+                <button class="btn btn-sm btn-primary pull-right" @click="addQuery"><i
+                        class="glyphicon glyphicon-plus"></i> Добавить заявку
+                </button>
             </div>
         </div>
         <hr>
@@ -33,7 +35,12 @@
             </tr>
             </thead>
             <tbody ref="dataBody">
-            <tr v-if="!loading" v-for="query in queries" :query="query" @edit="editQuery(query)" is="query-row"></tr>
+            <tr v-if="!loading" v-for="query in queries"
+                :query="query"
+                @edit="editQuery(query)"
+                @destory="removeQuery(query)"
+                is="query-row"
+            ></tr>
             </tbody>
         </table>
         <div class="clearfix"></div>
@@ -97,6 +104,17 @@
                     updated_at: query.updated_at,
                     created_at: query.created_at
                 }, this);
+            },
+            removeQuery(query) {
+                let me = this;
+                if (confirm(`Удалить заявку?`)) {
+                    if (query.id) {
+                        axios.delete(`api/queries/${query.id}`).then(function (response) {
+                            me.reloadQueries();
+                            me.$emit("querySaved", null, query);
+                        })
+                    }
+                }
             },
             saveQuery(query) {
                 let me = this;

@@ -37,6 +37,6 @@ Route::group(['middleware' => 'auth'], function() {
     ]);
     Route::post('api/query', "QueryController@addQuery")->name("addquery");
     Route::resource('api/queries', 'QueriesController', ['only' =>
-        ['index', 'store', 'update', 'destroy']
+        ['destroy']
     ]);
 });

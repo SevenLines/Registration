@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label for="">День рождения</label>
                                 <input ref="inputBirthday" required class="form-control"
-                                       data-inputmask="'alias': 'yyyy-mm-dd'" v-model="currentClient.birthday">
+                                       data-inputmask="'alias': 'dd-mm-yyyy'" v-model="currentClient.birthday">
                             </div>
                             <div class="form-group">
                                 <label for="">Паспорт</label>
@@ -198,6 +198,7 @@
     import Inputmask from "inputmask/dist/inputmask/inputmask.date.extensions"
     import dateFormat from 'dateformat';
     import _ from 'lodash'
+    import moment from 'moment';
 
     export default {
         mounted() {
@@ -316,22 +317,17 @@
             saveClient() {
                 let promise;
                 let me = this;
+                let data = {
+                    fio: this.currentClient.fio,
+                    birthday: moment(this.currentClient.birthday, 'DD-MM-YYYY').format('YYYY-MM-DD'),
+                    passport: this.currentClient.passport,
+                    phone: this.currentClient.phone,
+                    comment: this.currentClient.comment,
+                };
                 if (this.currentClient.id) {
-                    promise = axios.put(`api/clients/${this.currentClient.id}`, {
-                        fio: this.currentClient.fio,
-                        birthday: this.currentClient.birthday,
-                        passport: this.currentClient.passport,
-                        phone: this.currentClient.phone,
-                        comment: this.currentClient.comment,
-                    });
+                    promise = axios.put(`api/clients/${this.currentClient.id}`, data);
                 } else {
-                    promise = axios.post("api/clients", {
-                        fio: this.currentClient.fio,
-                        birthday: this.currentClient.birthday,
-                        passport: this.currentClient.passport,
-                        phone: this.currentClient.phone,
-                        comment: this.currentClient.comment,
-                    });
+                    promise = axios.post("api/clients", data);
                 }
                 promise.then(function (response) {
                     me.reloadClients();
@@ -365,12 +361,7 @@
                     }
                 }).then(function (response) {
                     me.clients = response.data.records.map(function (item) {
-                        item.original = {
-                            fio: item.fio,
-                            birthday: item.birthday,
-                            passport: item.passport,
-                            phone: item.phone,
-                        };
+                        item['birthday'] = dateFormat(new Date(item.birthday), 'dd-mm-yyyy');
                         return item;
                     });
                     me.loading = false;

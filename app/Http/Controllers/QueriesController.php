@@ -92,5 +92,8 @@ class QueriesController extends Controller
     public function destroy(Query $query)
     {
         //
+        $query->delete();
+
+        return new Response();
     }
 }

@@ -6,8 +6,11 @@
         <td>{{reminder}}</td>
         <td>{{statusDisplay}}</td>
         <td>
-            <button class="btn btn-sm btn-default pull-right"  @click="editClicked">
+            <button class="btn btn-sm btn-default"  @click="editClicked">
                 <i class="glyphicon glyphicon-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-danger pull-right" @click="$emit('destory')">
+                <i class="glyphicon glyphicon-remove"></i>
             </button>
         </td>
     </tr>
