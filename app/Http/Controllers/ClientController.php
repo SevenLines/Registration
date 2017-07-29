@@ -9,6 +9,10 @@ use Illuminate\Http\Response;
 
 class ClientController extends Controller
 {
+    public function __construct()
+    {
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +45,12 @@ class ClientController extends Controller
             $query = Client::whereHas("queries", function ($query) use ($service) {
                 if ($service == Query::SERVICE_WITH) {
                     $query->where("status", "!=", Query::STATUS_TAKEN);
+                } else if ($service == Query::SERVICE_NOT_READY) {
+                    $query->where("status", "=", Query::STATUS_NOT_READY);
+                } else if ($service == Query::SERVICE_IN_WORK) {
+                    $query->where("status", "=", Query::STATUS_IN_WORK);
+                } else if ($service == Query::SERVICE_READY) {
+                    $query->where("status", "=", Query::STATUS_READY);
                 } else {
                     $query->where("service", "=", $service);
                 }
@@ -146,6 +156,7 @@ class ClientController extends Controller
             'paid' => $request->get("paid"),
             'status' => $request->get("status"),
             'service' => $request->get("service"),
+            'comment' => $request->get("comment"),
         ]);
         return new Response();
     }
@@ -157,6 +168,7 @@ class ClientController extends Controller
             'paid' => $request->get("paid"),
             'status' => $request->get("status"),
             'service' => $request->get("service"),
+            'comment' => $request->get("comment"),
         ]);
         return new Response();
     }
@@ -169,6 +181,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+
+        return new Response();
     }
 }

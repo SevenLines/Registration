@@ -26,3 +26,17 @@ $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get("api/clients/{id}/queries", "ClientController@queries");
+    Route::post("api/clients/{id}/queries", "ClientController@query_add");
+    Route::put("api/clients/{id}/queries", "ClientController@query_update");
+    Route::resource('api/clients', 'ClientController', ['only' =>
+        ['index', 'store', 'update', 'destroy']
+    ]);
+    Route::post('api/query', "QueryController@addQuery")->name("addquery");
+    Route::resource('api/queries', 'QueriesController', ['only' =>
+        ['index', 'store', 'update', 'destroy']
+    ]);
+});

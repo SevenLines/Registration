@@ -12,17 +12,19 @@
         <td>
             {{phone}}
         </td>
-
         <td>
             <div class="my-label" :class="query.klass" v-for="query in queriesList">{{query.text}}<br></div>
         </td>
-        <td>
-            <div class="pull-right">
+        <td style="min-width: 150px">
+            <div class="" >
                 <button class="btn btn-default" @click="$emit('queries', this)">
                     <i class="glyphicon glyphicon-book"></i>
                 </button>
                 <button class="btn btn-default" @click="$emit('edit', this)">
                     <i class="glyphicon glyphicon-edit"></i>
+                </button>
+                <button class="btn btn-danger btn-sm pull-right" @click="$emit('destroy', this)">
+                    <i class="glyphicon glyphicon-remove"></i>
                 </button>
             </div>
         </td>

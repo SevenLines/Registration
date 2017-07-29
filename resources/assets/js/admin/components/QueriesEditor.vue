@@ -14,10 +14,10 @@
             <div class="checkbox">
                 <label>
                     <input type="checkbox" v-model="showTaken" @change="reloadQueries(client)">
-                    показывать отданые заявки
+                    показывать отданные заявки
                 </label>
             </div>
-            <button class="btn btn-sm btn-primary pull-right" @click="addQuery">Добавить заявку</button>
+            <button class="btn btn-sm btn-primary pull-right" @click="addQuery"><i class="glyphicon glyphicon-plus"></i> Добавить заявку</button>
             </div>
         </div>
         <hr>
@@ -83,6 +83,7 @@
                     price: 0,
                     status: 0,
                     service: 0,
+                    comment: '',
                 }, this);
             },
             editQuery(query) {
@@ -92,6 +93,7 @@
                     price: query.price,
                     status: query.status,
                     service: query.service,
+                    comment: query.comment,
                     updated_at: query.updated_at,
                     created_at: query.created_at
                 }, this);

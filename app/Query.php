@@ -15,6 +15,9 @@ class Query extends Model
     const SERVICE_OTHER = -1;
     const SERVICE_ALL = -2;
     const SERVICE_WITH = -3;
+    const SERVICE_NOT_READY= -4;
+    const SERVICE_IN_WORK= -5;
+    const SERVICE_READY= -6;
 
     const SERVICES = [
         Query::SERVICE_UNDEFINED => '-',

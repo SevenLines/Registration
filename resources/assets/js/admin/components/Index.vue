@@ -2,7 +2,7 @@
     <div class="">
         <div class="">
             <paginator :pagescount="totalPages" :currentPage="currentPage" @setPage="setPage"/>
-            <a class="btn btn-primary pull-right" @click="newClient">Добавить клиента</a>
+            <a class="btn btn-primary pull-right" @click="newClient"><i class="glyphicon glyphicon-plus"></i> Добавить клиента</a>
             <div class="clearfix"></div>
             <hr>
         </div>
@@ -82,6 +82,26 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
+        <div class="modal fade" ref="removeClientModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Заявки</h4>
+                    </div>
+                    <div class="modal-body">
+                        Вы уверены что хотитие удалить запись <b>"{{currentClient.fio}}"</b>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" @click="destroyClient">
+                            Удалить
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <div class="">
             <table class="table table-bordered table-striped table-condensed table-hover">
                 <thead>
@@ -138,13 +158,13 @@
                         </div>
                     </th>
                     <th>
-                        <select class="form-control" v-on:change="onFilterChange" v-model="filters.service.value">
+                        <select style="max-width: 130px" class="form-control" v-on:change="onFilterChange" v-model="filters.service.value">
                             <option v-for="option in services" :value="option.value">
                                 {{ option.key }}
                             </option>
                         </select>
                     </th>
-                    <th></th>
+                    <th style="min-width: 150px; text-align: center; vertical-align: middle">Действия</th>
                 </tr>
                 </thead>
                 <tbody ref="dataBody">
@@ -156,8 +176,9 @@
                     :comment="client.comment"
                     :original="client.original"
                     :queries="client.queries"
-                    v-on:edit="editClient($event, client)"
-                    v-on:queries="showQueries($event, client)"
+                    @edit="editClient($event, client)"
+                    @queries="showQueries($event, client)"
+                    @destroy="onDestroyClientClick(client)"
                     is="client">
                 </tr>
                 </tbody>
@@ -190,9 +211,22 @@
                 value: -2,
             });
             services.push({
-                key: "С УСЛУГОЙ",
+                key: "ЛЮБОЙ С УСЛУГОЙ",
                 value: -3,
             });
+            services.push({
+                key: "НЕ ГОТОВО",
+                value: -4,
+            });
+            services.push({
+                key: "В РАБОТЕ",
+                value: -5,
+            });
+            services.push({
+                key: "ГОТОВО",
+                value: -6,
+            });
+
             _.forOwn(SERVICES, function (key, value) {
                 services.push({
                     'key': key,
@@ -202,7 +236,7 @@
 
             return {
                 currentClient: {},
-                currentQuery: null,
+                currentQuery: {},
                 clients: [],
                 loading: false,
                 currentPage: 1,
@@ -264,6 +298,16 @@
             editClient($event, client) {
                 this.currentClient = client;
                 $(this.$refs.editModal).modal("show");
+            },
+            destroyClient() {
+                let me = this;
+                axios.delete(`api/clients/${this.currentClient.id}`).then(function () {
+                    me.reloadClients()
+                });
+            },
+            onDestroyClientClick(client) {
+                this.currentClient = client;
+                $(this.$refs.removeClientModal).modal('show')
             },
             setPage(page) {
                 this.currentPage = page;
@@ -332,13 +376,6 @@
                     me.loading = false;
                     me.page = response.data.page;
                     me.totalPages = response.data.totalPages;
-                })
-            },
-            loadServices() {
-                let me = this;
-                axios.get("api/clients").then(function (response) {
-                    me.clients = response.data.records;
-
                 })
             },
             onFilterChange: _.debounce(function () {

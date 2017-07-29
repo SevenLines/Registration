@@ -2,7 +2,7 @@
     <div class="modal-content" v-if="currentQuery">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Заявка</h4>
+            <h4 class="modal-title">Заявка <span v-if="client">для {{client.fio}}</span></h4>
             <span class="label label-success" v-if="currentQuery.created_at">Создана: {{currentQuery.created_at}}</span>
             <span class="label label-info"
                   v-if="currentQuery.updated_at">Обновлялась: {{currentQuery.updated_at}}</span>
@@ -29,6 +29,10 @@
                     Остаток: {{reminder}}
                 </div>
                 <div class="form-group">
+                    <label for="">Комментарий</label>
+                    <textarea class="form-control" rows="3" v-model="currentQuery.comment"></textarea>
+                </div>
+                <div class="form-group">
                     <div class="btn-group">
                         <button class="btn" :class="statusClass(0, 'btn-danger')" @click="setStatus(0)">Не готово
                         </button>
@@ -53,7 +57,7 @@
     import _ from "lodash"
 
     export default {
-        props: ['currentQuery', 'currentQueryModal'],
+        props: ['currentQuery', 'currentQueryModal', 'client'],
         data() {
             let services = [];
             _.forOwn(SERVICES, function (key, value) {
