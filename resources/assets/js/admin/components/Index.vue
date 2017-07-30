@@ -2,7 +2,8 @@
     <div class="">
         <div class="">
             <paginator :pagescount="totalPages" :currentPage="currentPage" @setPage="setPage"/>
-            <a class="btn btn-primary pull-right" @click="newClient"><i class="glyphicon glyphicon-plus"></i> Добавить клиента</a>
+            <a class="btn btn-primary pull-right" @click="newClient"><i class="glyphicon glyphicon-plus"></i>
+                Добавить клиента</a>
             <div class="clearfix"></div>
             <hr>
         </div>
@@ -10,43 +11,47 @@
         <div class="modal fade" ref="editModal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Клиент</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="">
+                    <div class="form" action="" ref="editModalForm">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Клиент</h4>
+                        </div>
+                        <div class="modal-body">
                             <input type="hidden" v-model="currentClient.id">
                             <div class="form-group">
                                 <label for="">ФИО</label>
                                 <input required class="form-control" type="text" name="fio" v-model="currentClient.fio">
+                                <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="">День рождения</label>
                                 <input ref="inputBirthday" required class="form-control"
                                        data-inputmask="'alias': 'dd-mm-yyyy'" v-model="currentClient.birthday">
+                                <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="">Паспорт</label>
                                 <input required class="form-control" type="text" v-model="currentClient.passport">
+                                <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="">Телефон</label>
                                 <input required class="form-control" type="text" v-model="currentClient.phone">
+                                <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="">Комментарий</label>
                                 <textarea class="form-control" rows="3" v-model="currentClient.comment"></textarea>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="saveClient">
-                            Сохранить
-                        </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                            <button type="submit" class="btn btn-primary" @click="saveClient">
+                                Сохранить
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div><!-- /.modal-content -->
@@ -158,7 +163,8 @@
                         </div>
                     </th>
                     <th>
-                        <select style="max-width: 130px" class="form-control" v-on:change="onFilterChange" v-model="filters.service.value">
+                        <select style="max-width: 130px" class="form-control" v-on:change="onFilterChange"
+                                v-model="filters.service.value">
                             <option v-for="option in services" :value="option.value">
                                 {{ option.key }}
                             </option>
@@ -201,10 +207,13 @@
     import moment from 'moment';
     import Cookie from 'js-cookie'
 
+    require('bootstrap-validator')
+
     export default {
         mounted() {
             this.reloadClients();
             Inputmask().mask(this.$refs.inputBirthday);
+            $(this.$refs.editModalForm).validator();
         },
         data() {
             let services = [];
@@ -320,6 +329,7 @@
                 this.reloadClients();
             },
             saveClient() {
+                $(this.$refs.editModal).modal("hide");
                 let promise;
                 let me = this;
                 let data = {
