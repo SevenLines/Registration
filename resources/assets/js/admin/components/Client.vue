@@ -1,21 +1,21 @@
 <template>
     <tr :class="bgStyle">
-        <td>
+        <td class="fio">
             {{fio}}
         </td>
-        <td>
+        <td class="birthday">
             {{birthday}}
         </td>
-        <td>
+        <td class="passport">
             {{passport}}
         </td>
-        <td>
+        <td class="phone">
             {{phone}}
         </td>
         <td>
             <div class="my-label" :class="query.klass" v-for="query in queriesList">{{query.text}}<br></div>
         </td>
-        <td style="min-width: 150px">
+        <td class="actions" style="min-width: 150px">
             <div class="" >
                 <button class="btn btn-default" @click="$emit('queries', this)">
                     <i class="glyphicon glyphicon-book"></i>
@@ -76,7 +76,7 @@
     }
 </script>
 
-<style>
+<style scoped="">
     .my-label {
         display: block;
         padding: .2em .6em .3em;
@@ -89,6 +89,18 @@
         vertical-align: baseline;
         border-radius: .25em;
         margin-bottom: 0.25em;
+    }
+
+    .fio, .birthday, .passport, .phone {
+        vertical-align: middle;
+    }
+
+    .birthday, .passport, .phone {
+        text-align: center;
+    }
+
+    .actions {
+        vertical-align: middle;
     }
 </style>
 

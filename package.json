@@ -21,6 +21,7 @@
   "dependencies": {
     "bootstrap-table": "^1.11.2",
     "dateformat": "^2.0.0",
-    "inputmask": "^3.3.7"
+    "inputmask": "^3.3.7",
+    "js-cookie": "^2.1.4"
   }
 }

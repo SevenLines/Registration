@@ -199,6 +199,7 @@
     import dateFormat from 'dateformat';
     import _ from 'lodash'
     import moment from 'moment';
+    import Cookie from 'js-cookie'
 
     export default {
         mounted() {
@@ -235,6 +236,31 @@
                 });
             });
 
+            let filters = _.defaultTo(Cookie.getJSON('filters'), {
+                service: {
+                    value: _.defaultTo(Cookie.get('filter.service'), -2),
+                    order: 'asc'
+                },
+                fio: {
+                    value: _.defaultTo(Cookie.get('filter.fio'), null),
+                    order: 'asc'
+                },
+                birthday: {
+                    value: _.defaultTo(Cookie.get('filter.birthday'), null),
+                    order: 'asc'
+                },
+                passport: {
+                    value: _.defaultTo(Cookie.get('filter.passport'), null),
+                    order: 'asc'
+                },
+                phone: {
+                    value: _.defaultTo(Cookie.get('filter.phone'), null),
+                    order: 'asc'
+                },
+            });
+
+            let selectedSort = _.defaultTo(Cookie.getJSON('selectedSort'), 'fio');
+
             return {
                 currentClient: {},
                 currentQuery: {},
@@ -242,29 +268,8 @@
                 loading: false,
                 currentPage: 1,
                 totalPages: 0,
-                selectedSort: 'fio',
-                filters: {
-                    service: {
-                        value: -2,
-                        order: 'asc'
-                    },
-                    fio: {
-                        value: null,
-                        order: 'asc'
-                    },
-                    birthday: {
-                        value: null,
-                        order: 'asc'
-                    },
-                    passport: {
-                        value: null,
-                        order: 'asc'
-                    },
-                    phone: {
-                        value: null,
-                        order: 'asc'
-                    },
-                },
+                selectedSort,
+                filters,
                 services
             }
         },
@@ -347,6 +352,9 @@
                     this.$refs.loadingDiv.style.width = `${dataBodyRect.width}px`;
                     this.$refs.loadingDiv.style.height = `${dataBodyRect.height}px`;
                 }
+
+                Cookie.set('filters', this.filters);
+                Cookie.set('selectedSort', this.selectedSort);
 
                 axios.get("api/clients", {
                     params: {
