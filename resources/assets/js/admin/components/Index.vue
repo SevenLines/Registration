@@ -25,7 +25,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">День рождения</label>
-                                <input ref="inputBirthday" required class="form-control"
+                                <input ref="inputBirthday"  class="form-control"
                                        data-inputmask="'alias': 'dd-mm-yyyy'" v-model="currentClient.birthday">
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -312,6 +312,10 @@
             },
             editClient($event, client) {
                 this.currentClient = client;
+                var me = this;
+                setTimeout(function () {
+                    $(me.$refs.editModalForm).validator('validate');
+                }, 100);
                 $(this.$refs.editModal).modal("show");
             },
             destroyClient() {
