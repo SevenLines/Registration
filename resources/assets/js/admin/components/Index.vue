@@ -275,7 +275,7 @@
                 currentQuery: {},
                 clients: [],
                 loading: false,
-                currentPage: 1,
+                currentPage: _.defaultTo(Cookie.get('currentPage'), 1),
                 totalPages: 0,
                 selectedSort,
                 filters,
@@ -368,6 +368,7 @@
                 }
 
                 Cookie.set('filters', this.filters);
+                Cookie.set('currentPage', this.currentPage);
                 Cookie.set('selectedSort', this.selectedSort);
 
                 axios.get("api/clients", {
@@ -387,7 +388,7 @@
                         return item;
                     });
                     me.loading = false;
-                    me.page = response.data.page;
+                    me.currentPage = parseInt(response.data.page) + 1;
                     me.totalPages = response.data.totalPages;
                 })
             },
