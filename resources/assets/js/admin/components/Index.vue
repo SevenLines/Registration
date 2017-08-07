@@ -500,7 +500,7 @@
                 this.filters.birthday.value  = null;
                 this.filters.passport.value  = null;
                 this.filters.phone.value  = null;
-                this.filters.added.value  = null;
+                this.filters.created_at.value  = null;
                 this.filters.service.value  = -2;
             }
         },
