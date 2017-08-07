@@ -20,33 +20,36 @@
                 <button class="btn btn-sm btn-primary pull-right" @click="addQuery"><i
                         class="glyphicon glyphicon-plus"></i> Добавить заявку
                 </button>
+                <div class="clearfix"></div>
             </div>
         </div>
         <hr>
-        <table class="table table-bordered table-striped table-condensed table-hover">
-            <thead>
-            <tr>
-                <th>Услуга</th>
-                <th>Цена</th>
-                <th>Оплачено</th>
-                <th>Остаток</th>
-                <th>Статус</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody ref="dataBody">
-            <tr v-if="!loading" v-for="query in queries"
-                :query="query"
-                @edit="editQuery(query)"
-                @destory="removeQuery(query)"
-                @filterByLegal="filterByLegal"
-                is="query-row"
-            ></tr>
-            </tbody>
-        </table>
-        <div class="clearfix"></div>
-        <div class="loadingQueryEditor" ref="loadingDiv" :class="{hidden: !loading}">
-            <img src="img/loading2.gif" alt="">
+        <div class="table-wrapper">
+            <table class="table table-bordered table-striped table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th>Услуга</th>
+                    <th>Цена</th>
+                    <th>Оплачено</th>
+                    <th>Остаток</th>
+                    <th>Статус</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody ref="dataBody">
+                <tr v-if="!loading" v-for="query in queries"
+                    :query="query"
+                    @edit="editQuery(query)"
+                    @destory="removeQuery(query)"
+                    @filterByLegal="filterByLegal"
+                    is="query-row"
+                ></tr>
+                </tbody>
+            </table>
+            <div class="clearfix"></div>
+            <div class="loadingQueryEditor" ref="loadingDiv" :class="{hidden: !loading}">
+                <img src="img/loading2.gif" alt="">
+            </div>
         </div>
     </div>
 </template>
