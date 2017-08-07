@@ -300,7 +300,7 @@
                 },
                 created_at: {
                     value: _.defaultTo(Cookie.get('filter.created_at'), null),
-                    order: 'added'
+                    order: 'asc'
                 }
             };
             let filters = _.defaultTo(Cookie.getJSON('filters'), {});
