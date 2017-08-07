@@ -1,6 +1,6 @@
 <template>
     <tr>
-        <td colspan="6">
+        <td colspan="7">
             <div class="fio pull-left">
                 <span @click="$emit('close')" class="btn-close glyphicon glyphicon-remove"></span>
                 {{client.fio}}
