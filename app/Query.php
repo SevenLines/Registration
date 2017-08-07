@@ -72,4 +72,9 @@ class Query extends Model
     {
         return $this->belongsTo('App\Client')->withDefault();
     }
+
+    public function legal()
+    {
+        return $this->belongsTo('App\Client', 'legal_id')->withDefault();
+    }
 }

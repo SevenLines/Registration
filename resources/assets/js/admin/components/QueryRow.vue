@@ -1,11 +1,14 @@
 <template>
-    <tr :class="bgRow">
-        <td>{{serviceDisplay}}</td>
+    <tr :class="bgRow" class="query-row">
+        <td>
+            {{serviceDisplay}}
+            <br><small class="owner" v-if="query.legal" @click="filterByLegal(query.legal)">{{query.legal.fio}}</small>
+        </td>
         <td>{{query.price}}</td>
         <td>{{query.paid}}</td>
         <td>{{reminder}}</td>
         <td>{{statusDisplay}}</td>
-        <td>
+        <td style="min-width: 100px">
             <button class="btn btn-sm btn-default"  @click="editClicked">
                 <i class="glyphicon glyphicon-edit"></i>
             </button>
@@ -32,7 +35,8 @@
                 }[this.query.status]
             },
             serviceDisplay() {
-                return SERVICES[this.query.service];
+                let result = SERVICES[this.query.service];
+                return result
             },
             bgRow() {
                 return {
@@ -46,7 +50,21 @@
         methods: {
             editClicked() {
                 this.$emit("edit")
+            },
+            filterByLegal (legal) {
+                this.$emit("filterByLegal", legal);
             }
         }
     }
 </script>
+
+
+<style lang="scss" scoped="">
+    .query-row td {
+        vertical-align: middle;
+    }
+    .owner {
+        border-bottom: 1px dashed black;
+        cursor: pointer;
+    }
+</style>

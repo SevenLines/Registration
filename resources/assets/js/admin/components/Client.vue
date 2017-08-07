@@ -1,7 +1,7 @@
 <template>
     <tr :class="bgStyle">
         <td class="fio">
-            <span @click="$emit('selectAsLegal')">{{fio}}</span>
+            <span @click="$emit('selectAsLegal')" :class="{legal: isLegal}">{{fio}}</span>
         </td>
         <td class="birthday">
             {{birthday}}
@@ -13,7 +13,9 @@
             {{phone}}
         </td>
         <td>
-            <div class="my-label" :class="query.klass" v-for="query in queriesList">{{query.text}}<br></div>
+            <div class="my-label" :class="query.klass" v-for="query in queriesList">
+                <span>{{query.text}}</span><span v-if="query.legal_id">*</span>
+            </div>
         </td>
         <td class="actions" style="min-width: 150px">
             <div class="">
@@ -34,12 +36,13 @@
 
 <script>
     export default {
-        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original', 'queries', 'comment', 'isLegal'],
+        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original', 'queries', 'comment', 'clients_count'],
         computed: {
             queriesList() {
                 return _.map(this.queries, function (item) {
                     return {
                         'text': SERVICES[item.service],
+                        'legal_id': item.legal_id,
                         'klass': {
                             'label-danger': item.status === 0,
                             'label-warning': item.status === 1,
@@ -62,6 +65,9 @@
                     'success': minStatus === 2,
                     'default': minStatus === 3,
                 }
+            },
+            isLegal() {
+                return this.clients_count > 0
             },
         },
         methods: {
@@ -98,7 +104,7 @@
 
     .fio span {
         cursor: pointer;
-        &:hover {
+        &:hover, &.legal {
             border-bottom: 1px dashed black;
         }
     }

@@ -63,6 +63,8 @@ class ClientController extends Controller
             });
         }
 
+        $query->withCount("clients");
+
         $query = $query->with([
             "queries" => function ($query) {
                 $query->orderBy("updated_at", "desc")->where("status", "!=", Query::STATUS_TAKEN);
@@ -142,6 +144,7 @@ class ClientController extends Controller
         if ($showTaken != 'true') {
             $query->where("status", "!=", Query::STATUS_TAKEN);
         }
+        $query->with("legal");
 
         return $query->get();
     }

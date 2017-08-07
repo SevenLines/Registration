@@ -39,6 +39,7 @@
                 :query="query"
                 @edit="editQuery(query)"
                 @destory="removeQuery(query)"
+                @filterByLegal="filterByLegal"
                 is="query-row"
             ></tr>
             </tbody>
@@ -121,6 +122,9 @@
                         })
                     }
                 }
+            },
+            filterByLegal(legal) {
+                this.$emit("filterByLegal", legal);
             },
             saveQuery(query) {
                 let me = this;

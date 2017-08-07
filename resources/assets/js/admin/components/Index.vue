@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <label for="">Телефон</label>
-                                <input required class="form-control" type="text" v-model="currentClient.phone">
+                                <input class="form-control" type="text" v-model="currentClient.phone">
                                 <div class="help-block with-errors"></div>
                             </div>
 
@@ -72,6 +72,7 @@
                         <queries-editor ref="currentClientEd"
                                         v-on:addQuery="addQuery"
                                         @querySaved="onQuerySaved"
+                                        @filterByLegal="filterByLegal"
                                         :client="currentClient"
                                         :legalClient="legalClient"
                         ></queries-editor>
@@ -196,6 +197,7 @@
                     :comment="client.comment"
                     :original="client.original"
                     :queries="client.queries"
+                    :clients_count="client.clients_count"
                     v-if="legalClient.id != client.id"
                     @edit="editClient($event, client)"
                     @queries="showQueries($event, client)"
@@ -341,6 +343,11 @@
                 }, 100);
                 $(this.$refs.editModal).modal("show");
             },
+            filterByLegal (legal) {
+                this.resetFilters();
+                this.filterByLegalClient = true;
+                this.selectLegal(legal);
+            },
             selectLegal(client) {
                 this.legalClient = client;
                 this.reloadClients();
@@ -462,6 +469,13 @@
                     this.selectedSort = param
                 }
                 this.reloadClients();
+            },
+            resetFilters() {
+                this.filters.fio.value = null;
+                this.filters.birthday.value  = null;
+                this.filters.passport.value  = null;
+                this.filters.phone.value  = null;
+                this.filters.service.value  = -2;
             }
         },
     }
