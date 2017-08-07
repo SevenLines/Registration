@@ -113,7 +113,7 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-        <div class="">
+        <div class="table-wrapper">
             <table class="table table-bordered table-striped table-condensed table-hover">
                 <thead>
                 <tr>
@@ -132,12 +132,24 @@
                     </th>
                     <th>
                         <div class="input-group">
-                            <span class="input-group-addon" id="sizing-addon1">День рождения</span>
+                            <span class="input-group-addon">День рождения</span>
                             <span class="input-group-btn">
                                 <button class="btn" @click="buttonSortClicked('birthday')"
                                         :class="buttonSortClass('birthday')" type="button">
                                     <i class="glyphicon"
                                        :class="sortClass('birthday')"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="input-group">
+                            <span class="input-group-addon">Добавлен</span>
+                            <span class="input-group-btn">
+                                <button class="btn" @click="buttonSortClicked('created_at')"
+                                        :class="buttonSortClass('created_at')" type="button">
+                                    <i class="glyphicon"
+                                       :class="sortClass('created_at')"></i>
                                 </button>
                             </span>
                         </div>
@@ -197,6 +209,7 @@
                     :comment="client.comment"
                     :original="client.original"
                     :queries="client.queries"
+                    :created_at="client.created_at"
                     :clients_count="client.clients_count"
                     v-if="legalClient.id != client.id"
                     @edit="editClient($event, client)"
@@ -264,7 +277,7 @@
                 });
             });
 
-            let filters = _.defaultTo(Cookie.getJSON('filters'), {
+            let default_filters = {
                 service: {
                     value: _.defaultTo(Cookie.get('filter.service'), -2),
                     order: 'asc'
@@ -285,7 +298,17 @@
                     value: _.defaultTo(Cookie.get('filter.phone'), null),
                     order: 'asc'
                 },
-            });
+                created_at: {
+                    value: _.defaultTo(Cookie.get('filter.created_at'), null),
+                    order: 'added'
+                }
+            };
+            let filters = _.defaultTo(Cookie.getJSON('filters'), {});
+            for (let key in default_filters) {
+                if (filters[key] === undefined) {
+                    filters[key] = default_filters[key];
+                }
+            }
 
             let selectedSort = _.defaultTo(Cookie.getJSON('selectedSort'), 'fio');
 
@@ -386,7 +409,6 @@
                     passport: this.currentClient.passport,
                     phone: this.currentClient.phone,
                     comment: this.currentClient.comment,
-
                 };
 
                 if (this.currentClient.legal_id) {
@@ -399,6 +421,7 @@
                     promise = axios.post("api/clients", data);
                 }
                 promise.then(function (response) {
+                    me.showQueries(null, response.data);
                     me.reloadClients();
                 });
             },
@@ -477,6 +500,7 @@
                 this.filters.birthday.value  = null;
                 this.filters.passport.value  = null;
                 this.filters.phone.value  = null;
+                this.filters.added.value  = null;
                 this.filters.service.value  = -2;
             }
         },
@@ -519,5 +543,11 @@
         -ms-transition: all .3s;
         -o-transition: all .3s;
         transition: all .3s;
+    }
+    .table-wrapper {
+        overflow: scroll;
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: auto;
     }
 </style>

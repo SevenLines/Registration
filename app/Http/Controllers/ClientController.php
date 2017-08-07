@@ -27,6 +27,7 @@ class ClientController extends Controller
         $page = $request->get("page");
         $service = $request->get("service");
         $sort = $request->get("sort");
+
         $sortOrder = $request->get("sort_order");
         $legal_id = $request->get("legal_id");
         $itemsPerPage = 15;
@@ -73,7 +74,10 @@ class ClientController extends Controller
 
         $totalCount = $query->count();
 
-        $query = $query->orderBy($sort, $sortOrder);
+        if (in_array($sort, ['fio', 'passport', 'birthday', 'phone', 'created_at'])) {
+            $query = $query->orderBy($sort, $sortOrder);
+        }
+
 
         if ($page) {
             $query = $query->offset($page * $itemsPerPage);
@@ -114,7 +118,7 @@ class ClientController extends Controller
             ]);
         }
 
-        return new Response();
+        return $client;
     }
 
     /**

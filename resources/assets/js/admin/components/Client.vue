@@ -6,6 +6,12 @@
         <td class="birthday">
             {{birthday}}
         </td>
+        <td class="created_at">
+            <small>
+                <span>{{createdAt.date}}</span><br>
+                <small>{{createdAt.time}}</small>
+            </small>
+        </td>
         <td class="passport">
             {{passport}}
         </td>
@@ -35,8 +41,10 @@
 </template>
 
 <script>
+    import moment from 'moment';
+
     export default {
-        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original', 'queries', 'comment', 'clients_count'],
+        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'created_at', 'original', 'queries', 'comment', 'clients_count'],
         computed: {
             queriesList() {
                 return _.map(this.queries, function (item) {
@@ -69,6 +77,13 @@
             isLegal() {
                 return this.clients_count > 0
             },
+            createdAt() {
+                let dt = moment(this.created_at);
+                return {
+                    date: dt.format('DD-MM-YYYY'),
+                    time: dt.format('h:mm:ss')
+                }
+            }
         },
         methods: {
             reset() {
@@ -98,7 +113,7 @@
         margin-bottom: 0.25em;
     }
 
-    .fio, .birthday, .passport, .phone {
+    .fio, .birthday, .passport, .phone, .created_at {
         vertical-align: middle;
     }
 
@@ -109,7 +124,7 @@
         }
     }
 
-    .birthday, .passport, .phone {
+    .birthday, .passport, .phone, .created_at {
         text-align: center;
     }
 
