@@ -3,9 +3,9 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Заявка <span v-if="client">для {{client.fio}}</span></h4>
-            <span class="label label-success" v-if="currentQuery.created_at">Создана: {{currentQuery.created_at}}</span>
+            <span class="label label-success" v-if="currentQuery.created_at">Создана: {{createdAt}}</span>
             <span class="label label-info"
-                  v-if="currentQuery.updated_at">Обновлялась: {{currentQuery.updated_at}}</span>
+                  v-if="currentQuery.updated_at">Обновлялась: {{updatedAt}}</span>
         </div>
         <div class="modal-body" :class="bgClass">
             <div>
@@ -55,6 +55,7 @@
 
 <script>
     import _ from "lodash"
+    import moment from 'moment';
 
     export default {
         props: ['currentQuery', 'currentQueryModal', 'client'],
@@ -81,6 +82,14 @@
                     'bg-success': this.currentQuery.status === 2,
                     'bg-default': this.currentQuery.status === 3,
                 }
+            },
+            createdAt() {
+                let dt = moment.utc(this.currentQuery.created_at).local();
+                return dt.format('HH:mm:ss DD-MM-YYYY')
+            },
+            updatedAt() {
+                let dt = moment.utc(this.currentQuery.updated_at).local();
+                return dt.format('HH:mm:ss DD-MM-YYYY')
             }
         },
         methods: {

@@ -78,10 +78,10 @@
                 return this.clients_count > 0
             },
             createdAt() {
-                let dt = moment(this.created_at);
+                let dt = moment.utc(this.created_at).local();
                 return {
                     date: dt.format('DD-MM-YYYY'),
-                    time: dt.format('h:mm:ss')
+                    time: dt.format('HH:mm:ss')
                 }
             }
         },

@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Паспорт</label>
-                                <input required class="form-control" type="text" v-model="currentClient.passport">
+                                <input class="form-control" type="text" v-model="currentClient.passport">
                                 <div class="help-block with-errors"></div>
                             </div>
 
