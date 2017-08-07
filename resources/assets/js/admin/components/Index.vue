@@ -359,6 +359,7 @@
             },
             filterByLegalClientChanged (value) {
                 this.filterByLegalClient = value;
+                this.currentPage = 1;
                 this.reloadClients();
             },
             destroyClient() {
