@@ -28,21 +28,27 @@ class ClientController extends Controller
         $service = $request->get("service");
         $sort = $request->get("sort");
         $sortOrder = $request->get("sort_order");
+        $legal_id = $request->get("legal_id");
         $itemsPerPage = 15;
 
         $query = Client::query();
 
         if ($fio) {
-            $query = Client::where("fio", 'LIKE', "%$fio%");
+            $query->where("fio", 'LIKE', "%$fio%");
         }
         if ($passport) {
-            $query = Client::where("passport", 'LIKE', "%$passport%");
+            $query->where("passport", 'LIKE', "%$passport%");
         }
         if ($phone) {
-            $query = Client::where("phone", 'LIKE', "%$phone%");
+            $query->where("phone", 'LIKE', "%$phone%");
+        }
+        if ($legal_id) {
+            $query->whereHas('legals', function ($query) use ($legal_id) {
+                $query->where("legal_id", '=', $legal_id);
+            });
         }
         if (!is_null($service) && $service != Query::SERVICE_ALL) {
-            $query = Client::whereHas("queries", function ($query) use ($service) {
+            $query->whereHas("queries", function ($query) use ($service) {
                 if ($service == Query::SERVICE_WITH) {
                     $query->where("status", "!=", Query::STATUS_TAKEN);
                 } else if ($service == Query::SERVICE_NOT_READY) {
@@ -89,32 +95,24 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        Client::create(
-            $request->all()
+        $values = $request->all();
+        $legal_id = null;
+        if (array_key_exists("legal_id", $values)) {
+            $legal_id = $values['legal_id'];
+            unset($values['legal_id']);
+        }
+
+        $client = Client::create(
+            $values
         );
 
+        if ($legal_id) {
+            $client->legals()->attach([
+                'legal_id' => $legal_id,
+            ]);
+        }
+
         return new Response();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Client $client
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Client $client)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Client $client
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Client $client)
-    {
     }
 
     /**
@@ -157,6 +155,7 @@ class ClientController extends Controller
             'status' => $request->get("status"),
             'service' => $request->get("service"),
             'comment' => $request->get("comment"),
+            'legal_id' => $request->get("legal_id"),
         ]);
         return new Response();
     }

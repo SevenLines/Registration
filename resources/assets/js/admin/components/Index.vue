@@ -1,11 +1,14 @@
 <template>
     <div class="">
-        <div class="">
-            <paginator :pagescount="totalPages" :currentPage="currentPage" @setPage="setPage"/>
-            <a class="btn btn-primary pull-right" @click="newClient"><i class="glyphicon glyphicon-plus"></i>
-                Добавить клиента</a>
-            <div class="clearfix"></div>
-            <hr>
+        <div v-if="totalPages > 1 || !legalClient.id">
+            <div class="form-group">
+                <paginator v-if="totalPages > 1" :pagescount="totalPages" :currentPage="currentPage" @setPage="setPage"/>
+                <div v-if="!legalClient.id" class="btn btn-primary pull-right" @click="newClient">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Добавить клиента
+                </div>
+                <div class="clearfix"></div>
+            </div>
         </div>
 
         <div class="modal fade" ref="editModal">
@@ -18,6 +21,7 @@
                         </div>
                         <div class="modal-body">
                             <input type="hidden" v-model="currentClient.id">
+                            <input type="hidden" v-model="currentClient.legal_id">
                             <div class="form-group">
                                 <label for="">ФИО</label>
                                 <input required class="form-control" type="text" name="fio" v-model="currentClient.fio">
@@ -25,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">День рождения</label>
-                                <input ref="inputBirthday"  class="form-control"
+                                <input ref="inputBirthday" class="form-control"
                                        data-inputmask="'alias': 'dd-mm-yyyy'" v-model="currentClient.birthday">
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -69,6 +73,7 @@
                                         v-on:addQuery="addQuery"
                                         @querySaved="onQuerySaved"
                                         :client="currentClient"
+                                        :legalClient="legalClient"
                         ></queries-editor>
                     </div>
                     <div class="modal-footer">
@@ -174,6 +179,15 @@
                 </tr>
                 </thead>
                 <tbody ref="dataBody">
+                <tr is="client-legal"
+                    v-if="legalClient.id"
+                    @close="disableLegalClient()"
+                    @addClient="newClient"
+                    @filterByLegalClientChanged="filterByLegalClientChanged"
+                    :filterByLegalClient="filterByLegalClient"
+                    :client="legalClient"
+                >
+                </tr>
                 <tr class="" v-for="client in clients"
                     :fio="client.fio"
                     :birthday="client.birthday"
@@ -182,9 +196,11 @@
                     :comment="client.comment"
                     :original="client.original"
                     :queries="client.queries"
+                    v-if="legalClient.id != client.id"
                     @edit="editClient($event, client)"
                     @queries="showQueries($event, client)"
                     @destroy="onDestroyClientClick(client)"
+                    @selectAsLegal="selectLegal(client)"
                     is="client">
                 </tr>
                 </tbody>
@@ -200,6 +216,7 @@
 <script>
     import QueriesEditor from './QueriesEditor.vue'
     import Client from './Client.vue'
+    import ClientLegal from './ClientLegal.vue'
     import QueryForm from './QueryForm.vue'
     import Inputmask from "inputmask/dist/inputmask/inputmask.date.extensions"
     import dateFormat from 'dateformat';
@@ -277,6 +294,8 @@
                 loading: false,
                 currentPage: _.defaultTo(Cookie.get('currentPage'), 1),
                 totalPages: 0,
+                filterByLegalClient: _.defaultTo(Cookie.get('filterByLegalClient'), true),
+                legalClient: _.defaultTo(Cookie.getJSON('legalClient'), {}), // выбранное юр лицо
                 selectedSort,
                 filters,
                 services
@@ -286,6 +305,7 @@
             'client': Client,
             'queries-editor': QueriesEditor,
             'query-form': QueryForm,
+            'client-legal': ClientLegal,
         },
         events: {},
         methods: {
@@ -296,6 +316,9 @@
                     passport: '',
                     phone: '',
                     comment: '',
+                };
+                if (this.legalClient.id) {
+                    this.currentClient.legal_id = this.legalClient.id;
                 }
                 $(this.$refs.editModal).modal("show");
             },
@@ -317,6 +340,18 @@
                     $(me.$refs.editModalForm).validator('validate');
                 }, 100);
                 $(this.$refs.editModal).modal("show");
+            },
+            selectLegal(client) {
+                this.legalClient = client;
+                this.reloadClients();
+            },
+            disableLegalClient() {
+                this.legalClient = {};
+                this.reloadClients();
+            },
+            filterByLegalClientChanged (value) {
+                this.filterByLegalClient = value;
+                this.reloadClients();
             },
             destroyClient() {
                 let me = this;
@@ -342,7 +377,13 @@
                     passport: this.currentClient.passport,
                     phone: this.currentClient.phone,
                     comment: this.currentClient.comment,
+
                 };
+
+                if (this.currentClient.legal_id) {
+                    data.legal_id = this.currentClient.legal_id;
+                }
+
                 if (this.currentClient.id) {
                     promise = axios.put(`api/clients/${this.currentClient.id}`, data);
                 } else {
@@ -370,19 +411,25 @@
                 Cookie.set('filters', this.filters);
                 Cookie.set('currentPage', this.currentPage);
                 Cookie.set('selectedSort', this.selectedSort);
+                Cookie.set('filterByLegalClient', this.filterByLegalClient);
+                Cookie.set('legalClient', this.legalClient);
 
-                axios.get("api/clients", {
-                    params: {
-                        fio: this.filters.fio.value,
-                        birthday: this.filters.birthday.value,
-                        passport: this.filters.passport.value,
-                        phone: this.filters.phone.value,
-                        page: this.currentPage - 1,
-                        service: this.filters.service.value,
-                        sort: this.selectedSort,
-                        sort_order: this.filters[this.selectedSort].order
-                    }
-                }).then(function (response) {
+                let params = {
+                    fio: this.filters.fio.value,
+                    birthday: this.filters.birthday.value,
+                    passport: this.filters.passport.value,
+                    phone: this.filters.phone.value,
+                    page: this.currentPage - 1,
+                    service: this.filters.service.value,
+                    sort: this.selectedSort,
+                    sort_order: this.filters[this.selectedSort].order
+                };
+
+                if (this.filterByLegalClient && this.legalClient.id) {
+                    params.legal_id = this.legalClient.id;
+                }
+
+                axios.get("api/clients", {params}).then(function (response) {
                     me.clients = response.data.records.map(function (item) {
                         item['birthday'] = dateFormat(new Date(item.birthday), 'dd-mm-yyyy');
                         return item;
@@ -417,13 +464,6 @@
                 this.reloadClients();
             }
         },
-        computed: {
-            reminder() {
-                return this.currentQuery ? this.currentQuery.price - this.currentQuery.paid : 0;
-            },
-
-        }
-
     }
 </script>
 

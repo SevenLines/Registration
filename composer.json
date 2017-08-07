@@ -12,6 +12,7 @@
         "sentry/sentry-laravel": "^0.7.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.4",
         "deployer/deployer": "^5.1",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",

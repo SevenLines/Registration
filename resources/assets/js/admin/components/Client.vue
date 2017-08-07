@@ -1,7 +1,7 @@
 <template>
     <tr :class="bgStyle">
         <td class="fio">
-            {{fio}}
+            <span @click="$emit('selectAsLegal')">{{fio}}</span>
         </td>
         <td class="birthday">
             {{birthday}}
@@ -16,13 +16,14 @@
             <div class="my-label" :class="query.klass" v-for="query in queriesList">{{query.text}}<br></div>
         </td>
         <td class="actions" style="min-width: 150px">
-            <div class="" >
+            <div class="">
                 <button class="btn btn-default" @click="$emit('queries', this)">
                     <i class="glyphicon glyphicon-book"></i>
                 </button>
                 <button class="btn btn-default" @click="$emit('edit', this)">
                     <i class="glyphicon glyphicon-edit"></i>
                 </button>
+
                 <button class="btn btn-danger btn-sm pull-right" @click="$emit('destroy', this)">
                     <i class="glyphicon glyphicon-remove"></i>
                 </button>
@@ -33,7 +34,7 @@
 
 <script>
     export default {
-        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original', 'queries', 'comment'],
+        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'original', 'queries', 'comment', 'isLegal'],
         computed: {
             queriesList() {
                 return _.map(this.queries, function (item) {
@@ -76,7 +77,7 @@
     }
 </script>
 
-<style scoped="">
+<style scoped="" lang="scss">
     .my-label {
         display: block;
         padding: .2em .6em .3em;
@@ -93,6 +94,13 @@
 
     .fio, .birthday, .passport, .phone {
         vertical-align: middle;
+    }
+
+    .fio span {
+        cursor: pointer;
+        &:hover {
+            border-bottom: 1px dashed black;
+        }
     }
 
     .birthday, .passport, .phone {

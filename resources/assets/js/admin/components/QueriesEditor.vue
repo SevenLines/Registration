@@ -54,7 +54,7 @@
     import QueryRow from "./QueryRow.vue"
 
     export default {
-        props: ['client'],
+        props: ['client', 'legalClient'],
         data() {
             return {
                 queries: [],
@@ -85,13 +85,19 @@
                 })
             },
             addQuery($event, client) {
-                this.$emit("addQuery", {
+                let data = {
                     paid: 0,
                     price: 0,
                     status: 0,
                     service: 0,
                     comment: '',
-                }, this);
+                };
+
+                if (this.legalClient.id) {
+                    data.legal_id = this.legalClient.id
+                }
+
+                this.$emit("addQuery", data, this);
             },
             editQuery(query) {
                 this.$emit("addQuery", {
