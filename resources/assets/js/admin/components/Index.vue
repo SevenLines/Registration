@@ -350,6 +350,7 @@
             },
             selectLegal(client) {
                 this.legalClient = client;
+                this.currentPage = 1;
                 this.reloadClients();
             },
             disableLegalClient() {
