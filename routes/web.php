@@ -35,8 +35,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('api/clients', 'ClientController', ['only' =>
         ['index', 'store', 'update', 'destroy']
     ]);
-    Route::post('api/query', "QueryController@addQuery")->name("addquery");
     Route::resource('api/queries', 'QueriesController', ['only' =>
         ['destroy']
     ]);
 });
+
+Route::post('api/query', "QueryController@addQuery")->name("addquery");

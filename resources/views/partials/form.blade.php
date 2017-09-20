@@ -29,6 +29,9 @@
         e.preventDefault(); // prevent native submit
         var $modal = $("#modal-query");
         $(this).ajaxSubmit({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             success: function () {
                 $modal.modal("show");
                 $modal.find(".content .message").hide();
