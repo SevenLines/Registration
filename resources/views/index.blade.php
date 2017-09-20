@@ -103,7 +103,7 @@
             <div class="document-item col-md-3 col-sm-4 col-xs-6">
                 <div class="inner">
                     <img src={{ asset("images/types/testing.jpg") }} alt="">
-                    <div class="description">Тестирование</div>
+                    <div class="description">Сертификат | Тестирование</div>
                 </div>
             </div>
             <div class="document-item col-md-3 col-sm-4 col-xs-6">

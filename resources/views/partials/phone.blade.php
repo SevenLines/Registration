@@ -17,7 +17,7 @@
 				<h4 class="modal-title">Юридическая помощь</h4>
 			</div>
 			<div class="modal-body">
-                <div class="" style="padding-bottom: 16px">Сейчас сотрудники не в офисе. <br>Хотите, мы сами вам перезвоним?</div>
+                <div class="" style="padding-bottom: 16px">Хотите, мы сами вам перезвоним?</div>
                 <form action="{{ route("addquery") }}" method="POST" class="form-inline" role="form">
                     <div class="form-group">
                         <input type="text" name="name" required="required" class="index-phone form-control input-lg" placeholder="имя">
