@@ -1,0 +1,70 @@
+[
+  {
+    "image": "images/types/testing.jpg",
+    "title": "Сертификат | Тестирование",
+    "alias": "sertificat"
+  },
+  {
+    "image": "images/types/rvp1.jpg",
+    "title": "РВП",
+    "alias": "rvp"
+  },
+  {
+    "image": "images/types/vnj.jpg",
+    "title": "Внж",
+    "alias": "vng"
+  },
+  {
+    "image": "images/types/grazhdanstvo.jpg",
+    "title": "Гражданство",
+    "alias": "grazhdanstvo"
+  },
+  {
+    "image": "images/types/patent.jpg",
+    "title": "ПАТЕНТ",
+    "alias": "patent"
+  },
+  {
+    "image": "images/types/allowance_to_work.jpg",
+    "title": "Разрешение на работу",
+    "alias": "work"
+  },
+  {
+    "image": "images/types/in_out.jpg",
+    "title": "Въезд/выезд",
+    "alias": "in_out"
+  },
+  {
+    "image": "images/types/translations.jpg",
+    "title": "Переводы",
+    "alias": "translates"
+  },
+  {
+    "image": "images/types/health-insurance.jpg",
+    "title": "Медицинская страховка"
+  },
+  {
+    "image": "images/types/med_commission.jpg",
+    "title": "МЕДКОМИССИЯ"
+  },
+  {
+    "image": "images/types/priglashenie.jpg",
+    "title": "Приглашение"
+  },
+  {
+    "image": "images/types/inn.jpg",
+    "title": "Получение Инн"
+  },
+  {
+    "image": "images/types/zagran_passport.jpg",
+    "title": "загранпаспорт"
+  },
+  {
+    "image": "images/types/visa.jpg",
+    "title": "Виза"
+  },
+  {
+    "image": "images/types/fms.jpg",
+    "title": "Уведомление Фмс"
+  }
+]

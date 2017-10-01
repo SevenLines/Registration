@@ -14,7 +14,12 @@
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('index');
+    $services = json_decode( file_get_contents("../services.json"));
+    return view('index', ["services" => $services]);
+});
+
+Route::get('/services/{service}', function ($service) {
+    return view("services.$service");
 });
 
 Route::get('/admin', "AdminController@index")->name('admin');

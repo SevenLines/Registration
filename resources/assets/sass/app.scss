@@ -110,12 +110,24 @@ body {
   margin-top: 1em;
   clear: both;
   display: block;
+  overflow: hidden;
 }
 
 .document-item {
   text-align: center;
   position: relative;
   padding: 0;
+
+  &[href] {
+    &:hover {
+      .description {
+        color: blue;
+      }
+    }
+    .description {
+      text-decoration: underline;
+    }
+  }
   .inner {
     border: 3px solid white;
     height: 180px;
@@ -239,6 +251,23 @@ img.herb {
 
 .sale-info {
   font-size: 2em;
+}
+
+.service-table {
+  th {
+    text-align: center;
+  }
+  td {
+    vertical-align: middle !important;
+    width: 33.3%;
+    &.service-table-price {
+      text-align: center;
+    }
+  }
+}
+
+.service-content {
+  font-size: 1.15em;
 }
 
 @media (max-width: 540px) {
