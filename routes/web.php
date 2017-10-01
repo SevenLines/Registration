@@ -19,7 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/services/{service}', function ($service) {
-    return view("services.$service");
+    $services = json_decode( file_get_contents("../services.json"));
+    $info = current(array_filter($services, function($element) use ($service) {
+        return property_exists($element, "alias") && $element->alias == $service;
+    }));
+    return view("services.$service", ["service" => $info]);
 });
 
 Route::get('/admin', "AdminController@index")->name('admin');
