@@ -194,7 +194,7 @@ span, a {
   padding: 1em 2em 2em;
   color: white;
 
-  a.highlight {
+  a.highlight-link {
     text-decoration: underline;
     color: #ffe400;
   }
@@ -280,6 +280,20 @@ img.herb {
   font-size: 1.15em;
 }
 
+
+@media (max-width: 410px) {
+  .container {
+    padding: 1em;
+  }
+  .email-phones {
+    text-align: center;
+    .time, .address {
+      font-size: 0.85em;
+      margin-left: -0.4em;
+    }
+  }
+}
+
 @media (max-width: 540px) {
   .info {
     .title {
@@ -297,6 +311,7 @@ img.herb {
   .sale-info {
     font-size: 1.25em;
   }
+
 }
 
 @media (min-width: 990px) {

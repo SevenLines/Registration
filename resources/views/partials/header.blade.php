@@ -16,7 +16,7 @@
         <div class="" style="text-align: center">
             <div class="main_info">
                 <div class="free">Бесплатная консультация</div>
-                <small>самые <a href="/services/all" class="highlight">низкие цены</a> в Москве и Московской
+                <small>самые <a href="/services/all" class="highlight-link">низкие цены</a> в Москве и Московской
                     области!
                 </small>
                 <br>

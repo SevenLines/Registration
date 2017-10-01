@@ -191,7 +191,7 @@ a.highlight {
   color: white;
 }
 
-.header a.highlight {
+.header a.highlight-link {
   text-decoration: underline;
   color: #ffe400;
 }
@@ -276,6 +276,22 @@ img.herb {
 
 .service-content {
   font-size: 1.15em;
+}
+
+@media (max-width: 410px) {
+  .container {
+    padding: 1em;
+  }
+
+  .email-phones {
+    text-align: center;
+  }
+
+  .email-phones .time,
+  .email-phones .address {
+    font-size: 0.85em;
+    margin-left: -0.4em;
+  }
 }
 
 @media (max-width: 540px) {
