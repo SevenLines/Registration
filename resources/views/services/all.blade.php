@@ -1,0 +1,42 @@
+@extends('layouts.client')
+
+@section("body_content")
+    <hr style="margin-bottom: 0.25em">
+    <a class="btn btn-warning" href="/">К списку услуг</a>
+    <hr style="margin-top: 0.25em">
+    @include("partials.counter")
+    <hr>
+    <div class="service-content">
+        @yield('service_content')
+        <p></p>
+        @foreach($services as $service)
+            <h2>{{$service->title}}</h2>
+            <div style="width: 100%; overflow: scroll; overflow-y: hidden; overflow-x: auto">
+                <table class="table table-bordered table-striped table-hover service-table">
+                    <tr>
+                        <th>Наименование услуги</th>
+                        <th>Список документов</th>
+                        <th>Цена</th>
+                    </tr>
+                    @foreach($service->services as $s)
+                        <tr>
+                            <td>{{$s->title}}</td>
+                            <td>
+                                <ul>
+                                    @foreach($s->documents as $d)
+                                        <li>{{$d}}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td class="service-table-price">
+                                {{$s->price}}
+                            </td>
+                        </tr>
+                    @endforeach()
+                </table>
+            </div>
+        @endforeach()
+    </div>
+    <hr style="margin-top: 0.25em">
+    <a class="btn btn-warning" href="/">К списку услуг</a>
+@endsection()

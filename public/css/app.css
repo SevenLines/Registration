@@ -175,11 +175,11 @@ a:hover {
   text-shadow: 0 0 2px white;
 }
 
-span.highlight {
+span.highlight,
+a.highlight {
   color: #e44300;
   font-weight: bold;
   text-transform: uppercase;
-  text-decoration: underline;
 }
 
 .header {
@@ -189,6 +189,11 @@ span.highlight {
   margin-top: 1em;
   padding: 1em 2em 2em;
   color: white;
+}
+
+.header a.highlight {
+  text-decoration: underline;
+  color: #ffe400;
 }
 
 .header span.highlight {

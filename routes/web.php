@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('index', ["services" => $services]);
 });
 
+Route::get('/services/all', function () {
+    $services = json_decode( file_get_contents("../services.json"));
+    return view("services.all", ["services" => $services]);
+});
+
 Route::get('/services/{service}', function ($service) {
     $services = json_decode( file_get_contents("../services.json"));
     $info = current(array_filter($services, function($element) use ($service) {
@@ -25,6 +30,8 @@ Route::get('/services/{service}', function ($service) {
     }));
     return view("services.$service", ["service" => $info]);
 });
+
+
 
 Route::get('/admin', "AdminController@index")->name('admin');
 

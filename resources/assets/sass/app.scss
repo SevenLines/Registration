@@ -175,12 +175,16 @@ a {
   }
 }
 
-span.highlight {
-  color: $highlight;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: underline;
+span, a {
+  &.highlight {
+    color: $highlight;
+    font-weight: bold;
+    text-transform: uppercase;
+    //text-decoration: underline;
+  }
 }
+
+
 
 .header {
   background-color: #0094db;
@@ -189,6 +193,12 @@ span.highlight {
   margin-top: 1em;
   padding: 1em 2em 2em;
   color: white;
+
+  a.highlight {
+    text-decoration: underline;
+    color: #ffe400;
+  }
+
   span.highlight {
     color: #ffe400;
   }
