@@ -15,8 +15,8 @@
                 <table class="table table-bordered table-striped table-hover service-table">
                     <tr>
                         <th>Наименование услуги</th>
-                        <th>Список документов</th>
                         <th>Цена</th>
+                        <th>Список документов</th>
                     </tr>
                     @foreach($service->services as $s)
                         <tr>
