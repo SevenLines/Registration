@@ -21,15 +21,15 @@
                     @foreach($service->services as $s)
                         <tr>
                             <td>{{$s->title}}</td>
+                            <td class="service-table-price">
+                                {{$s->price}}
+                            </td>
                             <td>
                                 <ul>
                                     @foreach($s->documents as $d)
                                         <li>{{$d}}</li>
                                     @endforeach
                                 </ul>
-                            </td>
-                            <td class="service-table-price">
-                                {{$s->price}}
                             </td>
                         </tr>
                     @endforeach()
