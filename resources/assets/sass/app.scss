@@ -281,6 +281,16 @@ img.herb {
 }
 
 
+.location-info {
+  .map {
+    box-shadow: 0 0 4px silver
+  }
+  img {
+    max-width: 100%;
+    box-shadow: 0 0 4px silver
+  }
+}
+
 @media (max-width: 410px) {
   .container {
     padding: 1em;
@@ -300,6 +310,13 @@ img.herb {
       font-size: 2em;
     }
   }
+
+  .location-info {
+    .image {
+      margin-top: 1em;
+    }
+  }
+
   .main_info {
     .free {
       font-size: 1.5em !important;
@@ -312,6 +329,15 @@ img.herb {
     font-size: 1.25em;
   }
 
+}
+
+@media (max-width: 990px) {
+  .location-info {
+    .image {
+      margin-top: 1em;
+      text-align: center;
+    }
+  }
 }
 
 @media (min-width: 990px) {
@@ -338,4 +364,5 @@ img.herb {
     float: right;
   }
 }
+
 
