@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <div class="">
-                    <button type="submit" class="btn btn-lg btn-warning">
+                    <button type="submit" class="btn btn-lg btn-warning" onClick="ga('send', 'event', { eventCategory: 'кнопка', eventAction: 'клик'});">
                         Оставить заявку
                     </button>
                 </div>

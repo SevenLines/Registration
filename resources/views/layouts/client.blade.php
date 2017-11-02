@@ -2,6 +2,7 @@
 
 @section("content")
     @include("partials.yandex")
+    @include("partials.google")
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
     <div class="container">
         @include("partials.contacts")
