@@ -195,8 +195,11 @@ span, a {
   color: white;
 
   a.highlight-link {
+    font-size: 1.35em;
+    font-weight: bold;
     text-decoration: underline;
-    color: #ffe400;
+    text-shadow: 0 0 1px white;
+    color: #ff2900;
   }
 
   span.highlight {
