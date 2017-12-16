@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <div class="">
-                    <button type="submit" class="btn btn-lg btn-warning" onClick="gtag('send', 'event', { eventCategory: 'кнопка', eventAction: 'клик'});">
+                    <button type="submit" class="btn btn-lg btn-warning">
                         Оставить заявку
                     </button>
                 </div>

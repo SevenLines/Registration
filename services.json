@@ -209,6 +209,7 @@
   {
     "image": "images/types/health-insurance.jpg",
     "title": "МЕДИЦИНСКАЯ СТРАХОВКА/ДМС",
+    "alias": "medical_insurance",
     "services": [
       {
         "title": "Страхование ДМС",
@@ -224,6 +225,7 @@
   {
     "image": "images/types/med_commission.jpg",
     "title": "МЕДКОМИССИЯ",
+    "alias": "med_commission",
     "services": [
       {
         "title": "Медкомиссия",
@@ -239,9 +241,10 @@
   {
     "image": "images/types/priglashenie.jpg",
     "title": "ПРИГЛАШЕНИЕ",
+    "alias": "invitation",
     "services": [
       {
-        "title": "Приглашения",
+        "title": "Приглашение",
         "documents": [
           "Паспорт",
           "Последняя виза"
@@ -253,6 +256,7 @@
   {
     "image": "images/types/inn.jpg",
     "title": "ИНН/СНИЛС",
+    "alias": "inn_snils",
     "services": [
       {
         "title": "ИНН/СНИЛС",
@@ -268,6 +272,7 @@
   {
     "image": "images/types/zagran_passport.jpg",
     "title": "ЗАГРАНПАСПОРТ",
+    "alias": "foreign_passport",
     "services": [
       {
         "title": "Загранпаспорт",
@@ -281,6 +286,7 @@
   {
     "image": "images/types/visa.jpg",
     "title": "ВИЗА",
+    "alias": "visa",
     "services": [
       {
         "title": "Виза",
@@ -296,6 +302,7 @@
   {
     "image": "images/types/fms.jpg",
     "title": "УВЕДОМЛЕНИЕ ФМС",
+    "alias": "fms",
     "services": [
       {
         "title": "Уведомление",

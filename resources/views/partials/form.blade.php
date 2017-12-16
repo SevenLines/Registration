@@ -25,9 +25,12 @@
 <script>
     // bind submit handler to form
     $('form').on('submit', function (e) {
-        var form = this;
         e.preventDefault(); // prevent native submit
+        var form = this;
         var $modal = $("#modal-query");
+
+        gtag('send', 'event', { eventCategory: 'Оставить заявку', eventAction: 'отправка'});
+
         $(this).ajaxSubmit({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
