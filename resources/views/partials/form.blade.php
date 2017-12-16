@@ -29,7 +29,7 @@
         var form = this;
         var $modal = $("#modal-query");
 
-        gtag('send', 'event', { eventCategory: 'Оставить заявку', eventAction: 'отправка'});
+        gtag('send', 'event', { eventCategory: 'query', eventAction: 'submit'});
 
         $(this).ajaxSubmit({
             headers: {
