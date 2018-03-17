@@ -19,7 +19,6 @@
 
     <div class="location-info">
         <hr>
-        <h3>Мы находимся по адресу: <strong>Метро Партизанская. Измайловское шоссе д. 71 корп. 4г-д</strong></h3>
 
         <div class="row" >
             <div class="col-md-6 col-sm-12 col-xs-12 map">
@@ -30,6 +29,7 @@
                 <img src="{{asset("images/image_location_1_small_arrow.JPG")}}"  alt="">
             </div>
         </div>
+        <h3>Мы находимся по адресу: <strong>Метро Партизанская. Измайловское шоссе д. 71 корп. 4г-д</strong></h3>
 
     </div>
 @endsection()

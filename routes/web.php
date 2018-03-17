@@ -32,7 +32,6 @@ Route::get('/services/{service}', function ($service) {
 });
 
 
-
 Route::get('/admin', "AdminController@index")->name('admin');
 
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');

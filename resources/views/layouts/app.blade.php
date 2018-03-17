@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Компания МосРвп поможет в любом миграционном вопросе! Привлекательные цены. Индивидуальный подход. Гражданство, патент, РВП, ВНЖ, сертификат о знании русского языка истории России и основ законодательства, медкомиссия, страховка. Соберем необходимый пакет документов. Опыт более 10 лет! Профессиональные сотрудники. Удобное расположение. Работаем в Москве и во всех городах Московсой области.">
 
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -16,7 +17,7 @@
             crossorigin="anonymous"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-    <title>Мосрвп.рф - Юридическая помощь</title>
+    <title>@yield('title', 'Мосрвп.рф - Юридическая помощь')</title>
 
 {{--<!-- Fonts -->--}}
 {{--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">--}}

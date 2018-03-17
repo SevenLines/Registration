@@ -1,5 +1,6 @@
 @extends('layouts.client')
 
+@section("title", $service->title.' - Мосрвп.рф - Юридическая помощь')
 @section("body_content")
     <hr style="margin-bottom: 0.25em">
     <a class="btn btn-warning" href="/">К списку услуг</a>
@@ -38,4 +39,7 @@
     </div>
     <hr style="margin-top: 0.25em">
     <a class="btn btn-warning" href="/">К списку услуг</a>
+    <hr>
+    <h3>Мы находимся по адресу: <strong>Метро Партизанская. Измайловское шоссе д. 71 корп. 4г-д</strong></h3>
+
 @endsection()
