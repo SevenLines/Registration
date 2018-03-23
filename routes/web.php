@@ -13,23 +13,9 @@
 
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    $services = json_decode( file_get_contents("../services.json"));
-    return view('index', ["services" => $services]);
-});
-
-Route::get('/services/all', function () {
-    $services = json_decode( file_get_contents("../services.json"));
-    return view("services.all", ["services" => $services]);
-});
-
-Route::get('/services/{service}', function ($service) {
-    $services = json_decode( file_get_contents("../services.json"));
-    $info = current(array_filter($services, function($element) use ($service) {
-        return property_exists($element, "alias") && $element->alias == $service;
-    }));
-    return view("services.$service", ["service" => $info]);
-});
+Route::get('/', "ServiceController@index")->name('index');
+Route::get('/services/all', "ServiceController@list_all")->name('service_list_all');
+Route::get('/services/{service}', "ServiceController@detail")->name('service_detail');
 
 
 Route::get('/admin', "AdminController@index")->name('admin');

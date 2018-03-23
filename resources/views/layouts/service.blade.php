@@ -10,7 +10,7 @@
     <div class="service-content">
         @yield('service_content')
         <p></p>
-        @if(property_exists($service, "services"))
+        @if(count($service->subServices) > 0)
         <div style="width: 100%; overflow: scroll; overflow-y: hidden; overflow-x: auto">
             <table class="table table-bordered table-striped table-hover service-table">
                 <tr>
@@ -18,7 +18,7 @@
                     <th>Цена</th>
                     <th>Список документов</th>
                 </tr>
-                @foreach($service->services as $s)
+                @foreach($service->subServices as $s)
                     <tr>
                         <td>{{$s->title}}</td>
                         <td class="service-table-price">
@@ -26,7 +26,7 @@
                         </td>
                         <td>
                             <ul>
-                                @foreach($s->documents as $d)
+                                @foreach($s->documentsList as $d)
                                     <li>{{$d}}</li>
                                 @endforeach
                             </ul>

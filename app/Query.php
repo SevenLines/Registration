@@ -27,6 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Query whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Query whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property int|null $legal_id
+ * @property-read \App\Client|null $legal
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Query whereLegalId($value)
  */
 class Query extends Model
 {
