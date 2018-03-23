@@ -36,6 +36,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function () {
+                reachGoal('order');
                 $modal.modal("show");
                 $modal.find(".content .message").hide();
                 $modal.find(".content .message.success").show();

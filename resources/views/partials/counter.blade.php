@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <div class="">
-                    <button type="submit" class="btn btn-lg btn-warning">
+                    <button type="submit" onclick="reachGoal('order'); return true;" class="btn btn-lg btn-warning">
                         Оставить заявку
                     </button>
                 </div>

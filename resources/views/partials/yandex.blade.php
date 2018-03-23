@@ -31,6 +31,10 @@
                 f();
             }
         })(document, window, "yandex_metrika_callbacks");
+
+        window.reachGoal = function(event) {
+            yaCounter45252060.reachGoal(event);
+        }
     </script>
     <noscript>
         <div><img src="https://mc.yandex.ru/watch/45252060" style="position:absolute; left:-9999px;" alt=""/></div>
