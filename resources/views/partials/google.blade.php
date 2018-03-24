@@ -1,9 +1,10 @@
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108010931-1"></script>
+@if (\Settings::get("google_analytics"))
+<script async src="https://www.googletagmanager.com/gtag/js?id={{\Settings::get("google_analytics")}}"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-108010931-1');
+    gtag('config', '{{\Settings::get("google_analytics")}}');
 </script>
+@endif

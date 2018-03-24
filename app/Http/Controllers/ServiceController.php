@@ -14,7 +14,7 @@ use App\Service;
 class ServiceController extends Controller
 {
     public function index() {
-        $services = Service::all();
+        $services = Service::whereVisible(true)->get();
         return view('index', ["services" => $services]);
     }
 
@@ -25,6 +25,6 @@ class ServiceController extends Controller
 
     public function detail($service) {
         $info = Service::whereAlias($service)->with("subServices")->first();
-        return view("services.$service", ["service" => $info]);
+        return view("layouts.service", ["service" => $info]);
     }
 }

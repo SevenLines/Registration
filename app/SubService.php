@@ -22,10 +22,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\SubService whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\SubService whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read mixed $documents_list
+ * @property-read \App\Service $service
  */
 class SubService extends Model
 {
-    //
+    protected $fillable = ['title', 'price', 'documents'];
+
+
     public function service() {
         return $this->belongsTo('App\Service')->withDefault();
     }

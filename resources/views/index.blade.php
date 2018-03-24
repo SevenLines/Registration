@@ -9,7 +9,7 @@
         @foreach ($services as $record)
             <a href="/services/{{$record->alias}}" class="document-item col-md-3 col-sm-4 col-xs-6">
                 <div class="inner">
-                    <img src={{ asset($record->image) }} alt="">
+                    <img src={{ asset($record->imageUrl) }} alt="">
                     <div class="description">{{ $record->title  }}</div>
                 </div>
             </a>

@@ -8,7 +8,7 @@
     @include("partials.counter")
     <hr>
     <div class="service-content">
-        @yield('service_content')
+        {!!$service->description!!}
         <p></p>
         @if(count($service->subServices) > 0)
         <div style="width: 100%; overflow: scroll; overflow-y: hidden; overflow-x: auto">

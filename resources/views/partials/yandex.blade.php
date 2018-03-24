@@ -1,11 +1,11 @@
-@if (config("app.yandex_analytics"))
+@if (\Settings::get("yandex_analytics"))
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (d, w, c) {
             (w[c] = w[c] || []).push(function () {
                 try {
-                    w.yaCounter{{config("app.yandex_analytics")}} = new Ya.Metrika({
-                        id:{{config("app.yandex_analytics")}},
+                    w.yaCounter{{\Settings::get("yandex_analytics")}} = new Ya.Metrika({
+                        id: {{\Settings::get("yandex_analytics")}},
                         clickmap: true,
                         trackLinks: true,
                         accurateTrackBounce: true,
@@ -33,11 +33,11 @@
         })(document, window, "yandex_metrika_callbacks");
 
         window.reachGoal = function(event) {
-            yaCounter45252060.reachGoal(event);
+            yaCounter{{\Settings::get("yandex_analytics")}}.reachGoal(event);
         }
     </script>
     <noscript>
-        <div><img src="https://mc.yandex.ru/watch/45252060" style="position:absolute; left:-9999px;" alt=""/></div>
+        <div><img src="https://mc.yandex.ru/watch/{{\Settings::get("yandex_analytics")}}" style="position:absolute; left:-9999px;" alt=""/></div>
     </noscript>
     <!-- /Yandex.Metrika counter -->
 @endif

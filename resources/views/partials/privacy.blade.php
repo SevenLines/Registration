@@ -99,8 +99,8 @@
                 <h2>Как с нами связаться</h2>
                 Если у вас есть какие-либо вопросы о политике конфиденциальности, использованию сайта или иным
                 вопросам, связанным с сайтом, свяжитесь с нами по электронной почте:
-                <a href="mailto:mosrvp77@gmail.com">mosrvp77@gmail.com</a>
-                либо по телефону: +7 926 424 3334
+                <a href="mailto:{{\Settings::get("email")}}">{{\Settings::get("email")}}</a>
+                либо по телефону: {{\Settings::get("phone")}}
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-warning" data-dismiss="modal">Ок</button>

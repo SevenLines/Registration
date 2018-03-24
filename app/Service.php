@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Service
@@ -20,11 +21,22 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $image
+ * @property int $visible
+ * @property int $order
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\SubService[] $subServices
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereVisible($value)
  */
 class Service extends Model
 {
     //
     public function subServices() {
         return $this->hasMany("App\SubService");
+    }
+
+    public function getImageUrlAttribute() {
+        return Storage::disk(config('admin.upload.disk'))->url($this->image);
     }
 }
