@@ -30,6 +30,7 @@ class HomeController extends Controller
                     $form->text("full_address", "Полный адрес")->default($settings["full_address"] ?? '');
                     $form->text("phone", "Телефон")->default($settings["phone"] ?? '');
                     $form->textarea("description", "Описание")->default($settings["description"] ?? '');
+                    $form->textarea("keywords", "Ключевые слова")->default($settings["keywords"] ?? '');
                     $form->hidden('_token')->default(csrf_token());
 
                     $form->email("email", "Почта")->default($settings["email"] ?? '');
@@ -59,6 +60,7 @@ class HomeController extends Controller
         \Settings::set("full_address", $data["full_address"]);
         \Settings::set("phone", $data["phone"]);
         \Settings::set("description", $data["description"]);
+        \Settings::set("keywords", $data["keywords"]);
         \Settings::set("email", $data["email"]);
         \Settings::set("working_time", $data["working_time"]);
         \Settings::set("yandex_analytics", $data["yandex_analytics"]);

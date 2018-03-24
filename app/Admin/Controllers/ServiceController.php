@@ -94,7 +94,6 @@ class ServiceController extends Controller
     {
         return Admin::form(Service::class, function (Form $form) {
             $form->tab("Общие", function (Form $form) {
-                $form->display('id', 'ID');
                 $form->switch("visible")->states([
                     'on' => ['value' => 1],
                     'off' => ['value' => 0],
@@ -111,6 +110,9 @@ class ServiceController extends Controller
                     $form->text("price", "цена");
                     $form->text("documents", "документы");
                 });
+            })->tab("SEO", function (Form $form) {
+                $form->textarea("meta_description", "Описание для SEO");
+                $form->text("meta_keywords", "Ключевые слова");
             });
         });
     }

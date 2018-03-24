@@ -1,6 +1,15 @@
 @extends('layouts.client')
 
 @section("title", $service->title.' - Мосрвп.рф - Юридическая помощь')
+
+@section("meta_description")
+@if($service->meta_description){{$service->meta_description}}@else{{\Settings::get("description")}}@endif
+@endsection
+
+@section("meta_keywords")
+@if($service->meta_keywords){{$service->meta_keywords}}@else{{\Settings::get("keywords")}}@endif
+@endsection
+
 @section("body_content")
     <hr style="margin-bottom: 0.25em">
     <a class="btn btn-warning" href="/">К списку услуг</a>
