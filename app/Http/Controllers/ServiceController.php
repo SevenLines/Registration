@@ -19,7 +19,7 @@ class ServiceController extends Controller
     }
 
     public function list_all() {
-        $services = json_decode( file_get_contents("../services.json"));
+        $services = Service::whereVisible(true)->with("subServices")->get();
         return view("services.all", ["services" => $services]);
     }
 

@@ -23,7 +23,7 @@
                         <th>Цена</th>
                         <th>Список документов</th>
                     </tr>
-                    @foreach($service->services as $s)
+                    @foreach($service->subServices as $s)
                         <tr>
                             <td>{{$s->title}}</td>
                             <td class="service-table-price">
@@ -31,7 +31,7 @@
                             </td>
                             <td>
                                 <ul>
-                                    @foreach($s->documents as $d)
+                                    @foreach($s->documentsList as $d)
                                         <li>{{$d}}</li>
                                     @endforeach
                                 </ul>
