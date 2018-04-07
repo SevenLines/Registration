@@ -21,12 +21,7 @@
             crossorigin="anonymous"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-    <title>@yield('title', 'Мосрвп.рф - Юридическая помощь')</title>
-
-{{--<!-- Fonts -->--}}
-{{--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">--}}
-
-<!-- Styles -->
+    <title>@yield('title', \Settings::get("meta_title"))</title>
 
 </head>
 <body>

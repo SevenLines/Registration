@@ -28,6 +28,13 @@ use Illuminate\Support\Facades\Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereVisible($value)
+ * @property string|null $meta_description
+ * @property string|null $meta_keywords
+ * @property string|null $meta_title
+ * @property-read mixed $image_url
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereMetaKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereMetaTitle($value)
  */
 class Service extends Model
 {
@@ -38,5 +45,13 @@ class Service extends Model
 
     public function getImageUrlAttribute() {
         return Storage::disk(config('admin.upload.disk'))->url($this->image);
+    }
+
+    public function getHeaderTitleAttribute() {
+        if ($this->meta_title) {
+            return $this->meta_title . ' - ' . \Settings::get("meta_title");
+        } else {
+            return $this->title . ' - ' . \Settings::get("meta_title");
+        }
     }
 }

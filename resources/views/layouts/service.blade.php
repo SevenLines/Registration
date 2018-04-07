@@ -1,6 +1,6 @@
 @extends('layouts.client')
 
-@section("title", $service->title.' - Мосрвп.рф - Юридическая помощь')
+@section("title", $service->header_title)
 
 @section("meta_description")
 @if($service->meta_description){{$service->meta_description}}@else{{\Settings::get("description")}}@endif

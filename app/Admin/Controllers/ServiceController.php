@@ -113,6 +113,7 @@ class ServiceController extends Controller
             })->tab("SEO", function (Form $form) {
                 $form->textarea("meta_description", "Описание для SEO");
                 $form->text("meta_keywords", "Ключевые слова");
+                $form->text("meta_title", "Заголовок страницы");
             });
         });
     }

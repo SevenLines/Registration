@@ -4,23 +4,24 @@
     <div class="header-info" style=" text-align: center">
         <div class="info">
             <div class="" style="text-align: center">
-                <div class="title">Юридическая помощь</div>
+                <div class="title">Миграционные услуги</div>
                 <div class="description">
-                    <span class="highlight">по миграционным вопросам</span>
-                    подготовка всех документов
-                    <span class="highlight">для иностранных граждан</span>
+                    Профессиональная юридическая помощь иностранным гражданам в оформлении официальных документов для пребывания в России.
+                    <span class="highlight">Гарантия 100% результата в короткие сроки без отказов, бесплатная консультация</span>
                 </div>
             </div>
         </div>
 
         <div class="" style="text-align: center">
             <div class="main_info">
-                <div class="free">Бесплатная консультация</div>
-                <small>самые <a href="/services/all" class="highlight-link">низкие цены</a> в Москве и Московской
-                    области!
-                </small>
-                <br>
-                <small>Без посредников!</small>
+                Вам не придётся вникать в юридические аспекты - мы решим ваши проблемы прозрачно и честно.
+                Подготовим любые недостающие документы.
+                Поможем на любом этапе легализации.
+
+                Ваши данные в полной безопасности.
+                Самые <a href="/services/all" class="highlight-link">низкие цены</a> в Москве и Московской области.
+
+                Выберите услугу - и мы немедленно вам поможем!
             </div>
         </div>
         <div class="flags" style="display:inline-block;">

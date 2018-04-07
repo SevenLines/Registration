@@ -36,6 +36,7 @@ class HomeController extends Controller
 
                     $form->text("phone", "Телефон");
                     $form->textarea("description", "Описание");
+                    $form->text("meta_title", "Заголовок страницы");
                     $form->textarea("keywords", "Ключевые слова");
                     $form->hidden('_token')->default(csrf_token());
 
@@ -71,6 +72,7 @@ class HomeController extends Controller
         \Settings::set("working_time", $data["working_time"]);
         \Settings::set("yandex_analytics", $data["yandex_analytics"]);
         \Settings::set("yandex_map", $data["yandex_map"]);
+        \Settings::set("meta_title", $data["meta_title"]);
 
         if (array_key_exists("address_image", $data)) {
             \Settings::set("address_image", $imageField->prepare($data["address_image"]));
