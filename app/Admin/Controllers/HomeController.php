@@ -35,6 +35,9 @@ class HomeController extends Controller
                     $form->html('<a href="https://yandex.ru/map-constructor/?from=maps_login" target="_blank">Конструктор яндекс карт</a><small> [при генерации карты ставьте галку "Растянуть по ширине", вставьте сгенеренный код в поле выше]</small>');
 
                     $form->text("phone", "Телефон");
+                    $form->textarea("index_page_text", "Текст на главной странице");
+                    $form->textarea("index_bordered_page_text", "Текст на главной странице в рамке");
+                    $form->textarea("counter_text", "Текст над счетчиком");
                     $form->textarea("description", "Описание");
                     $form->text("meta_title", "Заголовок страницы");
                     $form->textarea("keywords", "Ключевые слова");
@@ -64,6 +67,9 @@ class HomeController extends Controller
         $imageField->move("images/settings")->uniqueName();
 
         \Settings::set("address", $data["address"]);
+        \Settings::set("index_page_text", $data["index_page_text"]);
+        \Settings::set("index_bordered_page_text", $data["index_bordered_page_text"]);
+        \Settings::set("counter_text", $data["counter_text"]);
         \Settings::set("full_address", $data["full_address"]);
         \Settings::set("phone", $data["phone"]);
         \Settings::set("description", $data["description"]);

@@ -1,9 +1,7 @@
 <div style="text-align: center">
     <div class="sale-info">
-        <div>
-            <span class="highlight">Отправьте</span> заявку прямо сейчас и <span class="highlight">получите</span> скидку на наши услуги!
-        </div>
-        <div style="margin-bottom: 0.5em">Торопитесь - до конца акции осталось</div>
+        {!! \Settings::get("counter_text") !!}
+
     </div>
     <div class="hidden-xs">
         <script src="http://megatimer.ru/s/b222fed4822727436eebfbbc7968bf29.js"></script>
