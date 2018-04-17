@@ -5,6 +5,16 @@
 
     RewriteEngine On
 
+	#исключаем POST запрос из редиректа
+	RewriteCond %{REQUEST_METHOD} !^POST [NC]
+
+	#проверяем не являться ли запрос к CMS, нужно по аналогии добавить адрес используемой на сайте CMS
+	RewriteCond %{REQUEST_URI} !^/admin-service [NC]
+
+	#Далее стандартный редирект
+	RewriteCond %{HTTP_HOST} ^www.xn--b1atgfdf\.xn--p1ai$ [NC]
+	RewriteRule ^(.*)$ http://xn--b1atgfdf.xn--p1ai/$1 [R=301,L]
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
