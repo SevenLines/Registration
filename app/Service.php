@@ -49,7 +49,7 @@ class Service extends Model
 
     public function getHeaderTitleAttribute() {
         if ($this->meta_title) {
-            return $this->meta_title . ' - ' . \Settings::get("meta_title");
+            return $this->meta_title;
         } else {
             return $this->title . ' - ' . \Settings::get("meta_title");
         }
