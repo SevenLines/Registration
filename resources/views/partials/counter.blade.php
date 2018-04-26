@@ -3,13 +3,13 @@
         {!! \Settings::get("counter_text") !!}
 
     </div>
-    <div class="hidden-xs">
-        <script src="http://megatimer.ru/s/b222fed4822727436eebfbbc7968bf29.js"></script>
-    </div>
-    <div class="hidden-lg hidden-md hidden-sm">
-        <script src="http://megatimer.ru/s/f33f299374934a6f1aad76ed9dd07e95.js"></script>
-    </div>
-    <div style="padding-top: 2em">
+    {{--<div class="hidden-xs">--}}
+        {{--<script src="http://megatimer.ru/s/b222fed4822727436eebfbbc7968bf29.js"></script>--}}
+    {{--</div>--}}
+    {{--<div class="hidden-lg hidden-md hidden-sm">--}}
+        {{--<script src="http://megatimer.ru/s/f33f299374934a6f1aad76ed9dd07e95.js"></script>--}}
+    {{--</div>--}}
+    <div>
         <form action="{{ route("addquery") }}" method="POST" class="form-inline" role="form">
             <div class="form-group">
                 <input type="text" required="required" name="name" class="index-phone form-control input-lg"
