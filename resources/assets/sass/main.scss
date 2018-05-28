@@ -122,9 +122,11 @@ $dark-color: #282931;
     margin-left: 1em;
     cursor: pointer;
   }
-  .navbar-nav {
+  .navbar-nav-custom {
+    display: flex;
     justify-content: space-between;
-    flex-grow: 11;
+    flex-grow: 12;
+    align-items: center;
     .nav-link {
       color: white;
       font-weight: bold;
@@ -200,6 +202,10 @@ $dark-color: #282931;
   height: 550px;
   font-size: 20px;
 
+  .description-wrapper {
+    width: 587px;
+  }
+
   .description {
     display: flex;
     font-size: 24px;
@@ -224,6 +230,9 @@ $dark-color: #282931;
     text-align: center;
   }
   .items {
+    > .row {
+      margin-left: 180px;
+    }
     .row {
       align-items: center;
       i {
@@ -246,13 +255,16 @@ $dark-color: #282931;
   background-repeat: no-repeat;
   background-position: 986px 360px;
   .container {
-
-    padding-top: 117px;
+    .row {
+      flex-wrap: nowrap;
+    }
     position: relative;
     .services {
-      position: absolute;
-      top: -70px;
-      width: 60%;
+      flex-shrink: 0;
+      margin-top: -73px;
+      //position: absolute;
+      //top: -70px;
+      width: 588px;
       .service {
         cursor: pointer;
         display: flex;
@@ -290,9 +302,11 @@ $dark-color: #282931;
       }
     }
     .description {
+      padding-top: 117px;
       font-size: 20px;
       font-weight: bold;
-      margin-left: 86px;
+      margin-left: 190px;
+      //margin-left: 833px;
       > div {
         margin-bottom: 42px;
       }
@@ -332,7 +346,7 @@ $dark-color: #282931;
     }
 
     .form {
-      height: 565px;
+      height: auto;
       color: white;
       background-color: #3f65a5;
       h3 {
@@ -409,18 +423,22 @@ $dark-color: #282931;
   .items {
     .item-durable {
       background: url("/images/princip_durable.png");
+      background-repeat: no-repeat;
     }
 
     .item-guard {
       background: url("/images/princip_guard.png");
+      background-repeat: no-repeat;
     }
 
     .item-cash {
       background: url("/images/princip_cash.png");
+      background-repeat: no-repeat;
     }
 
     .item-secure {
       background: url("/images/princip_security.png");
+      background-repeat: no-repeat;
     }
 
     .item {
@@ -729,3 +747,236 @@ $dark-color: #282931;
     }
   }
 }
+
+@media (max-width: 1199px) {
+  .section-1 {
+
+    .container > .row {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .description-wrapper {
+        width: auto;
+        margin-bottom: 1em;
+      }
+
+      .items {
+        > .row {
+          margin-left: 0;
+        }
+      }
+    }
+
+    h1 {
+      font-size: 50px;
+      padding: 40px 0;
+    }
+  }
+
+  .section-2 {
+    height: 650px;
+    background-image: none;
+    .container {
+      .row {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .description {
+        margin-left: 0;
+        padding-top: 1em;
+        br {
+          display: none;
+        }
+        > div {
+          margin-bottom: 1em;
+        }
+      }
+      .services {
+        width: 100%;
+        margin-top: 2em;
+        .service {
+          width: calc(50% - 2px);
+          font-size: 0.85em;
+          height: 230px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .section-1 {
+    h1 {
+      font-size: 35px;
+    }
+  }
+
+  .header-contacts, .navbar .container {
+    max-width: 100%;
+    padding: 0 1em;
+  }
+
+  .section-3 {
+    padding: 0;
+    .container {
+      h2 {
+        padding-top: 0.5em;
+        margin-bottom: 0.5em;
+        font-size: 50px;
+        text-align: center;
+      }
+      .description {
+        .description-dash {
+          display: none;
+        }
+        .description-text {
+          margin-bottom: 1em;
+        }
+        font-size: 20px;
+      }
+    }
+  }
+
+  .section-5 {
+    padding: 2rem 0;
+    h2 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .section-5 {
+    .items {
+      h3 {
+        text-align: center;
+        margin-bottom: 25px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .item {
+        padding: 50px;
+        height: auto;
+      }
+      .item-durable {
+        background-position-y: -40px;
+        background: white url("/images/princip_durable.png") no-repeat;
+      }
+
+      .item-guard {
+        background-position-y: -40px;
+        background: white url("/images/princip_guard.png") no-repeat;
+      }
+
+      .item-cash {
+        background-position-y: -40px;
+        background: white url("/images/princip_cash.png") no-repeat;
+      }
+
+      .item-secure {
+        background-position-y: -40px;
+        background: white url("/images/princip_security.png") no-repeat;
+      }
+    }
+  }
+  .section-address {
+    .address {
+      font-size: 20px;
+      h2 {
+        font-size: 30px;
+        padding-bottom: 1.5rem;
+
+      }
+      padding: 75px 0;
+    }
+  }
+
+}
+
+@media (max-width: 570px) {
+  .section-1 {
+    .container {
+    }
+    height: auto;
+    h1 {
+      font-size: 25px;
+      letter-spacing: 5px;
+    }
+    .description-wrapper .description {
+      font-size: 16px;
+      padding: 0 0.5em;
+      br {
+        display: none;
+      }
+    }
+    .items {
+      //font-size: 20px;
+      margin-left: -30px;
+      .row {
+        .info {
+          font-size: 16px;
+        }
+        i {
+          font-size: 30px;
+          margin-right: 20px;
+        }
+      }
+      margin-bottom: 1em;
+    }
+  }
+
+  .section-2 {
+    height: auto;
+    //padding-bottom: 1em;
+    .container .services {
+      margin-top: 0;
+    }
+    .container .description {
+      font-size: 16px;
+      padding: 1em 1em 0;
+    }
+  }
+
+  .section-3 {
+    padding: 0;
+    .container {
+      h2 {
+        padding-top: 1em;
+        margin-bottom: 1em;
+        font-size: 30px;
+        text-align: center;
+      }
+      .description {
+        .description-dash {
+          display: none;
+        }
+        .description-text {
+          margin-bottom: 1em;
+        }
+        font-size: 16px;
+      }
+      .form {
+        padding: 2em;
+        h3, .form-group, .btn {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+
+  .section-address {
+    .address {
+      font-size: 16px;
+      h2 {
+        font-size: 20px;
+        padding-bottom: 1em;
+
+      }
+      padding: 75px 0;
+    }
+  }
+
+}
+
+//
+//@media (max-width 992px) {
+//
+//}

@@ -135,19 +135,23 @@
   cursor: pointer;
 }
 
-.navbar .navbar-nav {
+.navbar .navbar-nav-custom {
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  -ms-flex-positive: 11;
-      flex-grow: 11;
+  -ms-flex-positive: 12;
+      flex-grow: 12;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
-.navbar .navbar-nav .nav-link {
+.navbar .navbar-nav-custom .nav-link {
   color: white;
   font-weight: bold;
 }
 
-.navbar .navbar-nav *:first-child {
+.navbar .navbar-nav-custom *:first-child {
   padding-left: 0;
 }
 
@@ -213,6 +217,10 @@
   font-size: 20px;
 }
 
+.section-1 .description-wrapper {
+  width: 587px;
+}
+
 .section-1 .description {
   display: -ms-flexbox;
   display: flex;
@@ -240,6 +248,10 @@
   text-align: center;
 }
 
+.section-1 .items > .row {
+  margin-left: 180px;
+}
+
 .section-1 .items .row {
   -ms-flex-align: center;
       align-items: center;
@@ -261,14 +273,19 @@
 }
 
 .section-2 .container {
-  padding-top: 117px;
   position: relative;
 }
 
+.section-2 .container .row {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
 .section-2 .container .services {
-  position: absolute;
-  top: -70px;
-  width: 60%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-top: -73px;
+  width: 588px;
 }
 
 .section-2 .container .services .service {
@@ -310,9 +327,10 @@
 }
 
 .section-2 .container .description {
+  padding-top: 117px;
   font-size: 20px;
   font-weight: bold;
-  margin-left: 86px;
+  margin-left: 190px;
 }
 
 .section-2 .container .description > div {
@@ -357,7 +375,7 @@
 }
 
 .section-3 .container .form {
-  height: 565px;
+  height: auto;
   color: white;
   background-color: #3f65a5;
 }
@@ -445,18 +463,22 @@
 
 .section-5 .items .item-durable {
   background: url("/images/princip_durable.png");
+  background-repeat: no-repeat;
 }
 
 .section-5 .items .item-guard {
   background: url("/images/princip_guard.png");
+  background-repeat: no-repeat;
 }
 
 .section-5 .items .item-cash {
   background: url("/images/princip_cash.png");
+  background-repeat: no-repeat;
 }
 
 .section-5 .items .item-secure {
   background: url("/images/princip_security.png");
+  background-repeat: no-repeat;
 }
 
 .section-5 .items .item {
@@ -816,5 +838,242 @@
   display: block;
   padding: 16px 60px;
   border-radius: 45px;
+}
+
+@media (max-width: 1199px) {
+  .section-1 .container > .row {
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+
+  .section-1 .container > .row .description-wrapper {
+    width: auto;
+    margin-bottom: 1em;
+  }
+
+  .section-1 .container > .row .items > .row {
+    margin-left: 0;
+  }
+
+  .section-1 h1 {
+    font-size: 50px;
+    padding: 40px 0;
+  }
+
+  .section-2 {
+    height: 650px;
+    background-image: none;
+  }
+
+  .section-2 .container .row {
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+
+  .section-2 .container .description {
+    margin-left: 0;
+    padding-top: 1em;
+  }
+
+  .section-2 .container .description br {
+    display: none;
+  }
+
+  .section-2 .container .description > div {
+    margin-bottom: 1em;
+  }
+
+  .section-2 .container .services {
+    width: 100%;
+    margin-top: 2em;
+  }
+
+  .section-2 .container .services .service {
+    width: calc(50% - 2px);
+    font-size: 0.85em;
+    height: 230px;
+  }
+}
+
+@media (max-width: 992px) {
+  .section-1 h1 {
+    font-size: 35px;
+  }
+
+  .header-contacts,
+  .navbar .container {
+    max-width: 100%;
+    padding: 0 1em;
+  }
+
+  .section-3 {
+    padding: 0;
+  }
+
+  .section-3 .container h2 {
+    padding-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .section-3 .container .description {
+    font-size: 20px;
+  }
+
+  .section-3 .container .description .description-dash {
+    display: none;
+  }
+
+  .section-3 .container .description .description-text {
+    margin-bottom: 1em;
+  }
+
+  .section-5 {
+    padding: 2rem 0;
+  }
+
+  .section-5 h2 {
+    margin-bottom: 2rem;
+  }
+
+  .section-5 .items h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .section-5 .items .item {
+    padding: 50px;
+    height: auto;
+  }
+
+  .section-5 .items .item-durable {
+    background-position-y: -40px;
+    background: white url("/images/princip_durable.png") no-repeat;
+  }
+
+  .section-5 .items .item-guard {
+    background-position-y: -40px;
+    background: white url("/images/princip_guard.png") no-repeat;
+  }
+
+  .section-5 .items .item-cash {
+    background-position-y: -40px;
+    background: white url("/images/princip_cash.png") no-repeat;
+  }
+
+  .section-5 .items .item-secure {
+    background-position-y: -40px;
+    background: white url("/images/princip_security.png") no-repeat;
+  }
+
+  .section-address .address {
+    font-size: 20px;
+    padding: 75px 0;
+  }
+
+  .section-address .address h2 {
+    font-size: 30px;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .section-1 {
+    height: auto;
+  }
+
+  .section-1 h1 {
+    font-size: 25px;
+    letter-spacing: 5px;
+  }
+
+  .section-1 .description-wrapper .description {
+    font-size: 16px;
+    padding: 0 0.5em;
+  }
+
+  .section-1 .description-wrapper .description br {
+    display: none;
+  }
+
+  .section-1 .items {
+    margin-left: -30px;
+    margin-bottom: 1em;
+  }
+
+  .section-1 .items .row .info {
+    font-size: 16px;
+  }
+
+  .section-1 .items .row i {
+    font-size: 30px;
+    margin-right: 20px;
+  }
+
+  .section-2 {
+    height: auto;
+  }
+
+  .section-2 .container .services {
+    margin-top: 0;
+  }
+
+  .section-2 .container .description {
+    font-size: 16px;
+    padding: 1em 1em 0;
+  }
+
+  .section-3 {
+    padding: 0;
+  }
+
+  .section-3 .container h2 {
+    padding-top: 1em;
+    margin-bottom: 1em;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .section-3 .container .description {
+    font-size: 16px;
+  }
+
+  .section-3 .container .description .description-dash {
+    display: none;
+  }
+
+  .section-3 .container .description .description-text {
+    margin-bottom: 1em;
+  }
+
+  .section-3 .container .form {
+    padding: 2em;
+  }
+
+  .section-3 .container .form h3,
+  .section-3 .container .form .form-group,
+  .section-3 .container .form .btn {
+    margin-bottom: 1em;
+  }
+
+  .section-address .address {
+    font-size: 16px;
+    padding: 75px 0;
+  }
+
+  .section-address .address h2 {
+    font-size: 20px;
+    padding-bottom: 1em;
+  }
 }
 

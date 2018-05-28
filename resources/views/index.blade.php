@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <h1>МИГРАЦИОННЫЕ УСЛУГИ</h1>
-                <div style="width: 587px">
+                <div class="description-wrapper">
                     <div class="description">
                         <div class="description-dash">&mdash;</div>
                         <div class="description-text">
@@ -17,7 +17,7 @@
 
                     </div>
                 </div>
-                <div class="items" style="margin-left: 180px">
+                <div class="items" style="">
                     <div class="row">
                         <i class="icon-bullseye"></i>
                         <!--<img src="images/bulleye.png" alt="">-->
@@ -70,7 +70,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="description" style="margin-left: 833px">
+                <div class="description">
                     <div>
                         <span class="highlighted">Самые низкие цены</span> в Москве и Московской области
                     </div>
@@ -84,8 +84,8 @@
     <section class="section-3">
         <div class="container">
             <div class="row">
-                <div class="col-6">
-                    <h2>Миграционные <br> услуги</h2>
+                <div class="col-lg-6 col-sm-12">
+                    <h2>Миграционные<br>услуги</h2>
                     <div class="description">
                         <div class="description-dash">
                             <div class="description-dash-symbol"></div>
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5 offset-1">
+                <div class="col-lg-5 offset-lg-1 col-sm-12">
                     <div class="form">
                         <h3>ОТПРАВЬТЕ ЗАЯВКУ ПРЯМО СЕЙЧАС И ПОЛУЧИТЕ СКИДКУ НА НАШИ УСЛУГИ!</h3>
                         <div class="form-group">
@@ -110,10 +110,8 @@
                         </div>
                         <button class="btn btn-info float-right">Оставить заявку</button>
                         <small>
-                            Нажимая «Отправить заявку» вы подтверждаете, что ознакомлены с Политикой
-                            конфиденциальности
-                            и
-                            даете свое согласие на сбор и обработку персональных данных.
+                            Нажимая «Оставить заявку» вы подтверждаете, что ознакомлены с Политикой
+                            конфиденциальности и даете свое согласие на сбор и обработку персональных данных.
                         </small>
                     </div>
                 </div>
@@ -158,7 +156,7 @@
             <h2>Наши принципы</h2>
             <div class="items">
                 <div class="row">
-                    <div class="col-6 item item-durable">
+                    <div class="col-md-6 item item-durable">
                         <h3>Надежно</h3>
                         <div>
                             Управление политическими конфликтами символизирует либерализм. Политическое учение
@@ -168,7 +166,7 @@
                             политической нестабильности, доказывает механизм власти.
                         </div>
                     </div>
-                    <div class="col-6 item item-guard">
+                    <div class="col-md-6 item item-guard">
                         <h3>Безопасно</h3>
                         <div>
                             Управление политическими конфликтами символизирует либерализм. Политическое учение
@@ -180,7 +178,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6 item item-cash">
+                    <div class="col-md-6 item item-cash">
                         <h3>Выгодно</h3>
                         <div>
                             Трехчастная фактурная форма полифигурно варьирует структурный громкостнoй прогрессийный
@@ -191,7 +189,7 @@
                             жанра.
                         </div>
                     </div>
-                    <div class="col-6 item item-secure">
+                    <div class="col-md-6 item item-secure">
                         <h3>Конфинденциально</h3>
                         <div>
                             Харизматическое лидерство, с другой стороны, последовательно. Бихевиоризм предсказуем.

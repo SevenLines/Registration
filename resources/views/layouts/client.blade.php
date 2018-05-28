@@ -31,10 +31,19 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <div class="" style="display: flex;  width: 100%; align-items:center">
-                <div class="navbar-nav">
+                <div class="navbar-nav-custom">
                     @foreach ($services as $record)
-                        @if ($loop->index < 7)
-                            <a href="/services/{{$record->alias}}" class="nav-item nav-link"
+                        @if ($loop->index < 2)
+                            <a href="/services/{{$record->alias}}" class="nav-item nav-link "
+                               href="#">{{ $record->title  }}</a>
+                        @elseif ($loop->index < 3)
+                            <a href="/services/{{$record->alias}}" class="nav-item nav-link d-none d-sm-block"
+                               href="#">{{ $record->title  }}</a>
+                        @elseif ($loop->index < 4)
+                            <a href="/services/{{$record->alias}}" class="nav-item nav-link d-none d-md-block"
+                               href="#">{{ $record->title  }}</a>
+                        @elseif ($loop->index < 7)
+                            <a href="/services/{{$record->alias}}" class="nav-item nav-link d-none d-lg-block"
                                href="#">{{ $record->title  }}</a>
                         @endif
                     @endforeach
@@ -45,10 +54,8 @@
                     </div>
                     <div class="items">
                         @foreach ($services as $record)
-                            @if ($loop->index >= 7)
-                                <a href="/services/{{$record->alias}}" class="nav-item nav-link"
-                                   href="#">{{ $record->title  }}</a>
-                            @endif
+                            <a href="/services/{{$record->alias}}" class="nav-item nav-link"
+                               href="#">{{ $record->title  }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -57,33 +64,38 @@
     </nav>
 
     <div class="content">
-       @yield("body_content")
-        <section class="section-address" style="display: flex">
-            <div class="address" style="flex-basis: 0; flex-grow: 1">
-                <div>
-                    <h2>Как нас найти</h2>
+        @yield("body_content")
+        <section class="section-address">
+            <div class="row">
+                <div class="address col-lg-4 col-md-6">
+                    <div>
+                        <h2>Как нас найти</h2>
 
-                    <p></p>
-                    <strong>Адрес</strong><br>
-                    <span>Измайловское шоссе д. 71 корп. 4г-д
+                        <p></p>
+                        <strong>Адрес</strong><br>
+                        <span>Измайловское шоссе д. 71 корп. 4г-д
                     <br>(Метро Партизанская)</span><br>
 
-                    <p></p>
-                    <strong>Телефон</strong><br>
-                    <span>+7 926 424 3334</span><br>
+                        <p></p>
+                        <strong>Телефон</strong><br>
+                        <span>+7 926 424 3334</span><br>
 
-                    <p></p>
-                    <strong>Email</strong><br>
-                    <span>mosrvp77@gmail.com</span><br>
+                        <p></p>
+                        <strong>Email</strong><br>
+                        <span>mosrvp77@gmail.com</span><br>
+                    </div>
                 </div>
-            </div>
-            <div class="map" style="flex-basis: 0; flex-grow: 1; flex-shrink: 0">
-                @if(\Settings::get("yandex_map")){!!\Settings::get("yandex_map")!!}@endif
-            </div>
-            <div class="address-image" style="flex-basis: 0; flex-grow: 1; flex-shrink: 0">
-                @if(\Settings::get("address_image"))
-                    <img src="/uploads/{{\Settings::get("address_image")}}" alt="{{\Settings::get("full_address")}}">
-                @endif
+                <div class="map col-lg-4 col-md-6">
+                    @if(\Settings::get("yandex_map")){!!\Settings::get("yandex_map")!!}@endif
+                </div>
+                <div class="address-image col-lg-4 col-md-12">
+                    <div class="row">
+                        @if(\Settings::get("address_image"))
+                            <img src="/uploads/{{\Settings::get("address_image")}}"
+                                 alt="{{\Settings::get("full_address")}}">
+                        @endif
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section-footer">
@@ -105,9 +117,9 @@
                         </div>
                         <ul>
                             @foreach ($services as $record)
-                            <li class="services-item">
-                                <a href="/services/{{$record->alias}}" href="#">{{ $record->title  }}</a>
-                            </li>
+                                <li class="services-item">
+                                    <a href="/services/{{$record->alias}}" href="#">{{ $record->title  }}</a>
+                                </li>
                             @endforeach
                             {{--<li class="services-item">СЕРТИФИКАТ ТЕСТИРОВАНИЕ</li>--}}
                             {{--<li class="services-item">РВП</li>--}}
