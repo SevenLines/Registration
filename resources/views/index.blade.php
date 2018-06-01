@@ -142,14 +142,14 @@
                 <img src="images/Layer%2035.png" alt="">
             </div>
         </div>
-        <div class="buttons">
-            <div class="btn-round">
-                <span class="">&lt;</span>
-            </div>
-            <div class="btn-round">
-                <span class="">&gt;</span>
-            </div>
-        </div>
+        {{--<div class="buttons">--}}
+            {{--<div class="btn-round">--}}
+                {{--<span class="">&lt;</span>--}}
+            {{--</div>--}}
+            {{--<div class="btn-round">--}}
+                {{--<span class="">&gt;</span>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </section>
     <section class="section-5">
         <div class="container">

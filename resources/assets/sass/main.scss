@@ -40,10 +40,17 @@ $dark-color: #282931;
   font-weight: bold;
   padding: 0;
 
+  .header-contacts-callback {
+    .phone {
+      display: none;
+    }
+  }
+
   .header-contacts-inner {
     padding: 1em 0;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
     align-items: center;
   }
 
@@ -56,15 +63,25 @@ $dark-color: #282931;
     -ms-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
+    flex-shrink: 0;
     &:hover {
       color: $danger-color;
     }
   }
 
+  .header-left-nav {
+    flex-grow: 7;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .header-contacts-contacts {
     flex-grow: 4;
     display: flex;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
   }
 
@@ -82,6 +99,7 @@ $dark-color: #282931;
   .header-contacts-time {
     margin-top: -1.25em;
     line-height: 1.25;
+    flex-shrink: 0;
     small {
       font-size: 0.85em;
       font-weight: bold;
@@ -370,14 +388,15 @@ $dark-color: #282931;
     text-transform: uppercase;
   }
   .items {
-    padding: 46px;
+    margin: 46px;
     display: flex;
     justify-content: space-between;
+    overflow-x: auto;
     .item {
       flex-basis: 329px;
+      flex-shrink: 0;
       display: block;
       width: 428px;
-      height: 329px;
       position: relative;
       overflow: hidden;
       cursor: pointer;
@@ -838,6 +857,17 @@ $dark-color: #282931;
     }
   }
 
+  .section-4 {
+    margin-top: 69px;
+    .items {
+      margin: 46px 0;
+      .item {
+        width: 228px;
+        flex-basis: 228px;
+      }
+    }
+  }
+
   .section-5 {
     padding: 2rem 0;
     h2 {
@@ -857,23 +887,19 @@ $dark-color: #282931;
         height: auto;
       }
       .item-durable {
-        background-position-y: -40px;
-        background: white url("/images/princip_durable.png") no-repeat;
+        background: white url("/images/princip_durable.png") no-repeat 0 -40px;
       }
 
       .item-guard {
-        background-position-y: -40px;
-        background: white url("/images/princip_guard.png") no-repeat;
+        background: white url("/images/princip_guard.png") no-repeat 0 -40px;
       }
 
       .item-cash {
-        background-position-y: -40px;
-        background: white url("/images/princip_cash.png") no-repeat;
+        background: white url("/images/princip_cash.png") no-repeat 0 -40px;
       }
 
       .item-secure {
-        background-position-y: -40px;
-        background: white url("/images/princip_security.png") no-repeat;
+        background: white url("/images/princip_security.png") no-repeat 0 -40px;
       }
     }
   }
@@ -889,9 +915,47 @@ $dark-color: #282931;
     }
   }
 
+  .section-footer {
+    padding: 1em;
+    h2 {
+      margin-bottom: 1em;
+    }
+    .container .row .contacts {
+      padding-right: 0;
+      .phone-info {
+        .phone {
+          margin-bottom: 1em;
+        }
+        margin-bottom: 2em;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    .services {
+      .services-title {
+        margin-bottom: 1em;
+      }
+      ul {
+        height: auto;
+        .services-item {
+          margin-right: 0;
+        }
+      }
+    }
+
+  }
+
 }
 
 @media (max-width: 570px) {
+  .header-contacts-time, .header-contacts .header-contacts-price-list, .header-contacts-phone {
+    display: none;
+  }
+
+  .header-contacts .header-contacts-callback .phone {
+    display: block;
+  }
+
   .section-1 {
     .container {
     }
@@ -962,6 +1026,16 @@ $dark-color: #282931;
     }
   }
 
+  .section-4 {
+    .items {
+
+      .item {
+        width: 188px;
+        flex-basis: 188px;
+      }
+    }
+  }
+
   .section-address {
     .address {
       font-size: 16px;
@@ -974,6 +1048,35 @@ $dark-color: #282931;
     }
   }
 
+}
+
+@media (max-width: 480px) {
+  .header-contacts-time {
+    display: block;
+    //margin-left: 1em;
+  }
+
+  .header-contacts {
+    .header-left-nav {
+      //justify-content: center;
+      .header-contacts-brand {
+        font-size: 2.5em;
+        padding-bottom: 0.25em;
+      }
+    }
+    .header-contacts-callback.btn.btn-info {
+      margin-left: 0;
+      width: 100%;
+    }
+
+  }
+}
+
+@media (max-width: 420px) {
+  .header-contacts-time {
+    display: block;
+    margin-bottom: 1em;
+  }
 }
 
 //

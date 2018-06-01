@@ -40,12 +40,18 @@
   padding: 0;
 }
 
+.header-contacts .header-contacts-callback .phone {
+  display: none;
+}
+
 .header-contacts .header-contacts-inner {
   padding: 1em 0;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: end;
       justify-content: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-align: center;
       align-items: center;
 }
@@ -57,10 +63,25 @@
       align-items: center;
   cursor: pointer;
   transition: all .3s;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .header-contacts .header-contacts-price-list:hover {
   color: #ed3747;
+}
+
+.header-contacts .header-left-nav {
+  -ms-flex-positive: 7;
+      flex-grow: 7;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .header-contacts .header-contacts-contacts {
@@ -68,8 +89,10 @@
       flex-grow: 4;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: end;
-      justify-content: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: center;
+      justify-content: center;
   -ms-flex-align: center;
       align-items: center;
 }
@@ -88,6 +111,8 @@
 .header-contacts .header-contacts-time {
   margin-top: -1.25em;
   line-height: 1.25;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .header-contacts .header-contacts-time small {
@@ -400,19 +425,21 @@
 }
 
 .section-4 .items {
-  padding: 46px;
+  margin: 46px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
       justify-content: space-between;
+  overflow-x: auto;
 }
 
 .section-4 .items .item {
   -ms-flex-preferred-size: 329px;
       flex-basis: 329px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   display: block;
   width: 428px;
-  height: 329px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -937,6 +964,20 @@
     margin-bottom: 1em;
   }
 
+  .section-4 {
+    margin-top: 69px;
+  }
+
+  .section-4 .items {
+    margin: 46px 0;
+  }
+
+  .section-4 .items .item {
+    width: 228px;
+    -ms-flex-preferred-size: 228px;
+        flex-basis: 228px;
+  }
+
   .section-5 {
     padding: 2rem 0;
   }
@@ -957,23 +998,19 @@
   }
 
   .section-5 .items .item-durable {
-    background-position-y: -40px;
-    background: white url("/images/princip_durable.png") no-repeat;
+    background: white url("/images/princip_durable.png") no-repeat 0 -40px;
   }
 
   .section-5 .items .item-guard {
-    background-position-y: -40px;
-    background: white url("/images/princip_guard.png") no-repeat;
+    background: white url("/images/princip_guard.png") no-repeat 0 -40px;
   }
 
   .section-5 .items .item-cash {
-    background-position-y: -40px;
-    background: white url("/images/princip_cash.png") no-repeat;
+    background: white url("/images/princip_cash.png") no-repeat 0 -40px;
   }
 
   .section-5 .items .item-secure {
-    background-position-y: -40px;
-    background: white url("/images/princip_security.png") no-repeat;
+    background: white url("/images/princip_security.png") no-repeat 0 -40px;
   }
 
   .section-address .address {
@@ -985,9 +1022,55 @@
     font-size: 30px;
     padding-bottom: 1.5rem;
   }
+
+  .section-footer {
+    padding: 1em;
+  }
+
+  .section-footer h2 {
+    margin-bottom: 1em;
+  }
+
+  .section-footer .container .row .contacts {
+    padding-right: 0;
+  }
+
+  .section-footer .container .row .contacts .phone-info {
+    margin-bottom: 2em;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: start;
+        align-items: flex-start;
+  }
+
+  .section-footer .container .row .contacts .phone-info .phone {
+    margin-bottom: 1em;
+  }
+
+  .section-footer .services .services-title {
+    margin-bottom: 1em;
+  }
+
+  .section-footer .services ul {
+    height: auto;
+  }
+
+  .section-footer .services ul .services-item {
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 570px) {
+  .header-contacts-time,
+  .header-contacts .header-contacts-price-list,
+  .header-contacts-phone {
+    display: none;
+  }
+
+  .header-contacts .header-contacts-callback .phone {
+    display: block;
+  }
+
   .section-1 {
     height: auto;
   }
@@ -1066,6 +1149,12 @@
     margin-bottom: 1em;
   }
 
+  .section-4 .items .item {
+    width: 188px;
+    -ms-flex-preferred-size: 188px;
+        flex-basis: 188px;
+  }
+
   .section-address .address {
     font-size: 16px;
     padding: 75px 0;
@@ -1074,6 +1163,29 @@
   .section-address .address h2 {
     font-size: 20px;
     padding-bottom: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-contacts-time {
+    display: block;
+  }
+
+  .header-contacts .header-left-nav .header-contacts-brand {
+    font-size: 2.5em;
+    padding-bottom: 0.25em;
+  }
+
+  .header-contacts .header-contacts-callback.btn.btn-info {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .header-contacts-time {
+    display: block;
+    margin-bottom: 1em;
   }
 }
 

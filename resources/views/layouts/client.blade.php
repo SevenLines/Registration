@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset("css/mosrvp.css") }}">
     <div class="container header-contacts">
         <div class="header-contacts-inner">
-            <div style="flex-grow: 7;display: flex;justify-content: space-between;align-items: center;">
+            <div  class="header-left-nav">
                 <a class="header-contacts-brand" href="/">МОСРВП.РФ</a>
                 <div class="header-contacts-price-list" href="#">
                     <i class="icon-price" style="font-size: 22px"></i>
@@ -20,11 +20,14 @@
             </div>
             <div class="header-contacts-contacts">
                 <div class="header-contacts-phone">+7 926 424 3334</div>
-                <button class="header-contacts-callback btn btn-info">ОБРАТНЫЙ ЗВОНОК</button>
+                <button class="header-contacts-callback btn btn-info">
+                    ОБРАТНЫЙ ЗВОНОК
+                    <div class="phone">+7 926 424 3334</div>
+                </button>
             </div>
-            <div class="header-contacts-language-button" style="">
-                <div class=" btn-round-sm btn-round"></div>
-            </div>
+            {{--<div class="header-contacts-language-button" style="">--}}
+                {{--<div class=" btn-round-sm btn-round"></div>--}}
+            {{--</div>--}}
         </div>
     </div>
     <!--</nav>-->
@@ -66,34 +69,38 @@
     <div class="content">
         @yield("body_content")
         <section class="section-address">
-            <div class="row">
-                <div class="address col-lg-4 col-md-6">
-                    <div>
-                        <h2>Как нас найти</h2>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="address col-lg-4 col-md-6">
+                        <div>
+                            <h2>Как нас найти</h2>
 
-                        <p></p>
-                        <strong>Адрес</strong><br>
-                        <span>Измайловское шоссе д. 71 корп. 4г-д
+                            <p></p>
+                            <strong>Адрес</strong><br>
+                            <span>Измайловское шоссе д. 71 корп. 4г-д
                     <br>(Метро Партизанская)</span><br>
 
-                        <p></p>
-                        <strong>Телефон</strong><br>
-                        <span>+7 926 424 3334</span><br>
+                            <p></p>
+                            <strong>Телефон</strong><br>
+                            <span>+7 926 424 3334</span><br>
 
-                        <p></p>
-                        <strong>Email</strong><br>
-                        <span>mosrvp77@gmail.com</span><br>
+                            <p></p>
+                            <strong>Email</strong><br>
+                            <span>mosrvp77@gmail.com</span><br>
+                        </div>
                     </div>
-                </div>
-                <div class="map col-lg-4 col-md-6">
-                    @if(\Settings::get("yandex_map")){!!\Settings::get("yandex_map")!!}@endif
-                </div>
-                <div class="address-image col-lg-4 col-md-12">
-                    <div class="row">
-                        @if(\Settings::get("address_image"))
-                            <img src="/uploads/{{\Settings::get("address_image")}}"
-                                 alt="{{\Settings::get("full_address")}}">
-                        @endif
+                    <div class="map col-lg-4 col-md-6">
+                        <div class="row">
+                            @if(\Settings::get("yandex_map")){!!\Settings::get("yandex_map")!!}@endif
+                        </div>
+                    </div>
+                    <div class="address-image col-lg-4 col-md-12">
+                        <div class="row">
+                            @if(\Settings::get("address_image"))
+                                <img src="/uploads/{{\Settings::get("address_image")}}"
+                                     alt="{{\Settings::get("full_address")}}">
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,7 +112,7 @@
                         <h2>мосрвп.рф</h2>
                         <div class="phone-info">
                             <div class="phone">+7 926 424 3334</div>
-                            <div>
+                            <div >
                                 <button class="btn btn-info btn-callback">ОБРАТНЫЙ ЗВОНОК</button>
                             </div>
                         </div>
