@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset("css/mosrvp.css") }}">
     <div class="container header-contacts">
         <div class="header-contacts-inner">
-            <div  class="header-left-nav">
+            <div class="header-left-nav">
                 <a class="header-contacts-brand" href="/">МОСРВП.РФ</a>
                 <div class="header-contacts-price-list" href="#">
                     <i class="icon-price" style="font-size: 22px"></i>
@@ -26,7 +26,7 @@
                 </button>
             </div>
             {{--<div class="header-contacts-language-button" style="">--}}
-                {{--<div class=" btn-round-sm btn-round"></div>--}}
+            {{--<div class=" btn-round-sm btn-round"></div>--}}
             {{--</div>--}}
         </div>
     </div>
@@ -89,10 +89,8 @@
                             <span>mosrvp77@gmail.com</span><br>
                         </div>
                     </div>
-                    <div class="map col-lg-4 col-md-6">
-                        <div class="row">
-                            @if(\Settings::get("yandex_map")){!!\Settings::get("yandex_map")!!}@endif
-                        </div>
+                    <div class="map col-lg-4 col-md-6" style="padding: 0;padding-right: 1px">
+                        @if(\Settings::get("yandex_map")){!!\Settings::get("yandex_map")!!}@endif
                     </div>
                     <div class="address-image col-lg-4 col-md-12">
                         <div class="row">
@@ -112,7 +110,7 @@
                         <h2>мосрвп.рф</h2>
                         <div class="phone-info">
                             <div class="phone">+7 926 424 3334</div>
-                            <div >
+                            <div>
                                 <button class="btn btn-info btn-callback">ОБРАТНЫЙ ЗВОНОК</button>
                             </div>
                         </div>
