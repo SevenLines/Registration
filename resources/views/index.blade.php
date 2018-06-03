@@ -65,7 +65,7 @@
                     </a>
                     <a href="services/grazhdanstvo" class="service">
                         <i class="icon-passport"></i>
-                        <div  class="label">
+                        <div class="label">
                             гражданство
                         </div>
                     </a>
@@ -87,9 +87,9 @@
                 <div class="col-lg-6 col-sm-12">
                     <h2>Миграционные<br>услуги</h2>
                     <div class="description">
-                        <div class="description-dash">
-                            <div class="description-dash-symbol"></div>
-                        </div>
+                        {{--<div class="description-dash">--}}
+                            {{--<div class="description-dash-symbol"></div>--}}
+                        {{--</div>--}}
                         <div class="description-text">
                             Вам не придётся вникать в юридические аспекты – мы решим ваши проблемы прозрачно и
                             честно.
@@ -103,23 +103,39 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-sm-12">
                     <div class="form">
-                        <h3>ОТПРАВЬТЕ ЗАЯВКУ ПРЯМО СЕЙЧАС И ПОЛУЧИТЕ СКИДКУ НА НАШИ УСЛУГИ!</h3>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя">
-                            <input type="text" class="form-control" placeholder="E-mail или телефон">
-                        </div>
-                        <button class="btn btn-info float-right">Оставить заявку</button>
-                        <small>
-                            Нажимая «Оставить заявку» вы подтверждаете, что ознакомлены с Политикой
-                            конфиденциальности и даете свое согласие на сбор и обработку персональных данных.
-                        </small>
+                        <form action="{{ route("addquery") }}" method="POST" role="form">
+                            <h3>ОТПРАВЬТЕ ЗАЯВКУ ПРЯМО СЕЙЧАС И ПОЛУЧИТЕ СКИДКУ НА НАШИ УСЛУГИ!</h3>
+                            <div class="form-group">
+                                <input type="text" required="required" name="name" class="form-control"
+                                       placeholder="Ваше имя">
+                                <input type="text" required="required" name="phone" class="form-control"
+                                       placeholder="E-mail или телефон">
+                            </div>
+                            <button type="submit" onclick="reachGoal('order'); return true;"
+                                    class="btn btn-info float-right">Оставить заявку
+                            </button>
+                            <small>
+                                Нажимая «Оставить заявку» вы подтверждаете, что ознакомлены с
+                                <a class="privacy-link" data-toggle="modal" href="#modal-privacy"
+                                   style="color: white; text-decoration: underline">Политикой конфиденциальности</a>
+                                и даете свое согласие на сбор и обработку персональных данных.
+                            </small>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <section class="section-4">
-        <h2>Наши услуги</h2>
+        <h2>Все наши услуги</h2>
+        <div class="buttons">
+            <div class="btn-round">
+                <span class="">&lt;</span>
+            </div>
+            <div class="btn-round">
+                <span class="">&gt;</span>
+            </div>
+        </div>
         <div class="items">
             <div class="item">
                 <img src="images/Layer%2031.png" alt="">
@@ -142,16 +158,16 @@
                 <img src="images/Layer%2035.png" alt="">
             </div>
         </div>
-        {{--<div class="buttons">--}}
-            {{--<div class="btn-round">--}}
-                {{--<span class="">&lt;</span>--}}
-            {{--</div>--}}
-            {{--<div class="btn-round">--}}
-                {{--<span class="">&gt;</span>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+        <div class="buttons">
+        <div class="btn-round">
+        <span class="">&lt;</span>
+        </div>
+        <div class="btn-round">
+        <span class="">&gt;</span>
+        </div>
+        </div>
     </section>
-    <section class="section-5">
+    <section class="section-5 d-none d-md-block">
         <div class="container">
             <h2>Наши принципы</h2>
             <div class="items">
@@ -159,21 +175,20 @@
                     <div class="col-md-6 item item-durable">
                         <h3>Надежно</h3>
                         <div>
-                            Управление политическими конфликтами символизирует либерализм. Политическое учение
-                            Аристотеля
-                            интегрирует христианско-демократический национализм. Многопартийная система, особенно в
-                            условиях
-                            политической нестабильности, доказывает механизм власти.
+                            Мы работаем честно и добросовестно. Профессиональное *оказание миграционных услуг*
+                            осуществляем с помощью исключительно легальных средств и способов. Наши юристы работают,
+                            руководствуясь только действующим законодательством РФ, и поэтому выполняют заказы
+                            доверителей в кратчайшие сроки. Даже в самых запутанных миграционных ситуациях мы всегда
+                            побеждаем!
                         </div>
                     </div>
                     <div class="col-md-6 item item-guard">
                         <h3>Безопасно</h3>
                         <div>
-                            Управление политическими конфликтами символизирует либерализм. Политическое учение
-                            Аристотеля
-                            интегрирует христианско-демократический национализм. Многопартийная система, особенно в
-                            условиях
-                            политической нестабильности, доказывает механизм власти.
+                            Наш *центр миграционных услуг* «МосРВП» сотрудничает с клиентами на основе письменного
+                            договора, имеющего правовое обоснование. Обратившиеся к нам доверители могут не
+                            беспокоиться: их деньги не пропадут, и документы будут оформлены согласно действующим
+                            законам Российской Федерации.
                         </div>
                     </div>
                 </div>
@@ -181,21 +196,18 @@
                     <div class="col-md-6 item item-cash">
                         <h3>Выгодно</h3>
                         <div>
-                            Трехчастная фактурная форма полифигурно варьирует структурный громкостнoй прогрессийный
-                            период.
-                            Явление культурологического порядка, следовательн.3о, случайно. Аккорд изящно
-                            трансформирует
-                            кризис
-                            жанра.
+                            МЦ «МосРВП» оказывает *миграционные услуги в Москве,* предлагая своим доверителям наиболее
+                            выгодные варианты решения проблем. Наш индивидуальный подход к каждому клиенту и гибкая
+                            система формирования цен позволяет подобрать для вас недорогой способ официального
+                            оформления документов. Вы будете довольны ценовой доступностью наших услуг!
                         </div>
                     </div>
                     <div class="col-md-6 item item-secure">
                         <h3>Конфинденциально</h3>
                         <div>
-                            Харизматическое лидерство, с другой стороны, последовательно. Бихевиоризм предсказуем.
-                            Англо-американский тип политической культуры теоретически возможен. Отметим также, что
-                            авторитаризм
-                            традиционен.
+                            Мы гарантируем обеспечение конфиденциальности всей информации, которую нам предоставляют
+                            заказчики наших услуг. Обязуемся использовать полученные сведения только для оказания
+                            юридической помощи в рамках договора.
                         </div>
                     </div>
                 </div>
@@ -207,31 +219,31 @@
     {{--<hr>--}}
 
     {{--<div class="documents-list">--}}
-        {{--@foreach ($services as $record)--}}
-            {{--<a href="/services/{{$record->alias}}" class="document-item col-md-3 col-sm-4 col-xs-6">--}}
-                {{--<div class="inner">--}}
-                    {{--<img src={{ asset($record->imageUrl) }} alt="">--}}
-                    {{--<div class="description">{{ $record->title  }}</div>--}}
-                {{--</div>--}}
-            {{--</a>--}}
-        {{--@endforeach--}}
-        {{--<div class="clearfix"></div>--}}
+    {{--@foreach ($services as $record)--}}
+    {{--<a href="/services/{{$record->alias}}" class="document-item col-md-3 col-sm-4 col-xs-6">--}}
+    {{--<div class="inner">--}}
+    {{--<img src={{ asset($record->imageUrl) }} alt="">--}}
+    {{--<div class="description">{{ $record->title  }}</div>--}}
+    {{--</div>--}}
+    {{--</a>--}}
+    {{--@endforeach--}}
+    {{--<div class="clearfix"></div>--}}
     {{--</div>--}}
 
     {{--<div class="location-info">--}}
-        {{--<hr>--}}
+    {{--<hr>--}}
 
-        {{--<div class="row" >--}}
-            {{--<div class="col-md-6 col-sm-12 col-xs-12 map">--}}
-                {{--@if(\Settings::get("yandex_map")){!!\Settings::get("yandex_map")!!}@endif--}}
-            {{--</div>--}}
-            {{--<div class="col-md-6 col-sm-12 col-xs-12 image">--}}
-                {{--@if(\Settings::get("address_image"))--}}
-                    {{--<img src="/uploads/{{\Settings::get("address_image")}}"  alt="{{\Settings::get("full_address")}}">--}}
-                {{--@endif--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<h3>Мы находимся по адресу: <strong>{{\Settings::get("full_address")}}</strong></h3>--}}
+    {{--<div class="row" >--}}
+    {{--<div class="col-md-6 col-sm-12 col-xs-12 map">--}}
+    {{--@if(\Settings::get("yandex_map")){!!\Settings::get("yandex_map")!!}@endif--}}
+    {{--</div>--}}
+    {{--<div class="col-md-6 col-sm-12 col-xs-12 image">--}}
+    {{--@if(\Settings::get("address_image"))--}}
+    {{--<img src="/uploads/{{\Settings::get("address_image")}}"  alt="{{\Settings::get("full_address")}}">--}}
+    {{--@endif--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--<h3>Мы находимся по адресу: <strong>{{\Settings::get("full_address")}}</strong></h3>--}}
 
     {{--</div>--}}
 @endsection()

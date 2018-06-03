@@ -3,11 +3,11 @@
 @section("title", $service->header_title)
 
 @section("meta_description")
-@if($service->meta_description){{$service->meta_description}}@else{{\Settings::get("description")}}@endif
+    @if($service->meta_description){{$service->meta_description}}@else{{\Settings::get("description")}}@endif
 @endsection
 
 @section("meta_keywords")
-@if($service->meta_keywords){{$service->meta_keywords}}@else{{\Settings::get("keywords")}}@endif
+    @if($service->meta_keywords){{$service->meta_keywords}}@else{{\Settings::get("keywords")}}@endif
 @endsection
 
 @section("body_content")
@@ -18,8 +18,8 @@
                     <img src="{{$service->imageUrl}}" alt="">
                 </div>
                 <div class="description2">
-                    <div class="title-breadcrumb">Главная -> Услуги -> Сертификат/тестирование</div>
-                    <div class="title">Сертификат/тестирование</div>
+                    <div class="title-breadcrumb d-none d-md-block">Главная -> Услуги -> {{$service->title}}</div>
+                    <div class="title">{{$service->title}}</div>
                     <div class="short-description">
                         Получение сертификата о знании русского <br>
                         языка в кратчайшие сроки - 100%
@@ -49,12 +49,12 @@
                                         {{$s->title}}
                                     </div>
                                     <div class="item-button">
-                                        <button class="btn btn-danger">ОСТАВИТЬ ЗАЯВКУ</button>
+                                        <button class="btn btn-danger" data-toggle="modal" href="#phone-modal">ОСТАВИТЬ ЗАЯВКУ</button>
                                     </div>
                                 </div>
                                 <div class="item-sum">
                                     {{--<div class="small">от</div>--}}
-                                    <div>{{$s->price}}</div>
+                                    {{$s->price}}
                                     {{--<div class="small">руб</div>--}}
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                             @foreach($service->subServices as $s)
                                 @if($loop->index == 0)
                                     @foreach($s->documentsList as $d)
-                                    <div class="documents-item">{{$d}}</div>
+                                        <div class="documents-item">{{$d}}</div>
                                     @endforeach
                                 @endif
                             @endforeach()
@@ -85,17 +85,19 @@
                     </div>
 
                     <div class="form">
+                        <form action="{{ route("addquery") }}" method="POST" role="form">
                         <h3>Бесплатная<br>консультация</h3>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Ваше имя">
                             <input type="text" class="form-control" placeholder="E-mail или телефон">
                         </div>
-                        <button class="btn btn-primary">Отправить</button>
+                        <button class="btn btn-primary" type="submit" onclick="reachGoal('order'); return true;">Отправить</button>
                         <small>
                             Нажимая «Отправить заявку» вы подтверждаете, что ознакомлены с Политикой конфиденциальности
                             и
                             даете свое согласие на сбор и обработку персональных данных.
                         </small>
+                        </form>
                     </div>
 
                 </div>
@@ -108,8 +110,8 @@
     {{--@include("partials.counter")--}}
     {{--<hr>--}}
     {{--<div class="service-content">--}}
-        {{--{!!$service->description!!}--}}
-        {{--<p></p>--}}
+    {{--{!!$service->description!!}--}}
+    {{--<p></p>--}}
     {{--</div>--}}
     {{--<hr style="margin-top: 0.25em">--}}
     {{--<a class="btn btn-warning" href="/">К списку услуг</a>--}}

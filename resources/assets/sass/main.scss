@@ -40,6 +40,10 @@ $dark-color: #282931;
   font-weight: bold;
   padding: 0;
 
+  .header-contacts-phone {
+    text-decoration: underline;
+  }
+
   .header-contacts-callback {
     .phone {
       display: none;
@@ -216,6 +220,7 @@ $dark-color: #282931;
 
 .section-1 {
   background: url("/images/background_herb.jpg");
+  background-position: center;
   color: white;
   height: 550px;
   font-size: 20px;
@@ -594,6 +599,7 @@ $dark-color: #282931;
         overflow: hidden;
         border-radius: 50%;
         margin-right: 42px;
+        flex-shrink: 0;
       }
 
       .title-breadcrumb {
@@ -702,7 +708,7 @@ $dark-color: #282931;
       //background-color: silver;
       width: 382px;
       margin-left: 30px;
-      margin-top: -100px;
+      margin-top: -50px;
 
       h3 {
         text-transform: uppercase;
@@ -945,15 +951,55 @@ $dark-color: #282931;
 
   }
 
+  .section-breadcrumb {
+    height: auto;
+    padding: 25px 0;
+    .container {
+      padding: 0 25px;
+      max-width: 100%;
+      .row {
+        margin: 0;
+        .image {
+          align-self: center;
+          width: 200px;
+          height: 200px;
+        }
+      }
+      .description2 {
+        .title-breadcrumb, .short-description {
+          font-size: 16px;
+        }
+        .title {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
+  .section-info {
+
+    .container {
+      .row {
+        margin: 0;
+        .container-offset {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 570px) {
-  .header-contacts-time, .header-contacts .header-contacts-price-list, .header-contacts-phone {
+  .header-contacts-time, .header-contacts .header-contacts-price-list {
     display: none;
   }
 
-  .header-contacts .header-contacts-callback .phone {
-    display: block;
+  .header-contacts-contacts {
+    .header-contacts-phone {
+      margin-bottom: 1em;
+      padding: 0.25em;
+    }
+    flex-direction: column;
   }
 
   .section-1 {
@@ -1048,6 +1094,54 @@ $dark-color: #282931;
     }
   }
 
+  .section-info {
+    .container {
+      .row {
+        .discount {
+          margin-top: 0;
+          justify-content: center;
+          flex-wrap: wrap;
+          .discount-text {
+            margin-left: 0;
+            font-size: 15px;
+          }
+        }
+        .service-items {
+          .item {
+            padding: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            .item-description {
+              text-align: center;
+              padding-bottom: 0.5em;
+            }
+            .item-button {
+              text-align: center;
+            }
+            .item-sum {
+              justify-content: center;
+              padding-right: 0;
+              flex-basis: 200px;
+              margin-top: 0.5em;
+            }
+          }
+        }
+        .content {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .section-breadcrumb {
+    .container {
+      .description2 {
+        .title {
+          margin-top: 0;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -1057,6 +1151,9 @@ $dark-color: #282931;
   }
 
   .header-contacts {
+    .header-contacts-phone {
+      align-self: flex-start;
+    }
     .header-left-nav {
       //justify-content: center;
       .header-contacts-brand {
@@ -1069,6 +1166,21 @@ $dark-color: #282931;
       width: 100%;
     }
 
+  }
+
+  .section-breadcrumb {
+    .container {
+      .row {
+        justify-content: center;
+        flex-wrap: wrap;
+        .image {
+          margin-right: 0;
+        }
+        .description2 {
+          text-align: center;
+        }
+      }
+    }
   }
 }
 

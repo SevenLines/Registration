@@ -19,10 +19,10 @@
                 </div>
             </div>
             <div class="header-contacts-contacts">
-                <div class="header-contacts-phone">+7 926 424 3334</div>
-                <button class="header-contacts-callback btn btn-info">
+                <a class="header-contacts-phone" href="tel:{{\Settings::get("phone")}}">{{\Settings::get("phone")}}</a>
+                <button class="header-contacts-callback btn btn-info" data-toggle="modal" href="#phone-modal" >
                     ОБРАТНЫЙ ЗВОНОК
-                    <div class="phone">+7 926 424 3334</div>
+                    {{--<div class="phone">+7 926 424 3334</div>--}}
                 </button>
             </div>
             {{--<div class="header-contacts-language-button" style="">--}}
@@ -111,7 +111,7 @@
                         <div class="phone-info">
                             <div class="phone">+7 926 424 3334</div>
                             <div>
-                                <button class="btn btn-info btn-callback">ОБРАТНЫЙ ЗВОНОК</button>
+                                <button class="btn btn-info btn-callback" data-toggle="modal" href="#phone-modal">ОБРАТНЫЙ ЗВОНОК</button>
                             </div>
                         </div>
                     </div>
