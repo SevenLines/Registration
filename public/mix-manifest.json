@@ -4,5 +4,6 @@
   "/js/admin/app.js": "/js/admin/app.js",
   "/js/admin/app.js.map": "/js/admin/app.js.map",
   "/css/app.css.map": "/css/app.css.map",
-  "/css/main.css": "/css/main.css"
+  "/css/main.css": "/css/main.css",
+  "/css/main.css.map": "/css/main.css.map"
 }
