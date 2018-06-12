@@ -59,7 +59,22 @@
                                 </div>
                             </div>
                         @endforeach()
+                    </div>
 
+                    <div class="documents-inner">
+                        <div class="documents-icon">
+                            <i class="icon-document-2"></i>
+                        </div>
+                        <h3>Список документов</h3>
+                        <div class="documents-items">
+                            @foreach($service->subServices as $s)
+                                @if($loop->index == 0)
+                                    @foreach($s->documentsList as $d)
+                                        <div class="documents-item">{{$d}}</div>
+                                    @endforeach
+                                @endif
+                            @endforeach()
+                        </div>
                     </div>
 
                     <div class="content">

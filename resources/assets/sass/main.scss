@@ -722,6 +722,45 @@ $dark-color: #282931;
         padding-bottom: 120px;
       }
     }
+
+    .documents-inner {
+      display: none;
+    }
+    .documents {
+      display: flex;
+    }
+
+    .documents, .documents-inner {
+      padding: 1em 2em 2.5em;
+      background-color: #eeeeee;
+      flex-direction: column;
+      margin-bottom: 30px;
+
+      .documents-icon {
+        margin: 30px 0;
+        align-self: center;
+        background-color: #282931;
+        color: white;
+        width: 123px;
+        height: 123px;
+        font-size: 50px;
+        padding-right: 10px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .documents-items {
+        .documents-item {
+          margin: 0.5em 0;
+          &:before {
+            content: '— ';
+          }
+        }
+      }
+    }
+
     .container-offset {
       flex-shrink: 0;
       //background-color: silver;
@@ -736,37 +775,7 @@ $dark-color: #282931;
         font-size: 20px;
       }
 
-      .documents {
-        padding: 1em 2em 2.5em;
-        background-color: #eeeeee;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 30px;
 
-        .documents-icon {
-          margin: 30px 0;
-          align-self: center;
-          background-color: #282931;
-          color: white;
-          width: 123px;
-          height: 123px;
-          font-size: 50px;
-          padding-right: 10px;
-          border-radius: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .documents-items {
-          .documents-item {
-            margin: 0.5em 0;
-            &:before {
-              content: '— ';
-            }
-          }
-        }
-      }
 
       .form {
         $form-color: #3f65a5;
@@ -1004,6 +1013,14 @@ $dark-color: #282931;
         .container-offset {
           display: none;
         }
+        .documents-inner {
+          margin-top: 1em;
+          display: flex;
+          padding: 1em;
+          .documents-icon {
+            display: none;
+          }
+        }
       }
     }
   }
@@ -1023,6 +1040,7 @@ $dark-color: #282931;
   }
 
   .section-1 {
+    background-image: url("/images/background_herb_small.jpg");
     .container {
     }
     height: auto;
