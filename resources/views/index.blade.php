@@ -122,10 +122,10 @@
         </div>
         <div class="items">
             @foreach($sorted_services as $s)
-                <div class="item">
+                <a class="item" href="/services/{{$s->alias}}" >
                     <img src="{{$s->imageUrl}}" alt="">
                     <div class="item-title">{{$s->title}}</div>
-                </div>
+                </a>
             @endforeach
         </div>
         <div class="buttons">
