@@ -35,6 +35,11 @@ use Illuminate\Support\Facades\Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereMetaDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereMetaKeywords($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereMetaTitle($value)
+ * @property int|null $index_page_order
+ * @property string|null $small_description
+ * @property-read mixed $header_title
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereIndexPageOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereSmallDescription($value)
  */
 class Service extends Model
 {

@@ -103,6 +103,7 @@ class ServiceController extends Controller
                 $form->text("alias", "URL");
                 $form->image("image", "Изображение")->move("images/services")->uniqueName();
                 $form->ckeditor('description', "Описание");
+                $form->textarea('small_description', "краткое описание");
 
             })->tab("Услуги", function (Form $form) {
                 $form->hasMany("subservices", "", function (Form\NestedForm $form) {

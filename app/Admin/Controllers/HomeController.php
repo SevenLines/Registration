@@ -54,6 +54,7 @@ class HomeController extends Controller
                     $form->ckeditor("index_text_security", "безопасно");
                     $form->ckeditor("index_text_cash", "выгодно");
                     $form->ckeditor("index_text_secure", "конфинденциально");
+                    $form->text("discount_size", "Размер скидки");
                     $form->text("google_analytics", "ID google аналитки");
 
                     $column->append((new Box("Настройки", $form))->style('success'));
@@ -95,6 +96,7 @@ class HomeController extends Controller
         \Settings::set("index_text_security", $data['index_text_security']);
         \Settings::set("index_text_cash", $data['index_text_cash']);
         \Settings::set("index_text_secure", $data['index_text_secure']);
+        \Settings::set("discount_size", $data['discount_size']);
 
         if (array_key_exists("address_image", $data)) {
             \Settings::set("address_image", $imageField->prepare($data["address_image"]));

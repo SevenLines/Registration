@@ -18,11 +18,10 @@
                     <img src="{{$service->imageUrl}}" alt="">
                 </div>
                 <div class="description2">
-                    <div class="title-breadcrumb d-none d-md-block">Главная -> Услуги -> {{$service->title}}</div>
+                    <div class="title-breadcrumb d-none d-md-block">Главная <i class="fa fa-chevron-right"></i> Услуги <i class="fa fa-chevron-right"></i> {{$service->title}}</div>
                     <div class="title">{{$service->title}}</div>
                     <div class="short-description">
-                        Получение сертификата о знании русского <br>
-                        языка в кратчайшие сроки - 100%
+                       {{$service->small_description}}
                     </div>
                 </div>
             </div>
@@ -34,7 +33,7 @@
             <div class="row">
                 <div class="text">
                     <div class="discount">
-                        <div class="discount-sum">-15%</div>
+                        <div class="discount-sum">{{\Settings::get("discount_size")}}</div>
                         <div class="discount-text">
                             отправьте заявку прямо сейчас <br>
                             и получите скидку на наши услуги
