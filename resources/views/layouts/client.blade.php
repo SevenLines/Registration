@@ -126,7 +126,8 @@
                             <a class="btn btn-link" style="color:#8f5db7" href="viber://add?number=79264243334">
                                 <i class="fab fa-2x fa-viber"></i>
                             </a>
-                            <a class="btn btn-link" style="color: #5f8cd8" href="https://www.facebook.com/profile.php?id=100025110527652">
+                            <a class="btn btn-link" style="color: #5f8cd8"
+                               href="https://www.facebook.com/profile.php?id=100025110527652">
                                 <i class="fab fa-2x fa-facebook"></i>
                             </a>
                             <a class="btn btn-link" style="color: white" href="https://vk.com/public163939009">
@@ -195,9 +196,15 @@
 
     <script>
         $(function () {
+            let $el = $(".navbar-menu");
             $(".navbar-menu .navbar-nav-hamburger").click(function () {
-                $(this).siblings(".items").slideToggle('fast');
-            })
+                $el.find(".items").slideToggle('fast');
+            });
+            $(document).mouseup(function (e) {
+                if (!$el.is(e.target) && $el.has(e.target).length === 0) {
+                    $el.find(".items").slideUp('fast');
+                }
+            });
         })
     </script>
 @endsection
