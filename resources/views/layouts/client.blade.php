@@ -123,7 +123,7 @@
                                href="https://api.whatsapp.com/send?phone=+79264243334">
                                 <i class="fab fa-2x fa-whatsapp"></i>
                             </a>
-                            <a class="btn btn-link" style="color:#8f5db7" href="viber://chat?number=+79264243334">
+                            <a class="btn btn-link" style="color:#8f5db7" href="viber://add?number=79264243334">
                                 <i class="fab fa-2x fa-viber"></i>
                             </a>
                             <a class="btn btn-link" style="color: #5f8cd8" href="https://www.facebook.com/profile.php?id=100025110527652">
@@ -132,7 +132,7 @@
                             <a class="btn btn-link" style="color: white" href="https://vk.com/public163939009">
                                 <i class="fab fa-2x fa-vk"></i>
                             </a>
-                            <a class="btn btn-link" style="color: #0088cc" href="tg://+79264243334">
+                            <a class="btn btn-link" style="color: #0088cc" href="tg://resolve?domain=79264243334">
                                 <i class="fab fa-2x fa-telegram"></i>
                             </a>
                         </div>
