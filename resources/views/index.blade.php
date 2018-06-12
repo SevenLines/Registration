@@ -207,13 +207,14 @@
     <script>
         $(function () {
             let $el = $(".section-4 .items");
-            let width = 228 + 8;
             $(".section-4 .buttons .btn-next").click(function () {
+                let width = $el.find(".item").width() + 8;
                 $el.animate({
                     scrollLeft: Math.floor(($el.scrollLeft() + width) / width) * width
                 }, 100)
-            })
+            });
             $(".section-4 .buttons .btn-previous").click(function () {
+                let width = $el.find(".item").width() + 8;
                 $el.animate({
                     scrollLeft: Math.floor(($el.scrollLeft() - width) / width) * width
                 }, 100)
