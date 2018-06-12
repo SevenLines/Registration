@@ -431,11 +431,22 @@ $dark-color: #282931;
       }
     }
   }
+
   .buttons {
     display: flex;
     justify-content: center;
     .btn-round {
       margin: 0 6px;
+      -webkit-transition: all .2s;
+      -moz-transition: all .2s;
+      -ms-transition: all .2s;
+      -o-transition: all .2s;
+      transition: all .2s;
+      cursor: pointer;
+      user-select: none;
+      &:hover {
+        box-shadow: 0 0 4px silver;
+      }
     }
   }
 }
@@ -872,20 +883,7 @@ $dark-color: #282931;
 
   .section-4 {
     margin-top: 69px;
-    .buttons {
-      .btn-round {
-        -webkit-transition: all .2s;
-        -moz-transition: all .2s;
-        -ms-transition: all .2s;
-        -o-transition: all .2s;
-        transition: all .2s;
-        cursor: pointer;
-        user-select: none;
-        &:hover {
-          box-shadow: 0 0 4px silver;
-        }
-      }
-    }
+
     .items {
       margin: 46px 0;
       .item {
