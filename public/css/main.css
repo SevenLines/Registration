@@ -546,7 +546,7 @@
 
 .section-address .address {
   background-color: #3f65a5;
-  padding: 116px 0;
+  padding: 116px 25px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -1048,7 +1048,7 @@
 
   .section-address .address {
     font-size: 20px;
-    padding: 75px 0;
+    padding: 75px 25px;
   }
 
   .section-address .address h2 {
@@ -1246,7 +1246,7 @@
 
   .section-address .address {
     font-size: 16px;
-    padding: 75px 0;
+    padding: 75px 25px;
   }
 
   .section-address .address h2 {
