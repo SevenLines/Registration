@@ -15,12 +15,12 @@
                 </div>
                 <div class="header-contacts-time">
                     <small>Ежедневно</small>
-                    <br>с 09-00 до 21-00
+                    <br>{{\Settings::get("working_time")}}
                 </div>
             </div>
             <div class="header-contacts-contacts">
                 <a class="header-contacts-phone" href="tel:{{\Settings::get("phone")}}">{{\Settings::get("phone")}}</a>
-                <button class="header-contacts-callback btn btn-info" data-toggle="modal" href="#phone-modal" >
+                <button class="header-contacts-callback btn btn-info" data-toggle="modal" href="#phone-modal">
                     ОБРАТНЫЙ ЗВОНОК
                     {{--<div class="phone">+7 926 424 3334</div>--}}
                 </button>
@@ -77,16 +77,18 @@
 
                             <p></p>
                             <strong>Адрес</strong><br>
-                            <span>Измайловское шоссе д. 71 корп. 4г-д
-                    <br>(Метро Партизанская)</span><br>
+                            {{\Settings::get("full_address")}}
+                            <br>
 
                             <p></p>
                             <strong>Телефон</strong><br>
-                            <span>+7 926 424 3334</span><br>
+                            <a style="color: white"
+                               href="tel:{{\Settings::get("phone")}}">{{\Settings::get("phone")}}</a><br>
 
                             <p></p>
                             <strong>Email</strong><br>
-                            <span>mosrvp77@gmail.com</span><br>
+                            <span><a style="color: white"
+                                     href="mail:{{\Settings::get("email")}}">{{\Settings::get("email")}}</a></span><br>
                         </div>
                     </div>
                     <div class="map col-lg-4 col-md-6" style="padding: 0;padding-right: 1px">
@@ -109,10 +111,30 @@
                     <div class="contacts">
                         <h2>мосрвп.рф</h2>
                         <div class="phone-info">
-                            <div class="phone">+7 926 424 3334</div>
+                            <a class="phone" href="tel:{{\Settings::get("phone")}}">{{\Settings::get("phone")}}</a>
                             <div>
-                                <button class="btn btn-info btn-callback" data-toggle="modal" href="#phone-modal">ОБРАТНЫЙ ЗВОНОК</button>
+                                <button class="btn btn-info btn-callback" data-toggle="modal" href="#phone-modal">
+                                    ОБРАТНЫЙ ЗВОНОК
+                                </button>
                             </div>
+                        </div>
+                        <div class="btn-group contact-links">
+                            <a class="btn btn-link" style="color: #25d366"
+                               href="https://api.whatsapp.com/send?phone=+79264243334">
+                                <i class="fab fa-2x fa-whatsapp"></i>
+                            </a>
+                            <a class="btn btn-link" style="color:#8f5db7" href="viber://chat?number=+79264243334">
+                                <i class="fab fa-2x fa-viber"></i>
+                            </a>
+                            <a class="btn btn-link" style="color: #5f8cd8" href="https://www.facebook.com/profile.php?id=100025110527652">
+                                <i class="fab fa-2x fa-facebook"></i>
+                            </a>
+                            <a class="btn btn-link" style="color: white" href="https://vk.com/public163939009">
+                                <i class="fab fa-2x fa-vk"></i>
+                            </a>
+                            <a class="btn btn-link" style="color: #0088cc" href="tg://+79264243334">
+                                <i class="fab fa-2x fa-telegram"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="services">
@@ -170,4 +192,12 @@
     @include("partials.phone")
     @include("partials.form")
     @include("partials.privacy")
+
+    <script>
+        $(function () {
+            $(".navbar-menu .navbar-nav-hamburger").click(function () {
+                $(this).siblings(".items").slideToggle('fast');
+            })
+        })
+    </script>
 @endsection

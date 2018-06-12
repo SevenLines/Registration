@@ -5,6 +5,13 @@ $dark-color: #282931;
   font-size: 1.15em;
 }
 
+.contact-links {
+  margin-bottom: 1em;
+  .btn {
+    padding: 0.5em 1em;
+  }
+}
+
 .form {
   h3 {
     font-size: 22px;
@@ -162,9 +169,9 @@ $dark-color: #282931;
       .navbar-nav-hamburger {
         background-color: white;
       }
-      .items {
-        display: block;
-      }
+      //.items {
+      //  display: block;
+      //}
     }
 
     .items {
@@ -562,7 +569,7 @@ $dark-color: #282931;
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
-      height: 240px;
+      height: 300px;
       list-style: none;
       padding: 0;
       align-content: flex-start;
@@ -865,9 +872,24 @@ $dark-color: #282931;
 
   .section-4 {
     margin-top: 69px;
+    .buttons {
+      .btn-round {
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        -ms-transition: all .2s;
+        -o-transition: all .2s;
+        transition: all .2s;
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+          box-shadow: 0 0 4px silver;
+        }
+      }
+    }
     .items {
       margin: 46px 0;
       .item {
+        margin: 0.25em;
         width: 228px;
         flex-basis: 228px;
       }

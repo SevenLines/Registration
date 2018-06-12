@@ -4,6 +4,14 @@
   font-size: 1.15em;
 }
 
+.contact-links {
+  margin-bottom: 1em;
+}
+
+.contact-links .btn {
+  padding: 0.5em 1em;
+}
+
 .form {
   padding: 52px;
 }
@@ -186,10 +194,6 @@
 
 .navbar .navbar-menu:hover .navbar-nav-hamburger {
   background-color: white;
-}
-
-.navbar .navbar-menu:hover .items {
-  display: block;
 }
 
 .navbar .navbar-menu .items {
@@ -627,7 +631,7 @@
       flex-wrap: wrap;
   -ms-flex-direction: column;
       flex-direction: column;
-  height: 240px;
+  height: 300px;
   list-style: none;
   padding: 0;
   -ms-flex-line-pack: start;
@@ -975,11 +979,25 @@
     margin-top: 69px;
   }
 
+  .section-4 .buttons .btn-round {
+    transition: all .2s;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+
+  .section-4 .buttons .btn-round:hover {
+    box-shadow: 0 0 4px silver;
+  }
+
   .section-4 .items {
     margin: 46px 0;
   }
 
   .section-4 .items .item {
+    margin: 0.25em;
     width: 228px;
     -ms-flex-preferred-size: 228px;
         flex-basis: 228px;
