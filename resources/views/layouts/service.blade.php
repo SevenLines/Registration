@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="text">
                     <div class="discount">
-                        <div class="discount-sum">{{\Settings::get("discount_size")}}</div>
+                        <div class="discount-sum">{{$service->discount}}</div>
                         <div class="discount-text">
                             отправьте заявку прямо сейчас <br>
                             и получите скидку на наши услуги

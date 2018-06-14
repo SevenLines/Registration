@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css"
           integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous">
     <script src="{{ asset("js/jquery.form.min.js") }}"></script>
+    <script src="{{asset("js/hammer.min.js")}}"></script>
 
     <title>@yield('title', \Settings::get("meta_title"))</title>
 

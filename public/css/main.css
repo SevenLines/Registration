@@ -439,7 +439,7 @@
   display: flex;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .section-4 .items .item {
@@ -1003,6 +1003,7 @@
 
   .section-4 .items {
     margin: 46px 0;
+    overflow-x: auto;
   }
 
   .section-4 .items .item {

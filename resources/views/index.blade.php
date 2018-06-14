@@ -218,7 +218,7 @@
                 $el.animate({
                     scrollLeft: Math.floor(($el.scrollLeft() - width) / width) * width
                 }, 100)
-            })
+            });
         })
     </script>
 @endsection()

@@ -403,7 +403,7 @@ $dark-color: #282931;
     margin: 46px;
     display: flex;
     justify-content: space-between;
-    overflow-x: auto;
+    overflow-x: hidden;
     .item {
       margin: 0.25em;
       flex-basis: 329px;
@@ -896,6 +896,7 @@ $dark-color: #282931;
 
     .items {
       margin: 46px 0;
+      overflow-x: auto;
       .item {
         width: 228px;
         flex-basis: 228px;
