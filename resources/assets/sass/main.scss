@@ -75,6 +75,13 @@ $dark-color: #282931;
     -o-transition: all .3s;
     transition: all .3s;
     flex-shrink: 0;
+    a {
+      color: black;
+      text-decoration: none;
+      &:hover {
+        color: $danger-color;
+      }
+    }
     &:hover {
       color: $danger-color;
     }
@@ -174,7 +181,7 @@ $dark-color: #282931;
       //}
     }
 
-    .items {
+    .items-wrapper {
       display: none;
       position: absolute;
       right: 0;
@@ -198,6 +205,16 @@ $dark-color: #282931;
         font-weight: bold;
       }
     }
+  }
+}
+
+
+.services-all {
+  padding-top: 1em;
+  a {
+    margin-bottom: 0.5em;
+    //text-decoration: underline;
+    //color: $danger-color;
   }
 }
 

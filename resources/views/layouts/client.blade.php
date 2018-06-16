@@ -11,7 +11,7 @@
                 <a class="header-contacts-brand" href="/">МОСРВП.РФ</a>
                 <div class="header-contacts-price-list" href="#">
                     <i class="icon-price" style="font-size: 22px"></i>
-                    <span>Прайс-лист</span>
+                    <a href="/services/all">Прайс-лист</a>
                 </div>
                 <div class="header-contacts-time">
                     <small>Ежедневно</small>
@@ -22,12 +22,8 @@
                 <a class="header-contacts-phone" href="tel:{{\Settings::get("phone")}}">{{\Settings::get("phone")}}</a>
                 <button class="header-contacts-callback btn btn-info" data-toggle="modal" href="#phone-modal">
                     ОБРАТНЫЙ ЗВОНОК
-                    {{--<div class="phone">+7 926 424 3334</div>--}}
                 </button>
             </div>
-            {{--<div class="header-contacts-language-button" style="">--}}
-            {{--<div class=" btn-round-sm btn-round"></div>--}}
-            {{--</div>--}}
         </div>
     </div>
     <!--</nav>-->
@@ -55,11 +51,19 @@
                     <div class="navbar-nav-hamburger">
                         <i class="fas fa-bars fa-2x"></i>
                     </div>
+                    <div class="items-wrapper">
                     <div class="items">
                         @foreach ($services as $record)
                             <a href="/services/{{$record->alias}}" class="nav-item nav-link"
                                href="#">{{ $record->title  }}</a>
                         @endforeach
+                    </div>
+                    <div class="items" style="border-left: 1px solid black">
+                        <span class="nav-item nav-link" style="border-bottom: 1px solid black; color: white; background: black">Статьи</span>
+                        @foreach($articles as $article)
+                            <a href="/articles/{{$article->id}}" class="nav-item nav-link">{{$article->title}}</a>
+                        @endforeach
+                    </div>
                     </div>
                 </div>
             </div>
@@ -149,33 +153,8 @@
                                     <a href="/services/{{$record->alias}}" href="#">{{ $record->title  }}</a>
                                 </li>
                             @endforeach
-                            {{--<li class="services-item">СЕРТИФИКАТ ТЕСТИРОВАНИЕ</li>--}}
-                            {{--<li class="services-item">РВП</li>--}}
-                            {{--<li class="services-item">ВНЖ</li>--}}
-                            {{--<li class="services-item">ГРАЖДАНСТВО</li>--}}
-                            {{--<li class="services-item">Патент</li>--}}
-                            {{--<li class="services-item">Разрешение на работу</li>--}}
-                            {{--<li class="services-item">Въезд/выезд</li>--}}
-                            {{--<li class="services-item">Переводы</li>--}}
-                            {{--<li class="services-item">Медицинская страховка/ДМС</li>--}}
-                            {{--<li class="services-item">Медкомиссия</li>--}}
-                            {{--<li class="services-item">Приглашения</li>--}}
-                            {{--<li class="services-item">ИНН/СНИЛС</li>--}}
-                            {{--<li class="services-item">Загранпаспорт</li>--}}
-                            {{--<li class="services-item">Виза</li>--}}
-                            {{--<li class="services-item">Уведомления ФМС</li>--}}
                         </ul>
                     </div>
-                    <!--<div class="info">-->
-                    <!--<h3>Информация</h3>-->
-                    <!--<ul class="services">-->
-                    <!--<li class="services-item">О компании</li>-->
-                    <!--<li class="services-item">Статьи</li>-->
-                    <!--<li class="services-item">Вопросы/Ответы</li>-->
-                    <!--<li class="services-item">Контакты</li>-->
-                    <!---->
-                    <!--</ul>-->
-                    <!--</div>-->
                 </div>
             </div>
         </section>
@@ -198,11 +177,14 @@
         $(function () {
             let $el = $(".navbar-menu");
             $(".navbar-menu .navbar-nav-hamburger").click(function () {
-                $el.find(".items").slideToggle('fast');
+                $el.find(".items-wrapper").slideToggle('fast', function () {
+                    if ($(this).is(':visible'))
+                        $(this).css('display','flex');
+                });
             });
             $(document).mouseup(function (e) {
                 if (!$el.is(e.target) && $el.has(e.target).length === 0) {
-                    $el.find(".items").slideUp('fast');
+                    $el.find(".items-wrapper").slideUp('fast');
                 }
             });
         })

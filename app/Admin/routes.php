@@ -14,4 +14,5 @@ Route::group([
     $router->post('/', 'HomeController@updateSettings');
 
     $router->resource('services', ServiceController::class);
+    $router->resource('articles', ArticleController::class);
 });

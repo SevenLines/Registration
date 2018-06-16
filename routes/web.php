@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', "ServiceController@index")->name('index');
 Route::get('/services/all', "ServiceController@list_all")->name('service_list_all');
 Route::get('/services/{service}', "ServiceController@detail")->name('service_detail');
+Route::get('/articles/{article_id}', "ServiceController@article")->name('article_detail');
 
 
 Route::get('/admin', "AdminController@index")->name('admin');

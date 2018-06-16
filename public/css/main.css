@@ -79,6 +79,15 @@
       flex-shrink: 0;
 }
 
+.header-contacts .header-contacts-price-list a {
+  color: black;
+  text-decoration: none;
+}
+
+.header-contacts .header-contacts-price-list a:hover {
+  color: #ed3747;
+}
+
 .header-contacts .header-contacts-price-list:hover {
   color: #ed3747;
 }
@@ -196,7 +205,7 @@
   background-color: white;
 }
 
-.navbar .navbar-menu .items {
+.navbar .navbar-menu .items-wrapper {
   display: none;
   position: absolute;
   right: 0;
@@ -206,7 +215,7 @@
   padding: 20px 0;
 }
 
-.navbar .navbar-menu .items .nav-link {
+.navbar .navbar-menu .items-wrapper .nav-link {
   transition: all .1s;
   padding: 8px 32px;
   text-transform: uppercase;
@@ -214,9 +223,17 @@
   font-weight: bold;
 }
 
-.navbar .navbar-menu .items .nav-link:hover {
+.navbar .navbar-menu .items-wrapper .nav-link:hover {
   background-color: #282931;
   color: white;
+}
+
+.services-all {
+  padding-top: 1em;
+}
+
+.services-all a {
+  margin-bottom: 0.5em;
 }
 
 .btn-round {
