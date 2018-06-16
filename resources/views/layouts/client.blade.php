@@ -180,7 +180,7 @@
         $(function () {
             let $el = $(".navbar-menu");
             $(".navbar-menu .navbar-nav-hamburger").click(function () {
-                $el.find(".items-wrapper").slideToggle('fast', function () {
+                $el.find(".items-wrapper").toggle(0, function () {
                     if ($(this).is(':visible'))
                         $(this).css('display', 'flex');
                 });
