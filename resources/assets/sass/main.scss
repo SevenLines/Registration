@@ -189,6 +189,15 @@ $dark-color: #282931;
       z-index: 100;
       background-color: white;
       padding: 20px 0;
+
+      .nav-link.nav-item.article-header {
+        color: white;
+        background: $danger-color;
+        font-size: 1.25em;
+      }
+      .articles-items {
+        border-left: 1px solid black;
+      }
       .nav-link {
         -webkit-transition: all .1s;
         -moz-transition: all .1s;
@@ -207,7 +216,6 @@ $dark-color: #282931;
     }
   }
 }
-
 
 .services-all {
   padding-top: 1em;
@@ -792,8 +800,6 @@ $dark-color: #282931;
         font-size: 20px;
       }
 
-
-
       .form {
         $form-color: #3f65a5;
         display: flex;
@@ -1223,6 +1229,16 @@ $dark-color: #282931;
     }
 
   }
+
+  .navbar .navbar-menu {
+   .items-wrapper {
+     flex-direction: column;
+     .articles-items {
+       border-left: none;
+     }
+   }
+  }
+
   .section-breadcrumb {
     .container {
       .row {

@@ -52,18 +52,21 @@
                         <i class="fas fa-bars fa-2x"></i>
                     </div>
                     <div class="items-wrapper">
-                    <div class="items">
-                        @foreach ($services as $record)
-                            <a href="/services/{{$record->alias}}" class="nav-item nav-link"
-                               href="#">{{ $record->title  }}</a>
-                        @endforeach
-                    </div>
-                    <div class="items" style="border-left: 1px solid black">
-                        <span class="nav-item nav-link" style="border-bottom: 1px solid black; color: white; background: black">Статьи</span>
-                        @foreach($articles as $article)
-                            <a href="/articles/{{$article->id}}" class="nav-item nav-link">{{$article->title}}</a>
-                        @endforeach
-                    </div>
+                        <div class="items">
+                            @foreach ($services as $record)
+                                <a href="/services/{{$record->alias}}" class="nav-item nav-link"
+                                   href="#">{{ $record->title  }}</a>
+                            @endforeach
+                        </div>
+                        @if($articles->count() > 0)
+                            <div class="items articles-items">
+                                <span class="article-header nav-item nav-link">Статьи</span>
+                                @foreach($articles as $article)
+                                    <a href="/articles/{{$article->id}}"
+                                       class="nav-item nav-link">{{$article->title}}</a>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -179,7 +182,7 @@
             $(".navbar-menu .navbar-nav-hamburger").click(function () {
                 $el.find(".items-wrapper").slideToggle('fast', function () {
                     if ($(this).is(':visible'))
-                        $(this).css('display','flex');
+                        $(this).css('display', 'flex');
                 });
             });
             $(document).mouseup(function (e) {

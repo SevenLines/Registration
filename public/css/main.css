@@ -215,6 +215,16 @@
   padding: 20px 0;
 }
 
+.navbar .navbar-menu .items-wrapper .nav-link.nav-item.article-header {
+  color: white;
+  background: #ed3747;
+  font-size: 1.25em;
+}
+
+.navbar .navbar-menu .items-wrapper .articles-items {
+  border-left: 1px solid black;
+}
+
 .navbar .navbar-menu .items-wrapper .nav-link {
   transition: all .1s;
   padding: 8px 32px;
@@ -1338,6 +1348,15 @@
   .header-contacts .header-contacts-callback.btn.btn-info {
     margin-left: 0;
     width: 100%;
+  }
+
+  .navbar .navbar-menu .items-wrapper {
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+
+  .navbar .navbar-menu .items-wrapper .articles-items {
+    border-left: none;
   }
 
   .section-breadcrumb .container .row {
