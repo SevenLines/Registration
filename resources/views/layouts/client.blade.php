@@ -31,11 +31,11 @@
         <div class="container">
             <div class="" style="display: flex;  width: 100%; align-items:center">
                 <div class="navbar-nav-custom">
+                    <a class="nav-item nav-link d-block d-sm-none" href="/services/all">
+                        <i class="icon-price" style="font-size: 22px"></i> Прайс-лист
+                    </a>
                     @foreach ($services as $record)
-                        @if ($loop->index < 2)
-                            <a href="/services/{{$record->alias}}" class="nav-item nav-link "
-                               href="#">{{ $record->title  }}</a>
-                        @elseif ($loop->index < 3)
+                        @if ($loop->index < 3)
                             <a href="/services/{{$record->alias}}" class="nav-item nav-link d-none d-sm-block"
                                href="#">{{ $record->title  }}</a>
                         @elseif ($loop->index < 4)
@@ -53,6 +53,7 @@
                     </div>
                     <div class="items-wrapper">
                         <div class="items">
+                            <span class="article-header nav-item nav-link">Услуги</span>
                             @foreach ($services as $record)
                                 <a href="/services/{{$record->alias}}" class="nav-item nav-link"
                                    href="#">{{ $record->title  }}</a>
@@ -162,16 +163,6 @@
             </div>
         </section>
     </div>
-    {{--<div class="container">--}}
-    {{--@include("partials.contacts")--}}
-    {{--@yield('body_content')--}}
-    {{--<hr>--}}
-    {{--@include("partials.contacts")--}}
-    {{--</div>--}}
-
-    {{--<div style="text-align: center; padding-bottom: 2em">Мосрвп.рф &mdash; Все права защищены. &copy; {{date("Y")}} <br>--}}
-    {{--Копирование и любое коммерческое использование материалов сайта МосРВП.рф допускается только с письменного разрешения администрации ресурса</div>--}}
-
     @include("partials.phone")
     @include("partials.form")
     @include("partials.privacy")
@@ -180,14 +171,11 @@
         $(function () {
             let $el = $(".navbar-menu");
             $(".navbar-menu .navbar-nav-hamburger").click(function () {
-                $el.find(".items-wrapper").toggle(0, function () {
-                    if ($(this).is(':visible'))
-                        $(this).css('display', 'flex');
-                });
+                $el.toggleClass("open");
             });
             $(document).mouseup(function (e) {
                 if (!$el.is(e.target) && $el.has(e.target).length === 0) {
-                    $el.find(".items-wrapper").slideUp('fast');
+                    $el.removeClass("open");
                 }
             });
         })

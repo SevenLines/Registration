@@ -172,13 +172,17 @@ $dark-color: #282931;
     }
   }
   .navbar-menu {
-    &:hover {
+    &:hover, &.open {
       .navbar-nav-hamburger {
         background-color: white;
       }
-      //.items {
-      //  display: block;
-      //}
+
+    }
+
+    &.open {
+      .items-wrapper {
+        display: flex;
+      }
     }
 
     .items-wrapper {
@@ -188,11 +192,11 @@ $dark-color: #282931;
       top: $navbar-height;
       z-index: 100;
       background-color: white;
-      padding: 20px 0;
+      padding: 0 0 20px;
 
       .nav-link.nav-item.article-header {
         color: white;
-        background: $danger-color;
+        background: darken($danger-color, 5);
         font-size: 1.25em;
       }
       .articles-items {

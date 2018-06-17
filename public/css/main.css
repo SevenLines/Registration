@@ -201,8 +201,14 @@
   padding-left: 0;
 }
 
-.navbar .navbar-menu:hover .navbar-nav-hamburger {
+.navbar .navbar-menu:hover .navbar-nav-hamburger,
+.navbar .navbar-menu.open .navbar-nav-hamburger {
   background-color: white;
+}
+
+.navbar .navbar-menu.open .items-wrapper {
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .navbar .navbar-menu .items-wrapper {
@@ -212,12 +218,12 @@
   top: 65px;
   z-index: 100;
   background-color: white;
-  padding: 20px 0;
+  padding: 0 0 20px;
 }
 
 .navbar .navbar-menu .items-wrapper .nav-link.nav-item.article-header {
   color: white;
-  background: #ed3747;
+  background: #eb2031;
   font-size: 1.25em;
 }
 
