@@ -1,0 +1,166 @@
+.section-1 {
+  h1 {
+    font-size: 35px;
+  }
+}
+
+.header-contacts, .navbar .container {
+  max-width: 100%;
+  padding: 0 1em;
+}
+
+.section-3 {
+  padding: 0;
+  .container {
+    h2 {
+      padding-top: 0.5em;
+      margin-bottom: 0.5em;
+      font-size: 50px;
+      text-align: center;
+    }
+    .description {
+      .description-dash {
+        display: none;
+      }
+      .description-text {
+        margin-bottom: 1em;
+      }
+      font-size: 20px;
+    }
+  }
+}
+
+.section-4 {
+  margin-top: 69px;
+
+  .items {
+    margin: 46px 0;
+    overflow-x: auto;
+    .item {
+      width: 228px;
+      flex-basis: 228px;
+    }
+  }
+}
+
+.section-5 {
+  padding: 2rem 0;
+  h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+.section-5 {
+  .items {
+    h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      background: rgba(255, 255, 255, 0.5);
+    }
+    .item {
+      padding: 50px;
+      height: auto;
+    }
+    .item-durable {
+      background: white url("/images/princip_durable.png") no-repeat 0 -40px;
+    }
+
+    .item-guard {
+      background: white url("/images/princip_guard.png") no-repeat 0 -40px;
+    }
+
+    .item-cash {
+      background: white url("/images/princip_cash.png") no-repeat 0 -40px;
+    }
+
+    .item-secure {
+      background: white url("/images/princip_security.png") no-repeat 0 -40px;
+    }
+  }
+}
+.section-address {
+  .address {
+    font-size: 20px;
+    h2 {
+      font-size: 30px;
+      padding-bottom: 1.5rem;
+
+    }
+    padding: 75px 25px;
+  }
+}
+
+.section-footer {
+  padding: 1em;
+  h2 {
+    margin-bottom: 1em;
+  }
+  .container .row .contacts {
+    padding-right: 0;
+    .phone-info {
+      .phone {
+        margin-bottom: 1em;
+      }
+      margin-bottom: 2em;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  .services {
+    .services-title {
+      margin-bottom: 1em;
+    }
+    ul {
+      height: auto;
+      .services-item {
+        margin-right: 0;
+      }
+    }
+  }
+
+}
+
+.section-breadcrumb {
+  height: auto;
+  padding: 25px 0;
+  .container {
+    padding: 0 25px;
+    max-width: 100%;
+    .row {
+      margin: 0;
+      .image {
+        align-self: center;
+        width: 200px;
+        height: 200px;
+      }
+    }
+    .description2 {
+      .title-breadcrumb, .short-description {
+        font-size: 16px;
+      }
+      .title {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+.section-info {
+
+  .container {
+    .row {
+      margin: 0;
+      .container-offset {
+        display: none;
+      }
+      .documents-inner {
+        margin-top: 1em;
+        display: flex;
+        padding: 1em;
+        .documents-icon {
+          display: none;
+        }
+      }
+    }
+  }
+}

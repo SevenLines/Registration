@@ -1,0 +1,153 @@
+.header-contacts-time, .header-contacts .header-contacts-price-list {
+  display: none;
+}
+
+.header-contacts-contacts {
+  .header-contacts-phone {
+    margin-bottom: 1em;
+    padding: 0.25em;
+  }
+  flex-direction: column;
+}
+
+.section-1 {
+  background-image: url("/images/background_herb_small.jpg");
+  .container {
+  }
+  height: auto;
+  h1 {
+    font-size: 25px;
+    letter-spacing: 5px;
+  }
+  .description-wrapper .description {
+    font-size: 16px;
+    padding: 0 0.5em;
+    br {
+      display: none;
+    }
+  }
+  .items {
+    //font-size: 20px;
+    margin-left: -30px;
+    .row {
+      .info {
+        font-size: 16px;
+      }
+      i {
+        font-size: 30px;
+        margin-right: 20px;
+      }
+    }
+    margin-bottom: 1em;
+  }
+}
+
+.section-2 {
+  height: auto;
+  //padding-bottom: 1em;
+  .container .services {
+    margin-top: 0;
+  }
+  .container .description {
+    font-size: 16px;
+    padding: 1em 1em 0;
+  }
+}
+
+.section-3 {
+  padding: 0;
+  .container {
+    h2 {
+      padding-top: 1em;
+      margin-bottom: 1em;
+      font-size: 30px;
+      text-align: center;
+    }
+    .description {
+      .description-dash {
+        display: none;
+      }
+      .description-text {
+        margin-bottom: 1em;
+      }
+      font-size: 16px;
+    }
+    .form {
+      padding: 2em;
+      h3, .form-group, .btn {
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
+
+.section-4 {
+  .items {
+
+    .item {
+      width: 188px;
+      flex-basis: 188px;
+    }
+  }
+}
+
+.section-address {
+  .address {
+    font-size: 16px;
+    h2 {
+      font-size: 20px;
+      padding-bottom: 1em;
+
+    }
+    padding: 75px 25px;
+  }
+}
+
+.section-info {
+  .container {
+    .row {
+      .discount {
+        margin-top: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        .discount-text {
+          margin-left: 0;
+          font-size: 15px;
+        }
+      }
+      .service-items {
+        .item {
+          padding: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+          .item-description {
+            text-align: center;
+            padding-bottom: 0.5em;
+          }
+          .item-button {
+            text-align: center;
+          }
+          .item-sum {
+            justify-content: center;
+            padding-right: 0;
+            flex-basis: 200px;
+            margin-top: 0.5em;
+          }
+        }
+      }
+      .content {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+.section-breadcrumb {
+  .container {
+    .description2 {
+      .title {
+        margin-top: 0;
+      }
+    }
+  }
+}

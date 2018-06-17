@@ -1,0 +1,47 @@
+.header-contacts-time {
+  display: block;
+  //margin-left: 1em;
+}
+
+.header-contacts {
+  .header-contacts-phone {
+    align-self: flex-start;
+  }
+  .header-left-nav {
+    //justify-content: center;
+    .header-contacts-brand {
+      font-size: 2.5em;
+      padding-bottom: 0.25em;
+    }
+  }
+  .header-contacts-callback.btn.btn-info {
+    margin-left: 0;
+    width: 100%;
+  }
+
+}
+
+.navbar .navbar-menu {
+  .items-wrapper {
+    flex-direction: column;
+    .articles-items {
+      border-left: none;
+    }
+    border-bottom: 1px solid black;
+  }
+}
+
+.section-breadcrumb {
+  .container {
+    .row {
+      justify-content: center;
+      flex-wrap: wrap;
+      .image {
+        margin-right: 0;
+      }
+      .description2 {
+        text-align: center;
+      }
+    }
+  }
+}
