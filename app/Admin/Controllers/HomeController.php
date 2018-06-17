@@ -46,6 +46,14 @@ class HomeController extends Controller
                     $form->email("email", "Почта");
                     $form->text("working_time", "Рабочее время");
                     $form->text("yandex_analytics", "ID яндекс аналитки");
+
+                    $form->ckeditor("index_text_section_1", "index_text_section_1");
+                    $form->ckeditor("index_text_section_2", "index_text_section_2");
+                    $form->ckeditor("index_text_section_3", "index_text_section_3");
+                    $form->ckeditor("index_text_durability", "надежно");
+                    $form->ckeditor("index_text_security", "безопасно");
+                    $form->ckeditor("index_text_cash", "выгодно");
+                    $form->ckeditor("index_text_secure", "конфинденциально");
                     $form->text("google_analytics", "ID google аналитки");
 
                     $column->append((new Box("Настройки", $form))->style('success'));
@@ -79,6 +87,14 @@ class HomeController extends Controller
         \Settings::set("yandex_analytics", $data["yandex_analytics"]);
         \Settings::set("yandex_map", $data["yandex_map"]);
         \Settings::set("meta_title", $data["meta_title"]);
+
+        \Settings::set("index_text_section_1", $data['index_text_section_1']);
+        \Settings::set("index_text_section_2", $data['index_text_section_2']);
+        \Settings::set("index_text_section_3", $data['index_text_section_3']);
+        \Settings::set("index_text_durability", $data['index_text_durability']);
+        \Settings::set("index_text_security", $data['index_text_security']);
+        \Settings::set("index_text_cash", $data['index_text_cash']);
+        \Settings::set("index_text_secure", $data['index_text_secure']);
 
         if (array_key_exists("address_image", $data)) {
             \Settings::set("address_image", $imageField->prepare($data["address_image"]));

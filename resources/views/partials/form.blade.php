@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Ок</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Ок</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -36,7 +36,10 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function () {
-                reachGoal('order');
+                try {
+                    reachGoal('order');
+                } catch (e) {
+                }
                 $modal.modal("show");
                 $modal.find(".content .message").hide();
                 $modal.find(".content .message.success").show();

@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Service;
+use App\Article;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class ServiceController extends Controller
+class ArticleController extends Controller
 {
     use ModelForm;
 
@@ -71,10 +71,10 @@ class ServiceController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(Service::class, function (Grid $grid) {
+        return Admin::grid(Article::class, function (Grid $grid) {
+
             $grid->id('ID')->sortable();
-            $grid->column("title", 'Название')->editable()->sortable();
-            $grid->column("alias", 'URL')->editable()->sortable();
+            $grid->column('title')->sortable();
             $grid->visible("Видимость")->switch([
                 'on' => ['value' => 1],
                 'off' => ['value' => 0],
@@ -92,31 +92,14 @@ class ServiceController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Service::class, function (Form $form) {
-            $form->tab("Общие", function (Form $form) {
-                $form->switch("visible")->states([
-                    'on' => ['value' => 1],
-                    'off' => ['value' => 0],
-                ]);
+        return Admin::form(Article::class, function (Form $form) {
+            $form->text('title', 'Название');
+            $form->switch("visible")->states([
+                'on' => ['value' => 1],
+                'off' => ['value' => 0],
+            ]);
+            $form->ckeditor('text', 'текст');
 
-                $form->text("title", "Название");
-                $form->text("alias", "URL");
-                $form->image("image", "Изображение")->move("images/services")->uniqueName();
-                $form->ckeditor('description', "Описание");
-                $form->textarea('small_description', "краткое описание");
-                $form->number("discount", "скидка");
-
-            })->tab("Услуги", function (Form $form) {
-                $form->hasMany("subservices", "", function (Form\NestedForm $form) {
-                    $form->text("title", "название");
-                    $form->text("price", "цена");
-                    $form->text("documents", "документы");
-                });
-            })->tab("SEO", function (Form $form) {
-                $form->textarea("meta_description", "Описание для SEO");
-                $form->text("meta_keywords", "Ключевые слова");
-                $form->text("meta_title", "Заголовок страницы");
-            });
         });
     }
 }
