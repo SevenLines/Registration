@@ -104,7 +104,7 @@ class ServiceController extends Controller
                 $form->image("image", "Изображение")->move("images/services")->uniqueName();
                 $form->ckeditor('description', "Описание");
                 $form->textarea('small_description', "краткое описание");
-                $form->number("discount", "скидка");
+                $form->text("discount", "скидка");
 
             })->tab("Услуги", function (Form $form) {
                 $form->hasMany("subservices", "", function (Form\NestedForm $form) {
