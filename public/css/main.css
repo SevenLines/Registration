@@ -1372,6 +1372,7 @@
   .navbar .navbar-menu .items-wrapper {
     -ms-flex-direction: column;
         flex-direction: column;
+    border-bottom: 1px solid black;
   }
 
   .navbar .navbar-menu .items-wrapper .articles-items {
