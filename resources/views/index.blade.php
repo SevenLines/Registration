@@ -206,15 +206,15 @@
     {{--</div>--}}
     <script>
         $(function () {
-            let $el = $(".section-4 .items");
+            var $el = $(".section-4 .items");
             $(".section-4 .buttons .btn-next").click(function () {
-                let width = $el.find(".item").width() + 8;
+                var width = $el.find(".item").width() + 8;
                 $el.animate({
                     scrollLeft: Math.floor(($el.scrollLeft() + width) / width) * width
                 }, 100)
             });
             $(".section-4 .buttons .btn-previous").click(function () {
-                let width = $el.find(".item").width() + 8;
+                var width = $el.find(".item").width() + 8;
                 $el.animate({
                     scrollLeft: Math.floor(($el.scrollLeft() - width) / width) * width
                 }, 100)
