@@ -11,9 +11,18 @@ namespace App\Http\Controllers;
 use App\Article;
 use Illuminate\Support\Str;
 use App\Service;
+use Illuminate\Support\Facades\View;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $services = $this->get_services()->get();
+        $articles = $this->get_articles();
+
+        View::share('articles', $articles);
+        View::share('services', $services);
+    }
 
     function get_services()
     {
@@ -27,34 +36,25 @@ class ServiceController extends Controller
 
     public function index()
     {
-        $services = $this->get_services()->get();
-
-        $sorted_services = $services->sortBy("index_page_order");
+        $sorted_services = $this->get_services()->get()->sortBy("index_page_order");
 
         return view('index', [
-            "services" => $services,
-            "articles" => $this->get_articles(),
             "sorted_services" => $sorted_services
         ]);
     }
 
     public function list_all()
     {
-        $services = $this->get_services()->with("subServices")->get();
         return view("services.all", [
-            "services" => $services,
             "articles" => $this->get_articles(),
         ]);
     }
 
     public function detail($service)
     {
-        $services = $this->get_services()->get();
         $info = Service::whereAlias($service)->with("subServices")->first();
         return view("layouts.service", [
             "service" => $info,
-            "services" => $services,
-            "articles" => $this->get_articles(),
         ]);
     }
 
@@ -62,9 +62,8 @@ class ServiceController extends Controller
     {
         $article = Article::whereId($article_id)->first();
         return view("layouts.article", [
-            "services" => $this->get_services()->get(),
-            "articles" => $this->get_articles(),
             "article" => $article
         ]);
     }
+
 }
