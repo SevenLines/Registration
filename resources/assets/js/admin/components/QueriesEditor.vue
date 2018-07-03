@@ -4,7 +4,7 @@
             <br>
             <small>
                 <span class="label label-default">Паспорт: <b>{{client.passport}}</b></span>
-                <span class="label label-default">ДР: <b>{{client.birthday}}</b></span>
+                <!--<span class="label label-default">ДР: <b>{{client.birthday}}</b></span>-->
                 <span class="label label-default"><span
                         class="glyphicon glyphicon-phone"></span> <b>{{client.phone}}</b></span>
             </small>

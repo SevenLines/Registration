@@ -27,12 +27,12 @@
                                 <input required class="form-control" type="text" name="fio" v-model="currentClient.fio">
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group">
-                                <label for="">День рождения</label>
-                                <input ref="inputBirthday" class="form-control"
-                                       data-inputmask="'alias': 'dd-mm-yyyy'" v-model="currentClient.birthday">
-                                <div class="help-block with-errors"></div>
-                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="">День рождения</label>-->
+                                <!--<input ref="inputBirthday" class="form-control"-->
+                                       <!--data-inputmask="'alias': 'dd-mm-yyyy'" v-model="currentClient.birthday">-->
+                                <!--<div class="help-block with-errors"></div>-->
+                            <!--</div>-->
                             <div class="form-group">
                                 <label for="">Паспорт</label>
                                 <input class="form-control" type="text" v-model="currentClient.passport">
@@ -62,7 +62,7 @@
         </div><!-- /.modal-dialog -->
 
         <div class="modal fade" ref="queriesModal">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg ">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -130,18 +130,18 @@
                             </span>
                         </div>
                     </th>
-                    <th>
-                        <div class="input-group">
-                            <span class="input-group-addon">День рождения</span>
-                            <span class="input-group-btn">
-                                <button class="btn" @click="buttonSortClicked('birthday')"
-                                        :class="buttonSortClass('birthday')" type="button">
-                                    <i class="glyphicon"
-                                       :class="sortClass('birthday')"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </th>
+                    <!--<th>-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon">День рождения</span>-->
+                            <!--<span class="input-group-btn">-->
+                                <!--<button class="btn" @click="buttonSortClicked('birthday')"-->
+                                        <!--:class="buttonSortClass('birthday')" type="button">-->
+                                    <!--<i class="glyphicon"-->
+                                       <!--:class="sortClass('birthday')"></i>-->
+                                <!--</button>-->
+                            <!--</span>-->
+                        <!--</div>-->
+                    <!--</th>-->
                     <th>
                         <div class="input-group">
                             <span class="input-group-addon">Добавлен</span>
@@ -180,6 +180,30 @@
                             </span>
                         </div>
                     </th>
+                    <!--<th>-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon">Затраты</span>-->
+                            <!--<span class="input-group-btn">-->
+                                <!--<button class="btn" @click="buttonSortClicked('expenses')"-->
+                                        <!--:class="buttonSortClass('expenses')" type="button">-->
+                                    <!--<i class="glyphicon"-->
+                                       <!--:class="sortClass('expenses')"></i>-->
+                                <!--</button>-->
+                            <!--</span>-->
+                        <!--</div>-->
+                    <!--</th>-->
+                    <!--<th>-->
+                        <!--<div class="input-group">-->
+                            <!--<span class="input-group-addon">Доходы</span>-->
+                            <!--<span class="input-group-btn">-->
+                                <!--<button class="btn" @click="buttonSortClicked('profit')"-->
+                                        <!--:class="buttonSortClass('profit')" type="button">-->
+                                    <!--<i class="glyphicon"-->
+                                       <!--:class="sortClass('profit')"></i>-->
+                                <!--</button>-->
+                            <!--</span>-->
+                        <!--</div>-->
+                    <!--</th>-->
                     <th>
                         <select style="max-width: 130px" class="form-control" v-on:change="onFilterChange"
                                 v-model="filters.service.value">
@@ -210,6 +234,8 @@
                     :original="client.original"
                     :queries="client.queries"
                     :created_at="client.created_at"
+                    :expenses="client.expenses"
+                    :profit="client.profit"
                     :clients_count="client.clients_count"
                     v-if="legalClient.id != client.id"
                     @edit="editClient($event, client)"
@@ -244,7 +270,7 @@
     export default {
         mounted() {
             this.reloadClients();
-            Inputmask().mask(this.$refs.inputBirthday);
+            // Inputmask().mask(this.$refs.inputBirthday);
             $(this.$refs.editModalForm).validator();
         },
         data() {
@@ -292,6 +318,14 @@
                 },
                 passport: {
                     value: _.defaultTo(Cookie.get('filter.passport'), null),
+                    order: 'asc'
+                },
+                expenses: {
+                    value: _.defaultTo(Cookie.get('filter.expenses'), null),
+                    order: 'asc'
+                },
+                profit: {
+                    value: _.defaultTo(Cookie.get('filter.profit'), null),
                     order: 'asc'
                 },
                 phone: {
@@ -405,7 +439,7 @@
                 let me = this;
                 let data = {
                     fio: this.currentClient.fio,
-                    birthday: moment(this.currentClient.birthday, 'DD-MM-YYYY').format('YYYY-MM-DD'),
+                    // birthday: moment(this.currentClient.birthday, 'DD-MM-YYYY').format('YYYY-MM-DD'),
                     passport: this.currentClient.passport,
                     phone: this.currentClient.phone,
                     comment: this.currentClient.comment,

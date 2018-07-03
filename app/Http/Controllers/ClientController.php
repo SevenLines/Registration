@@ -74,7 +74,7 @@ class ClientController extends Controller
 
         $totalCount = $query->count();
 
-        if (in_array($sort, ['fio', 'passport', 'birthday', 'phone', 'created_at'])) {
+        if (in_array($sort, ['fio', 'passport', 'birthday', 'phone', 'created_at', 'expenses', 'profit'])) {
             $query = $query->orderBy($sort, $sortOrder);
         }
 

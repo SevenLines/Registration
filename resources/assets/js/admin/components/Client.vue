@@ -3,9 +3,9 @@
         <td class="fio">
             <span @click="$emit('selectAsLegal')" :class="{legal: isLegal}">{{fio}}</span>
         </td>
-        <td class="birthday">
-            {{birthday}}
-        </td>
+        <!--<td class="birthday">-->
+            <!--{{birthday}}-->
+        <!--</td>-->
         <td class="created_at">
             <small>
                 <span>{{createdAt.date}}</span><br>
@@ -18,6 +18,12 @@
         <td class="phone">
             {{phone}}
         </td>
+        <!--<td class="expenses">-->
+            <!--{{expenses}}-->
+        <!--</td>-->
+        <!--<td class="profit">-->
+            <!--{{profit}}-->
+        <!--</td>-->
         <td>
             <div class="my-label" :class="query.klass" v-for="query in queriesList">
                 <span>{{query.text}}</span><span v-if="query.legal_id">*</span>
@@ -44,7 +50,20 @@
     import moment from 'moment';
 
     export default {
-        props: ['id', 'fio', 'birthday', 'passport', 'phone', 'created_at', 'original', 'queries', 'comment', 'clients_count'],
+        props: [
+            'id',
+            'fio',
+            'birthday',
+            'passport',
+            'phone',
+            'created_at',
+            'original',
+            'queries',
+            'comment',
+            'clients_count',
+            'expenses',
+            'profit',
+        ],
         computed: {
             queriesList() {
                 return _.map(this.queries, function (item) {
