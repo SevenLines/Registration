@@ -1,11 +1,18 @@
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
-
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     @foreach($services as $service)
-    <sitemap>
-        <loc>{{URL::to('/')}}/articles/{{$service->id}}</loc>
-{{--        <lastmod>{{ $post->publishes_at->tz('UTC')->toAtomString() }}</lastmod>--}}
-    </sitemap>
+    <url>
+        <loc>{{URL::to('/')}}/services/{{$service->alias}}</loc>
+        <lastmod>{{$service->updated_at->format('Y-m-d')}}</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
     @endforeach
+        @foreach($articles as $article)
+            <url>
+                <loc>{{URL::to('/')}}/articles/{{$article->id}}</loc>
+                <lastmod>{{$article->updated_at->format('Y-m-d')}}</lastmod>
+                <changefreq>monthly</changefreq>
+            </url>
+        @endforeach
 
-</sitemapindex>
+</urlset>
