@@ -32,6 +32,8 @@
                     <th>Цена</th>
                     <th>Оплачено</th>
                     <th>Остаток</th>
+                    <th>Затраты</th>
+                    <th>Прибыль</th>
                     <th>Статус</th>
                     <th></th>
                 </tr>
@@ -45,6 +47,17 @@
                     is="query-row"
                 ></tr>
                 </tbody>
+                <tfoot>
+                <tr>
+                    <th><strong>Итого:</strong></th>
+                    <th>{{results.price}}</th>
+                    <th>{{results.paid}}</th>
+                    <th>{{results.reminder}}</th>
+                    <th>{{results.expenses}}</th>
+                    <th>{{results.profit}}</th>
+                    <th colspan="2"></th>
+                </tr>
+                </tfoot>
             </table>
             <div class="clearfix"></div>
             <div class="loadingQueryEditor" ref="loadingDiv" :class="{hidden: !loading}">
@@ -68,6 +81,25 @@
         },
         components: {
             'query-row': QueryRow
+        },
+        computed: {
+          results () {
+              let out = {
+                  price: 0,
+                  paid: 0,
+                  reminder: 0,
+                  expenses: 0,
+                  profit: 0,
+              };
+              this.queries.forEach(i => {
+                  out.price += i.price;
+                  out.paid += i.paid;
+                  out.reminder += (i.price - i.paid);
+                  out.expenses += parseFloat(i.expenses);
+                  out.profit += parseFloat(i.profit);
+              });
+              return out;
+          }
         },
         methods: {
             reloadQueries(client) {
@@ -104,16 +136,7 @@
                 this.$emit("addQuery", data, this);
             },
             editQuery(query) {
-                this.$emit("addQuery", {
-                    id: query.id,
-                    paid: query.paid,
-                    price: query.price,
-                    status: query.status,
-                    service: query.service,
-                    comment: query.comment,
-                    updated_at: query.updated_at,
-                    created_at: query.created_at
-                }, this);
+                this.$emit("addQuery", query, this);
             },
             removeQuery(query) {
                 let me = this;

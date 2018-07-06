@@ -173,6 +173,8 @@ class ClientController extends Controller
             'price' => $request->get("price"),
             'paid' => $request->get("paid"),
             'status' => $request->get("status"),
+            'profit' => $request->get("profit"),
+            'expenses' => $request->get("expenses"),
             'service' => $request->get("service"),
             'comment' => $request->get("comment"),
         ]);
