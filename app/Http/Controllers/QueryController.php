@@ -20,6 +20,14 @@ class QueryController extends Controller
      */
     public function addQuery(Request $request) {
         $phone = $request->get("phone");
+
+        $phone = preg_replace('/\\D/', "", $phone);
+        if (strlen($phone) == 10) {
+            $phone = "+7".$phone;
+        } else if (strlen($phone) == 11 && $phone[0] == '7') {
+            $phone = "+".$phone;
+        }
+
         $name = $request->get("name");
         Mail::send('emails.query', ["phone" => $phone, "name" => $name], function ($m) use ($phone) {
             $m->from(config("mail.username"), 'мосрвп.рф');
