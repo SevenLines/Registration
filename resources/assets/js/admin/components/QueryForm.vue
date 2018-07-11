@@ -30,10 +30,6 @@
                     <input type="number" class="form-control" v-model="currentQuery.expenses">
                 </div>
                 <div class="form-group">
-                    <label for="">Прибыль</label>
-                    <input type="number" class="form-control" v-model="currentQuery.profit">
-                </div>
-                <div class="form-group">
                     Остаток: {{reminder}}
                 </div>
                 <div class="form-group">

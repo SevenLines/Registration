@@ -161,6 +161,7 @@ class ClientController extends Controller
             'paid' => $request->get("paid"),
             'status' => $request->get("status"),
             'service' => $request->get("service"),
+            'expenses' => $request->get("expenses"),
             'comment' => $request->get("comment"),
             'legal_id' => $request->get("legal_id"),
         ]);
@@ -173,7 +174,6 @@ class ClientController extends Controller
             'price' => $request->get("price"),
             'paid' => $request->get("paid"),
             'status' => $request->get("status"),
-            'profit' => $request->get("profit"),
             'expenses' => $request->get("expenses"),
             'service' => $request->get("service"),
             'comment' => $request->get("comment"),
