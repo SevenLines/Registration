@@ -8,7 +8,7 @@
         <td>{{query.paid}}</td>
         <td>{{reminder}}</td>
         <td>{{query.expenses}}</td>
-        <td>{{query.profit}}</td>
+        <td>{{query.paid - query.expenses}}</td>
         <td>{{statusDisplay}}</td>
         <td style="min-width: 100px">
             <button class="btn btn-sm btn-default"  @click="editClicked">

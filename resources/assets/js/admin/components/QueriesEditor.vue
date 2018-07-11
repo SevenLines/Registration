@@ -96,7 +96,7 @@
                   out.paid += i.paid;
                   out.reminder += (i.price - i.paid);
                   out.expenses += parseFloat(i.expenses);
-                  out.profit += parseFloat(i.profit);
+                  out.profit += (i.paid - i.expenses);
               });
               return out;
           }
