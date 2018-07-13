@@ -56,7 +56,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                        <button type="button" class="btn btn-primary" @click="onAdd">Добавить</button>
+                        <button type="button" class="btn btn-primary" @click="onAdd">
+                            <span v-if="!currentReminder.id">Добавить</span>
+                            <span v-if="currentReminder.id">Обновить</span>
+                        </button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
