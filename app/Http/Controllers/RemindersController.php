@@ -34,6 +34,11 @@ class RemindersController extends Controller
         ];
     }
 
+    function update(Request $request, Reminder $reminder) {
+        Reminder::find($reminder->id)->update($request->all());
+        return new Response();
+    }
+
     function store(Request $request) {
         $values = $request->all();
 

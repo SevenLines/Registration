@@ -16,15 +16,18 @@
                     <th>ФИО</th>
                     <th>Дата</th>
                     <th>Комментарий</th>
-                    <th style="width: 1%;"></th>
+                    <th style="width: 10%;"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr v-for="r in reminders">
                     <td>{{r.fio}}</td>
-                    <td>{{r.remind_date}}</td>
+                    <td>{{formatDate(r.remind_date)}}</td>
                     <td>{{r.comment}}</td>
-                    <td><button class="btn btn-danger" @click="onRemove(r.id)"><i class="glyphicon glyphicon-remove"></i></button></td>
+                    <td>
+                        <button class="btn btn-default" @click="onEdit(r)"><i class="glyphicon glyphicon-edit"></i></button>
+                        <button class="btn btn-danger" @click="onRemove(r.id)"><i class="glyphicon glyphicon-remove"></i></button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -106,15 +109,22 @@
         },
         methods: {
             load() {
+                let self = this;
                 axios.get("/api/reminders", {
                     params: {
                         page: this.currentPage - 1
                     }
                 }).then(r => {
-                    this.reminders = r.data.records;
-                    // this.currentPage = r.data.currentPage;
-                    this.totalPages = r.data.totalPages;
+                    self.reminders = r.data.records;
+                    self.reminders.forEach(function (i) {
+                        i.remind_date = moment(i.remind_date).add(moment(i.remind_date).utcOffset(), 'm').toDate();
+                    });
+                    // self.currentPage = r.data.currentPage;
+                    self.totalPages = r.data.totalPages;
                 })
+            },
+            formatDate(dt) {
+                return moment(dt).format("DD-MM-YYYY HH:mm");
             },
             setPage(page) {
                 this.currentPage = page;
@@ -133,13 +143,28 @@
                     this.load()
                 })
             },
+            onEdit(r) {
+                this.currentReminder = r;
+                this.$refs.datetimepicker._flatpickr.setDate(this.currentReminder.remind_date);
+                $(this.$refs.editModal).modal("show");
+            },
             onAdd() {
                 let dt = moment(this.currentReminder.remind_date);
-                axios.post("/api/reminders", {
+
+                let data = {
                     fio: this.currentReminder.fio,
                     remind_date: dt.add(-dt.utcOffset(), 'm').format("Y-MM-D H:m"),
                     comment: this.currentReminder.comment,
-                }).then(r => {
+                };
+
+                let promise = null;
+                if (this.currentReminder.id) {
+                    promise = axios.put(`/api/reminders/${this.currentReminder.id}`, data);
+                } else {
+                    promise = axios.post(`/api/reminders`, data);
+                }
+
+                promise.then(r => {
                     $(this.$refs.editModal).modal("hide");
                     this.load();
                 })
