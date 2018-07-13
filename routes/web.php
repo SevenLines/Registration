@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('api/clients', 'ClientController', ['only' =>
         ['index', 'store', 'update', 'destroy']
     ]);
+    Route::resource('api/reminders', 'RemindersController', ['only' =>
+        ['index', 'store', 'destroy']
+    ]);
     Route::resource('api/queries', 'QueriesController', ['only' =>
         ['destroy']
     ]);

@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\AddUser::class,
-        Commands\ServiceFixture::class
+        Commands\ServiceFixture::class,
+        Commands\SendReminders::class
     ];
 
     /**

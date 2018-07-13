@@ -1,5 +1,8 @@
 <template>
     <div class="">
+        <RemindersTable></RemindersTable>
+
+        <hr>
         <div v-if="totalPages > 1 || !legalClient.id">
             <div class="form-group">
                 <paginator v-if="totalPages > 1" :pagescount="totalPages" :currentPage="currentPage" @setPage="setPage"/>
@@ -27,12 +30,6 @@
                                 <input required class="form-control" type="text" name="fio" v-model="currentClient.fio">
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <!--<div class="form-group">-->
-                                <!--<label for="">День рождения</label>-->
-                                <!--<input ref="inputBirthday" class="form-control"-->
-                                       <!--data-inputmask="'alias': 'dd-mm-yyyy'" v-model="currentClient.birthday">-->
-                                <!--<div class="help-block with-errors"></div>-->
-                            <!--</div>-->
                             <div class="form-group">
                                 <label for="">Паспорт</label>
                                 <input class="form-control" type="text" v-model="currentClient.passport">
@@ -256,6 +253,7 @@
 
 <script>
     import QueriesEditor from './QueriesEditor.vue'
+    import RemindersTable from './RemindersTable.vue'
     import Client from './Client.vue'
     import ClientLegal from './ClientLegal.vue'
     import QueryForm from './QueryForm.vue'
@@ -265,7 +263,7 @@
     import moment from 'moment';
     import Cookie from 'js-cookie'
 
-    require('bootstrap-validator')
+    require('bootstrap-validator');
 
     export default {
         mounted() {
@@ -365,6 +363,7 @@
             'queries-editor': QueriesEditor,
             'query-form': QueryForm,
             'client-legal': ClientLegal,
+            RemindersTable,
         },
         events: {},
         methods: {

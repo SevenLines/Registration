@@ -30,6 +30,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $legal_id
  * @property-read \App\Client|null $legal
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Query whereLegalId($value)
+ * @property float $expenses
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Query whereExpenses($value)
  */
 class Query extends Model
 {

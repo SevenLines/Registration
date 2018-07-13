@@ -40,6 +40,8 @@ use Illuminate\Support\Facades\Storage;
  * @property-read mixed $header_title
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereIndexPageOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereSmallDescription($value)
+ * @property string $discount
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereDiscount($value)
  */
 class Service extends Model
 {
