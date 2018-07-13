@@ -24,7 +24,9 @@ class RemindersController extends Controller
         if ($actualOnly) {
             $query = $query->where("reminder_date", ">=", new DateTime('now', 'UTC'));
         }
-        $query = $query->limit($itemsPerPage)->orderBy("remind_date");
+        $query = $query->limit($itemsPerPage)
+            ->orderBy("is_sent")
+            ->orderBy("remind_date");
 
         return [
             'records' => $query->get(),

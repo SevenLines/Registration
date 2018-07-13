@@ -20,13 +20,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="r in reminders">
+                <tr v-for="r in reminders" :class="{'is-sent': r.is_sent == 1 }">
                     <td>{{r.fio}}</td>
                     <td>{{formatDate(r.remind_date)}}</td>
                     <td>{{r.comment}}</td>
                     <td>
-                        <button class="btn btn-default" @click="onEdit(r)"><i class="glyphicon glyphicon-edit"></i></button>
-                        <button class="btn btn-danger" @click="onRemove(r.id)"><i class="glyphicon glyphicon-remove"></i></button>
+                        <button class="btn btn-default" @click="onEdit(r)"><i class="glyphicon glyphicon-edit"></i>
+                        </button>
+                        <button class="btn btn-danger" @click="onRemove(r.id)"><i
+                                class="glyphicon glyphicon-remove"></i></button>
                     </td>
                 </tr>
                 </tbody>
@@ -63,15 +65,17 @@
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
+
         </div><!-- /.modal -->
     </div>
 </template>
 
 <script>
     import axios from 'axios';
+    import _ from 'lodash';
     import flatpickr from "flatpickr";
     import moment from 'moment';
-    import { Russian } from "flatpickr/dist/l10n/ru.js"
+    import {Russian} from "flatpickr/dist/l10n/ru.js"
 
     window.moment = moment;
 
@@ -85,7 +89,8 @@
                 currentReminder: {
                     fio: '',
                     remind_date: new Date(),
-                    comment: ''
+                    comment: '',
+                    is_sent: false,
                 },
             }
         },
@@ -136,18 +141,20 @@
                 this.currentReminder = {
                     fio: '',
                     remind_date: new Date(),
-                    comment: ''
+                    comment: '',
+                    is_sent: false
                 };
                 this.$refs.datetimepicker._flatpickr.setDate(this.currentReminder.remind_date);
                 $(this.$refs.editModal).modal("show");
             },
-            onRemove (id) {
+            onRemove(id) {
                 axios.delete(`/api/reminders/${id}`).then(r => {
                     this.load()
                 })
             },
             onEdit(r) {
                 this.currentReminder = r;
+                this.currentReminder.is_sent = false;
                 this.$refs.datetimepicker._flatpickr.setDate(this.currentReminder.remind_date);
                 $(this.$refs.editModal).modal("show");
             },
@@ -158,6 +165,7 @@
                     fio: this.currentReminder.fio,
                     remind_date: dt.add(-dt.utcOffset(), 'm').format("Y-MM-D H:m"),
                     comment: this.currentReminder.comment,
+                    is_sent: this.currentReminder.is_sent,
                 };
 
                 let promise = null;
@@ -178,4 +186,10 @@
 
 <style lang="scss" scoped>
     @import "~flatpickr/dist/flatpickr.css";
+
+    .table-striped > tbody {
+        .is-sent {
+            background: #ebffdd;
+        }
+    }
 </style>
