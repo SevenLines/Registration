@@ -108,7 +108,7 @@
 
                 client = client ? client : this.client;
                 let client_id = client.id;
-                this.promise = axios.get(`api/clients/${client.id}/queries`, {
+                this.promise = axios.get(`/api/clients/${client.id}/queries`, {
                     params: {
                         showTaken: this.showTaken
                     }
@@ -157,9 +157,9 @@
                 let promise;
                 let client_id = this.client.id;
                 if (query.id) {
-                    promise = axios.put(`api/clients/${this.client.id}/queries`, query)
+                    promise = axios.put(`/api/clients/${this.client.id}/queries`, query)
                 } else {
-                    promise = axios.post(`api/clients/${this.client.id}/queries`, query)
+                    promise = axios.post(`/api/clients/${this.client.id}/queries`, query)
                 }
                 promise.then(function (response) {
                     me.reloadQueries();

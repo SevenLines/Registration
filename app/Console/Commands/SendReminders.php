@@ -41,7 +41,7 @@ class SendReminders extends Command
     {
         $query = Reminder::query();
         $query = $query->where('is_sent', '=', 0)
-            ->where('remind_date', '<=', new \DateTime())->get();
+            ->where('remind_date', '<=', new \DateTime('now', new \DateTimeZone('UTC')))->get();
 
         foreach ($query as $r) {
             Mail::send('emails.reminder', ["reminder" => $r], function ($m) use ($r) {

@@ -420,7 +420,7 @@
             },
             destroyClient() {
                 let me = this;
-                axios.delete(`api/clients/${this.currentClient.id}`).then(function () {
+                axios.delete(`/api/clients/${this.currentClient.id}`).then(function () {
                     me.reloadClients()
                 });
             },
@@ -449,9 +449,9 @@
                 }
 
                 if (this.currentClient.id) {
-                    promise = axios.put(`api/clients/${this.currentClient.id}`, data);
+                    promise = axios.put(`/api/clients/${this.currentClient.id}`, data);
                 } else {
-                    promise = axios.post("api/clients", data);
+                    promise = axios.post("/api/clients", data);
                 }
                 promise.then(function (response) {
                     me.showQueries(null, response.data);
@@ -494,7 +494,7 @@
                     params.legal_id = this.legalClient.id;
                 }
 
-                axios.get("api/clients", {params}).then(function (response) {
+                axios.get("/api/clients", {params}).then(function (response) {
                     me.clients = response.data.records.map(function (item) {
                         item['birthday'] = dateFormat(new Date(item.birthday), 'dd-mm-yyyy');
                         return item;

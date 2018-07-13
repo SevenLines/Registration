@@ -22,9 +22,8 @@ class RemindersController extends Controller
             $query = $query->offset($page * $itemsPerPage);
         }
         if ($actualOnly) {
-            $query = $query->where("reminder_date", ">=", new DateTime());
+            $query = $query->where("reminder_date", ">=", new DateTime('now', 'UTC'));
         }
-        $query = $query->where('is_sent', '=', '0');
         $query = $query->limit($itemsPerPage)->orderBy("remind_date");
 
         return [

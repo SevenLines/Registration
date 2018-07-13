@@ -67,6 +67,8 @@
     import moment from 'moment';
     import { Russian } from "flatpickr/dist/l10n/ru.js"
 
+    window.moment = moment;
+
     export default {
         name: "RemindersTable",
         data() {
@@ -118,6 +120,11 @@
                 this.currentPage = page;
             },
             addReminder() {
+                this.currentReminder = {
+                    fio: '',
+                    remind_date: new Date(),
+                    comment: ''
+                };
                 this.$refs.datetimepicker._flatpickr.setDate(this.currentReminder.remind_date);
                 $(this.$refs.editModal).modal("show");
             },
@@ -127,9 +134,10 @@
                 })
             },
             onAdd() {
+                let dt = moment(this.currentReminder.remind_date);
                 axios.post("/api/reminders", {
                     fio: this.currentReminder.fio,
-                    remind_date: moment(this.currentReminder.remind_date).format("Y-MM-D H:m"),
+                    remind_date: dt.add(-dt.utcOffset(), 'm').format("Y-MM-D H:m"),
                     comment: this.currentReminder.comment,
                 }).then(r => {
                     $(this.$refs.editModal).modal("hide");
