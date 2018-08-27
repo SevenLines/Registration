@@ -32,7 +32,7 @@
 
         try {
             gtag('send', 'event', {eventCategory: 'query', eventAction: 'submit'});
-        } catch {
+        } catch(e) {
 
         }
 
@@ -55,7 +55,7 @@
                 try {
                     var data = r.responseJSON;
                     console.error(data.message);
-                } catch {
+                } catch(e) {
                 }
                 $modal.find(".content .message").hide();
                 $modal.find(".content .message.fail").show();

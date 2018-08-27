@@ -32,12 +32,18 @@
             }
         })(document, window, "yandex_metrika_callbacks");
 
-        window.reachGoal = function(event) {
-            yaCounter{{\Settings::get("yandex_analytics")}}.reachGoal(event);
+        window.reachGoal = function (event) {
+            try {
+                yaCounter{{\Settings::get("yandex_analytics")}}.reachGoal(event);
+            }
+            catch (e) {
+                console.error(e)
+            }
         }
     </script>
     <noscript>
-        <div><img src="https://mc.yandex.ru/watch/{{\Settings::get("yandex_analytics")}}" style="position:absolute; left:-9999px;" alt=""/></div>
+        <div><img src="https://mc.yandex.ru/watch/{{\Settings::get("yandex_analytics")}}"
+                  style="position:absolute; left:-9999px;" alt=""/></div>
     </noscript>
     <!-- /Yandex.Metrika counter -->
 @endif

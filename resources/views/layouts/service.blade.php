@@ -100,17 +100,17 @@
 
                     <div class="form">
                         <form action="{{ route("addquery") }}" method="POST" role="form">
-                        <h3>Бесплатная<br>консультация</h3>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя">
-                            <input type="text" class="form-control" placeholder="E-mail или телефон">
-                        </div>
-                        <button class="btn btn-primary" type="submit" onclick="reachGoal('order'); return true;">Отправить</button>
-                        <small>
-                            Нажимая «Отправить заявку» вы подтверждаете, что ознакомлены с Политикой конфиденциальности
-                            и
-                            даете свое согласие на сбор и обработку персональных данных.
-                        </small>
+                            <h3>Бесплатная<br>консультация</h3>
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Ваше имя" required>
+                                <input type="text" name="phone" class="form-control" placeholder="E-mail или телефон" required>
+                            </div>
+                            <button class="btn btn-primary" type="submit" onclick="reachGoal('order'); return true;">Отправить</button>
+                            <small>
+                                Нажимая «Отправить заявку» вы подтверждаете, что ознакомлены с Политикой конфиденциальности
+                                и
+                                даете свое согласие на сбор и обработку персональных данных.
+                            </small>
                         </form>
                     </div>
 
