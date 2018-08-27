@@ -28,7 +28,16 @@ class QueryController extends Controller
             $phone = "+".$phone;
         }
 
+        if (empty($phone)) {
+            abort(405, "Телефон не может быть пустым");
+        }
+
         $name = $request->get("name");
+
+        if (empty($name)) {
+            abort(405, "Имя не может быть пустым");
+        }
+
         Mail::send('emails.query', ["phone" => $phone, "name" => $name], function ($m) use ($phone) {
             $m->from(config("mail.username"), 'мосрвп.рф');
             $m->to(config("mail.username"), "мосрвп.рф")->subject("Заявка на сайте Мосрвп.рф: $phone");

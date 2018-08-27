@@ -28,7 +28,7 @@
 
                     <div class="form-group" style="margin-top: 0.5em">
                         <div class="">
-                            <button type="submit" class="btn btn-danger" onClick="ga('send', 'event', { eventCategory: 'кнопка', eventAction: 'клик'});">
+                            <button type="submit" class="btn btn-danger" onClick="try{ga('send', 'event', { eventCategory: 'кнопка', eventAction: 'клик'})} catch {};">
                                 Оставить заявку
                             </button>
                         </div>

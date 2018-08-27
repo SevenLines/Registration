@@ -7,8 +7,9 @@
             </div>
             <div class="modal-body content" style="text-align: center">
                 <span class="message success">Ваша заявка успешна принята. Мы свяжемся с вами в ближайшее время.</span>
-                <span class="message fail">Произошла ошибка, попробуйт отправить заявку попозже или позвоните нам по телефону <a
-                            href="tel:+79264243334"> +7 926 424 3334</a></span>
+                <span class="message fail">Произошла ошибка, убедитесь что вы правильно заполнили поля имя и телефон и
+                    попробуйте отправить заявку попозже или позвоните нам по телефону <a
+                            href="tel:{{\Settings::get("phone")}}">{{\Settings::get("phone")}}</a></span>
                 <div class="message loading">
                     <img src="{{ URL::asset("images/reload.gif") }}">
                     <br>
@@ -29,7 +30,11 @@
         var form = this;
         var $modal = $("#modal-query");
 
-        gtag('send', 'event', { eventCategory: 'query', eventAction: 'submit'});
+        try {
+            gtag('send', 'event', {eventCategory: 'query', eventAction: 'submit'});
+        } catch {
+
+        }
 
         $(this).ajaxSubmit({
             headers: {
@@ -45,8 +50,13 @@
                 $modal.find(".content .message.success").show();
                 form.reset();
             },
-            error: function () {
+            error: function (r) {
                 $modal.modal("show");
+                try {
+                    var data = r.responseJSON;
+                    console.error(data.message);
+                } catch {
+                }
                 $modal.find(".content .message").hide();
                 $modal.find(".content .message.fail").show();
             },
